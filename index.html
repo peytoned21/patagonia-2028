@@ -152,6 +152,7 @@
     margin-bottom: 2.5rem;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.8s;
+    row-gap: 1.5rem;
   }
 
   .stat { text-align: center; }
@@ -196,13 +197,16 @@
   .countdown-unit:last-child { border-right: none; }
 
   .countdown-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.65rem;
+    font-weight: 600;
     color: var(--bone);
     display: block;
     line-height: 1;
     font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+    min-width: 2.5ch;
+    text-align: center;
   }
 
   .countdown-lbl {
@@ -577,6 +581,10 @@
   .meta-item span { color: rgba(240,235,224,0.5); }
 
   /* PROVISIONS (FOOD) SECTION */
+  .provisions-wrapper {
+    background: #0e0e0e;
+  }
+
   .provisions-section {
     padding: 8rem 2rem;
     max-width: 1100px;
@@ -881,9 +889,35 @@
     .hero-stats { gap: 1.4rem; }
     .stat-number { font-size: 1.9rem; }
     .schematic-track { min-width: 500px; }
-    .countdown-unit { min-width: 56px; padding: 0.65rem 0.85rem; }
-    .countdown-num { font-size: 1.3rem; }
-    .field-kitchen { grid-template-columns: 1fr; }
+
+    /* Hide schematic on mobile — route spine tells the same story */
+    .route-schematic { display: none; }
+
+    /* Countdown: hide prefix label, tighten units */
+    .countdown-prefix { display: none; }
+    .countdown-unit { min-width: 56px; padding: 0.7rem 0.8rem; }
+    .countdown-num { font-size: 1.25rem; }
+    .countdown-lbl { font-size: 0.48rem; letter-spacing: 0.15em; }
+    .countdown-strip { border-radius: 3px; }
+
+    /* Provisions stack cleanly already, just tighten padding */
+    .provisions-section { padding: 5rem 1.25rem; }
+    .field-kitchen { grid-template-columns: 1fr; gap: 1rem; }
+
+    /* Section padding tighten */
+    .route-overview { padding: 5rem 1.25rem 3rem; }
+    .itinerary-section { padding: 5rem 1.25rem; }
+    .logistics-section { padding: 5rem 1.25rem; }
+    .gear-section { padding: 5rem 1.25rem; }
+    .pitch-section { padding: 5rem 1.25rem; }
+
+    /* Hero deck smaller */
+    .hero-deck { font-size: 0.78rem; }
+
+    /* Route spine readable on small screens */
+    .route-spine { padding-left: 2.25rem; }
+    .stop-name { font-size: 1rem; }
+    .route-stop.major .stop-name { font-size: 1.1rem; }
   }
 </style>
 </head>
@@ -1400,6 +1434,7 @@
 </section>
 
 <!-- PROVISIONS -->
+<div class="provisions-wrapper">
 <section class="provisions-section">
   <p class="section-label">Provisions</p>
   <h2 class="section-title">What you <em>eat along the way</em></h2>
@@ -1470,6 +1505,7 @@
     </div>
   </div>
 </section>
+</div>
 
 <!-- LOGISTICS -->
 <section class="logistics-section">
@@ -1665,14 +1701,33 @@
 </footer>
 
 <script>
-  // PARALLAX
+  // PARALLAX — rAF smoothed with hero-exit guard
   const heroBg = document.getElementById('heroBg');
   const heroTitle = document.getElementById('heroTitle');
+  const heroEl = document.querySelector('.hero');
+
+  let ticking = false;
+  let lastY = 0;
+
+  function applyParallax() {
+    const y = lastY;
+    const heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
+    if (y < heroH) {
+      if (heroBg)    heroBg.style.transform    = 'translateY(' + (y * 0.4) + 'px)';
+      if (heroTitle) heroTitle.style.transform = 'translateY(' + (y * 0.18) + 'px)';
+    } else {
+      if (heroBg)    heroBg.style.transform    = 'translateY(' + (heroH * 0.4) + 'px)';
+      if (heroTitle) heroTitle.style.transform = 'translateY(0)';
+    }
+    ticking = false;
+  }
 
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (heroBg) heroBg.style.transform = 'translateY(' + (y * 0.4) + 'px)';
-    if (heroTitle) heroTitle.style.transform = 'translateY(' + (y * 0.18) + 'px)';
+    lastY = window.scrollY;
+    if (!ticking) {
+      requestAnimationFrame(applyParallax);
+      ticking = true;
+    }
   }, { passive: true });
 
   // COUNTDOWN to January 28, 2028 00:00:00 local
