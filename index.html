@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>End of the World &mdash; Arica to Tierra del Fuego</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --obsidian: #0a0a0a;
+    --bone: #f0ebe0;
+    --sand: #c9a96e;
+    --rust: #b84c2b;
+    --glacier: #4a8fa8;
+    --sage: #5a7a5e;
+    --dark-sand: #8a6a3a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--obsidian);
+    color: var(--bone);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* FILM GRAIN OVERLAY */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    animation: grainShift 0.15s steps(1) infinite;
+  }
+
+  @keyframes grainShift {
+    0%   { background-position: 0 0; }
+    20%  { background-position: -30px -15px; }
+    40%  { background-position: 15px -30px; }
+    60%  { background-position: -15px 25px; }
+    80%  { background-position: 25px 10px; }
+    100% { background-position: 0 0; }
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 4rem 2rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(74,143,168,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(184,76,43,0.14) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.07) 0%, transparent 70%),
+      var(--obsidian);
+    will-change: transform;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(201,169,110,0.025) 80px, rgba(201,169,110,0.025) 81px),
+      repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(201,169,110,0.025) 80px, rgba(201,169,110,0.025) 81px);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 9rem);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+    will-change: transform;
+  }
+
+  .hero-title .line-accent {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--sand);
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    letter-spacing: 0.15em;
+    color: rgba(240,235,224,0.58);
+    margin-bottom: 0.6rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-deck {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.82rem, 1.5vw, 0.96rem);
+    color: rgba(240,235,224,0.32);
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--sand);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.38);
+    margin-top: 0.3rem;
+  }
+
+  /* COUNTDOWN */
+  .countdown-strip {
+    display: flex;
+    gap: 0;
+    border: 1px solid rgba(201,169,110,0.18);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+  }
+
+  .countdown-unit {
+    padding: 0.8rem 1.2rem;
+    text-align: center;
+    border-right: 1px solid rgba(201,169,110,0.12);
+    min-width: 72px;
+  }
+
+  .countdown-unit:last-child { border-right: none; }
+
+  .countdown-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--bone);
+    display: block;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .countdown-lbl {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.3);
+    margin-top: 0.25rem;
+  }
+
+  .countdown-prefix {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.6);
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgba(201,169,110,0.12);
+    white-space: nowrap;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 55px;
+    background: linear-gradient(to bottom, transparent, var(--sand), transparent);
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .scroll-hint {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.25);
+    margin-top: 0.85rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+
+  /* SHARED SECTION STYLES */
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  .section-title em { color: var(--sand); font-style: italic; }
+
+  .section-body {
+    font-size: 0.98rem;
+    line-height: 1.82;
+    color: rgba(240,235,224,0.66);
+    max-width: 640px;
+    margin-bottom: 4rem;
+  }
+
+  .section-divider {
+    width: 60px; height: 1px;
+    background: var(--sand);
+    margin: 0 0 3rem;
+  }
+
+  .section-divider.centered { margin: 0 auto 3rem; }
+
+  /* ROUTE OVERVIEW */
+  .route-overview {
+    padding: 7rem 2rem 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Route schematic */
+  .route-schematic {
+    margin-bottom: 5rem;
+    padding: 2.5rem 2rem 3.5rem;
+    border: 1px solid rgba(240,235,224,0.07);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.012);
+    overflow-x: auto;
+  }
+
+  .schematic-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.25);
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .schematic-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-width: 580px;
+    padding: 2rem 0 2.5rem;
+  }
+
+  .schematic-track::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, var(--rust), var(--sand) 50%, var(--glacier));
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  .schematic-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .schematic-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(201,169,110,0.18);
+    border: 1px solid rgba(201,169,110,0.28);
+    flex-shrink: 0;
+  }
+
+  .schematic-node.major .schematic-dot {
+    width: 12px; height: 12px;
+    background: var(--sand);
+    border-color: var(--sand);
+    box-shadow: 0 0 12px rgba(201,169,110,0.45);
+  }
+
+  .schematic-day {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.07em;
+    color: rgba(201,169,110,0.65);
+    position: absolute;
+    bottom: calc(100% + 0.6rem);
+    white-space: nowrap;
+  }
+
+  .schematic-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.57rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.28);
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .schematic-node.major .schematic-name {
+    color: rgba(240,235,224,0.58);
+    font-weight: 600;
+  }
+
+  /* Route spine */
+  .route-spine {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .route-spine::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--rust) 0%, var(--sand) 40%, var(--glacier) 100%);
+  }
+
+  .route-stop {
+    position: relative;
+    margin-bottom: 1.6rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid rgba(240,235,224,0.05);
+  }
+
+  .route-stop:last-child { border-bottom: none; }
+
+  .route-stop::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem; top: 0.42rem;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,169,110,0.32);
+    background: var(--obsidian);
+  }
+
+  .route-stop.major::before {
+    background: var(--sand);
+    border-color: var(--sand);
+    width: 11px; height: 11px;
+    left: -2.44rem;
+  }
+
+  .stop-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    margin-bottom: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .stop-days {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sand);
+    white-space: nowrap;
+  }
+
+  .stop-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .route-stop.major .stop-name { font-size: 1.25rem; }
+
+  .stop-desc {
+    font-size: 0.83rem;
+    color: rgba(240,235,224,0.4);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .route-stop.major .stop-desc { color: rgba(240,235,224,0.56); }
+
+  .stop-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+  .stop-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    padding: 0.11rem 0.48rem;
+    border: 1px solid;
+    border-radius: 2px;
+  }
+
+  .tag-desert    { color: var(--rust);      border-color: rgba(184,76,43,0.42); }
+  .tag-coast     { color: var(--glacier);   border-color: rgba(74,143,168,0.42); }
+  .tag-patagonia { color: var(--sage);      border-color: rgba(90,122,94,0.42); }
+  .tag-border    { color: var(--sand);      border-color: rgba(201,169,110,0.32); }
+  .tag-epic      { color: #e8d5b0;          border-color: rgba(232,213,176,0.32); background: rgba(201,169,110,0.06); }
+
+  /* ITINERARY */
+  .itinerary-section { background: #0e0e0e; padding: 8rem 2rem; }
+  .itinerary-inner { max-width: 1100px; margin: 0 auto; }
+
+  .days-grid {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 4rem;
+  }
+
+  .day-card {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(240,235,224,0.065);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.012);
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .day-card:hover {
+    border-color: rgba(201,169,110,0.2);
+    background: rgba(201,169,110,0.017);
+  }
+
+  .day-card.signature {
+    border-color: rgba(201,169,110,0.17);
+    background: rgba(201,169,110,0.03);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card.signature::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--sand), rgba(201,169,110,0.2));
+  }
+
+  .signature-badge {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.53rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--sand);
+    border: 1px solid rgba(201,169,110,0.28);
+    padding: 0.11rem 0.48rem;
+    border-radius: 2px;
+    margin-bottom: 0.38rem;
+    background: rgba(201,169,110,0.06);
+  }
+
+  .day-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: rgba(201,169,110,0.12);
+    line-height: 1;
+    text-align: center;
+    padding-top: 0.2rem;
+  }
+
+  .day-card.signature .day-number { color: rgba(201,169,110,0.26); }
+
+  .day-location {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.3);
+    margin-bottom: 0.22rem;
+  }
+
+  .day-card.signature .day-location { color: rgba(201,169,110,0.8); }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .day-desc {
+    font-size: 0.86rem;
+    line-height: 1.68;
+    color: rgba(240,235,224,0.5);
+    margin-bottom: 0.75rem;
+  }
+
+  .day-meta { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+
+  .meta-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.26);
+  }
+
+  .meta-item span { color: rgba(240,235,224,0.5); }
+
+  /* PROVISIONS (FOOD) SECTION */
+  .provisions-section {
+    padding: 8rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .provisions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .provision-card {
+    padding: 1.75rem;
+    border: 1px solid rgba(240,235,224,0.07);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.012);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .provision-card:hover { border-color: rgba(201,169,110,0.2); }
+
+  .provision-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,169,110,0.2), transparent);
+  }
+
+  .provision-location {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 0.5rem;
+  }
+
+  .provision-dish {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .provision-desc {
+    font-size: 0.84rem;
+    line-height: 1.65;
+    color: rgba(240,235,224,0.52);
+  }
+
+  .provision-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.85rem;
+    display: block;
+  }
+
+  /* FIELD KITCHEN note */
+  .field-kitchen {
+    margin-top: 3rem;
+    padding: 1.5rem 1.75rem;
+    border: 1px solid rgba(90,122,94,0.25);
+    border-radius: 4px;
+    background: rgba(90,122,94,0.04);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .field-kitchen-icon {
+    font-size: 1.6rem;
+    padding-top: 0.1rem;
+  }
+
+  .field-kitchen-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--bone);
+  }
+
+  .field-kitchen-list {
+    list-style: none;
+    font-size: 0.83rem;
+    line-height: 1.75;
+    color: rgba(240,235,224,0.55);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0 1.5rem;
+  }
+
+  .field-kitchen-list li { padding-left: 0.9rem; position: relative; }
+
+  .field-kitchen-list li::before {
+    content: 'v';
+    position: absolute; left: 0;
+    color: var(--sage);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem;
+  }
+
+  /* LOGISTICS */
+  .logistics-section {
+    background: #0e0e0e;
+    padding: 8rem 2rem;
+  }
+
+  .logistics-inner { max-width: 1100px; margin: 0 auto; }
+
+  .highlight-box {
+    border-left: 2px solid var(--sand);
+    padding: 1.2rem 1.5rem;
+    background: rgba(201,169,110,0.04);
+    margin: 2rem 0 3rem;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .highlight-box p {
+    font-size: 0.87rem;
+    line-height: 1.7;
+    color: rgba(240,235,224,0.7);
+  }
+
+  .highlight-box strong { color: var(--sand); }
+
+  .logistics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .logistics-card {
+    padding: 1.6rem;
+    border: 1px solid rgba(240,235,224,0.07);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logistics-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .card-vehicle::before  { background: var(--rust); }
+  .card-flights::before  { background: var(--glacier); }
+  .card-border::before   { background: var(--sand); }
+  .card-book::before     { background: var(--rust); }
+  .card-budget::before   { background: #e8d5b0; }
+  .card-nav::before      { background: var(--sage); }
+
+  .logistics-icon { font-size: 1.2rem; margin-bottom: 0.75rem; }
+
+  .logistics-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.78rem;
+  }
+
+  .logistics-list {
+    list-style: none;
+    font-size: 0.83rem;
+    line-height: 1.72;
+    color: rgba(240,235,224,0.56);
+  }
+
+  .logistics-list li {
+    padding-left: 0.95rem;
+    position: relative;
+    margin-bottom: 0.26rem;
+  }
+
+  .logistics-list li::before {
+    content: '--';
+    position: absolute; left: 0;
+    color: rgba(201,169,110,0.45);
+    font-size: 0.62rem;
+  }
+
+  /* GEAR */
+  .gear-section { padding: 8rem 2rem; }
+  .gear-inner { max-width: 1100px; margin: 0 auto; }
+
+  .gear-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-top: 3.5rem;
+  }
+
+  .gear-cat-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+
+  .gear-list {
+    list-style: none;
+    font-size: 0.83rem;
+    line-height: 1.88;
+    color: rgba(240,235,224,0.52);
+  }
+
+  .gear-list li { padding-left: 1.1rem; position: relative; }
+
+  .gear-list li::before {
+    content: 'v';
+    position: absolute; left: 0;
+    color: var(--sage);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem;
+  }
+
+  /* PITCH */
+  .pitch-section {
+    padding: 8rem 2rem;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pitch-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--bone);
+    margin-bottom: 2rem;
+  }
+
+  .pitch-quote strong {
+    color: var(--sand);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .pitch-body {
+    font-size: 0.98rem;
+    line-height: 1.82;
+    color: rgba(240,235,224,0.57);
+    margin-bottom: 2rem;
+  }
+
+  .pitch-close {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(240,235,224,0.76);
+    margin-top: 0.5rem;
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  .trip-footer {
+    border-top: 1px solid rgba(240,235,224,0.07);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.64rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.24);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .day-card { grid-template-columns: 42px 1fr; gap: 0.8rem; padding: 1.15rem; }
+    .day-number { font-size: 1.6rem; }
+    .hero-stats { gap: 1.4rem; }
+    .stat-number { font-size: 1.9rem; }
+    .schematic-track { min-width: 500px; }
+    .countdown-unit { min-width: 56px; padding: 0.65rem 0.85rem; }
+    .countdown-num { font-size: 1.3rem; }
+    .field-kitchen { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">January 28 &ndash; February 13, 2028 &nbsp;&middot;&nbsp; 4 Men &nbsp;&middot;&nbsp; One Direction &nbsp;&middot;&nbsp; The 40th</p>
+
+    <h1 class="hero-title" id="heroTitle">
+      End of<br>
+      <span class="line-accent">the World</span>
+    </h1>
+
+    <p class="hero-subtitle">Arica, Chile &nbsp;&rarr;&nbsp; Tierra del Fuego</p>
+    <p class="hero-deck">A 17-day overland run from Atacama altitude to Patagonian wind.</p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">17</span>
+        <span class="stat-label">Days</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Guys</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">4,200</span>
+        <span class="stat-label">Miles</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Countries</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">40</span>
+        <span class="stat-label">The Number</span>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown-strip">
+      <span class="countdown-prefix">Departure in</span>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-days">--</span>
+        <span class="countdown-lbl">Days</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-hours">--</span>
+        <span class="countdown-lbl">Hours</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-mins">--</span>
+        <span class="countdown-lbl">Min</span>
+      </div>
+      <div class="countdown-unit">
+        <span class="countdown-num" id="cd-secs">--</span>
+        <span class="countdown-lbl">Sec</span>
+      </div>
+    </div>
+
+    <div class="hero-divider"></div>
+    <p class="scroll-hint">Scroll to explore</p>
+  </div>
+</section>
+
+<!-- ROUTE OVERVIEW -->
+<section class="route-overview">
+  <p class="section-label">The Route</p>
+  <h2 class="section-title">Driest desert to <em>the end of the earth</em></h2>
+  <div class="section-divider"></div>
+  <p class="section-body">Some birthdays you mark with a dinner. Some you mark with a drive across a continent. Several of us are crossing 40 around this time &mdash; and this is the answer to that. Three climate zones, two countries, one strait of water.</p>
+
+  <div class="route-schematic">
+    <p class="schematic-label">4,200 miles &nbsp;&middot;&nbsp; North to South &nbsp;&middot;&nbsp; One Direction</p>
+    <div class="schematic-track">
+
+      <div class="schematic-node major">
+        <span class="schematic-day">D1</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">Arica</span>
+      </div>
+      <div class="schematic-node major">
+        <span class="schematic-day">D2&ndash;3</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">San Pedro</span>
+      </div>
+      <div class="schematic-node">
+        <span class="schematic-day">D4</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">Antofag.</span>
+      </div>
+      <div class="schematic-node major">
+        <span class="schematic-day">D5&ndash;6</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">La Serena</span>
+      </div>
+      <div class="schematic-node">
+        <span class="schematic-day">D7</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">Santiago</span>
+      </div>
+      <div class="schematic-node major">
+        <span class="schematic-day">D8&ndash;9</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">Lake District</span>
+      </div>
+      <div class="schematic-node major">
+        <span class="schematic-day">D10&ndash;11</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">Carretera Austral</span>
+      </div>
+      <div class="schematic-node">
+        <span class="schematic-day">D12</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">Patagonia</span>
+      </div>
+      <div class="schematic-node major">
+        <span class="schematic-day">D13&ndash;14</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">Torres del Paine</span>
+      </div>
+      <div class="schematic-node">
+        <span class="schematic-day">D15</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">Magellan</span>
+      </div>
+      <div class="schematic-node major">
+        <span class="schematic-day">D16&ndash;17</span>
+        <div class="schematic-dot"></div>
+        <span class="schematic-name">Ushuaia</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="route-spine">
+
+    <div class="route-stop major">
+      <div class="stop-header">
+        <span class="stop-days">Day 1</span>
+        <span class="stop-name">Arica, Chile</span>
+      </div>
+      <p class="stop-desc">Northernmost city in Chile, where the Atacama meets the Pacific. Dinner, cold beers, the trip begins.</p>
+      <div class="stop-tags">
+        <span class="stop-tag tag-desert">Desert</span>
+        <span class="stop-tag tag-coast">Coast</span>
+      </div>
+    </div>
+
+    <div class="route-stop major">
+      <div class="stop-header">
+        <span class="stop-days">Days 2&ndash;3</span>
+        <span class="stop-name">San Pedro de Atacama</span>
+      </div>
+      <p class="stop-desc">El Tatio Geysers at dawn. Valle de la Luna. Salt flats to Bolivia. The driest non-polar desert on Earth.</p>
+      <div class="stop-tags">
+        <span class="stop-tag tag-desert">Desert</span>
+        <span class="stop-tag tag-epic">Signature</span>
+      </div>
+    </div>
+
+    <div class="route-stop">
+      <div class="stop-header">
+        <span class="stop-days">Day 4</span>
+        <span class="stop-name">Antofagasta</span>
+      </div>
+      <p class="stop-desc">Coast drive. Refuel, resupply, sleep. Dramatic emptiness.</p>
+      <div class="stop-tags"><span class="stop-tag tag-coast">Coast</span></div>
+    </div>
+
+    <div class="route-stop major">
+      <div class="stop-header">
+        <span class="stop-days">Days 5&ndash;6</span>
+        <span class="stop-name">La Serena &amp; Valle del Elqui</span>
+      </div>
+      <p class="stop-desc">Pisco distilleries in a valley so dry and clear it hosts the world's great observatories. Night sky tour after dark.</p>
+      <div class="stop-tags">
+        <span class="stop-tag tag-desert">High Desert</span>
+        <span class="stop-tag tag-epic">Signature</span>
+      </div>
+    </div>
+
+    <div class="route-stop">
+      <div class="stop-header">
+        <span class="stop-days">Day 7</span>
+        <span class="stop-name">Santiago</span>
+      </div>
+      <p class="stop-desc">Midpoint. Mercado Central for lunch. Real beds. Restock. Patagonia starts tomorrow.</p>
+      <div class="stop-tags"><span class="stop-tag tag-coast">City</span></div>
+    </div>
+
+    <div class="route-stop major">
+      <div class="stop-header">
+        <span class="stop-days">Days 8&ndash;9</span>
+        <span class="stop-name">Lake District</span>
+      </div>
+      <p class="stop-desc">Snow-capped volcanoes, emerald rivers, German craft beer. The landscape transforms completely south of Santiago.</p>
+      <div class="stop-tags">
+        <span class="stop-tag tag-patagonia">Lakes</span>
+        <span class="stop-tag tag-patagonia">Volcanoes</span>
+      </div>
+    </div>
+
+    <div class="route-stop major">
+      <div class="stop-header">
+        <span class="stop-days">Days 10&ndash;11</span>
+        <span class="stop-name">Carretera Austral</span>
+      </div>
+      <p class="stop-desc">The unpaved legendary highway. Marble Caves at Lago General Carrera. Hanging glaciers visible from the road. Where the trip earns its reputation.</p>
+      <div class="stop-tags">
+        <span class="stop-tag tag-patagonia">Patagonia</span>
+        <span class="stop-tag tag-epic">Signature</span>
+      </div>
+    </div>
+
+    <div class="route-stop">
+      <div class="stop-header">
+        <span class="stop-days">Day 12</span>
+        <span class="stop-name">Coyhaique &rarr; Puerto Natales</span>
+      </div>
+      <p class="stop-desc">Long drive south. Cross into Argentina briefly, back into Chile. The steppe opens. The wind starts.</p>
+      <div class="stop-tags"><span class="stop-tag tag-border">Chile / Argentina</span></div>
+    </div>
+
+    <div class="route-stop major">
+      <div class="stop-header">
+        <span class="stop-days">Days 13&ndash;14</span>
+        <span class="stop-name">Torres del Paine</span>
+      </div>
+      <p class="stop-desc">The towers. The glaciers. Lago Grey. Hike Base Las Torres. January light until 10pm.</p>
+      <div class="stop-tags">
+        <span class="stop-tag tag-patagonia">Patagonia</span>
+        <span class="stop-tag tag-epic">Signature</span>
+      </div>
+    </div>
+
+    <div class="route-stop">
+      <div class="stop-header">
+        <span class="stop-days">Day 15</span>
+        <span class="stop-name">Punta Arenas + Strait of Magellan</span>
+      </div>
+      <p class="stop-desc">Ferry from Punta Arenas to Porvenir. You drive onto Tierra del Fuego.</p>
+      <div class="stop-tags">
+        <span class="stop-tag tag-border">Strait of Magellan</span>
+        <span class="stop-tag tag-epic">The Crossing</span>
+      </div>
+    </div>
+
+    <div class="route-stop major">
+      <div class="stop-header">
+        <span class="stop-days">Days 16&ndash;17</span>
+        <span class="stop-name">Ushuaia, Argentina</span>
+      </div>
+      <p class="stop-desc">The southernmost city on Earth. Beagle Channel. End-of-the-world post office. You flew into Arica. You drove here.</p>
+      <div class="stop-tags">
+        <span class="stop-tag tag-epic">Finish Line</span>
+        <span class="stop-tag tag-border">World's End</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section class="itinerary-section">
+  <div class="itinerary-inner">
+    <p class="section-label">Day by Day</p>
+    <h2 class="section-title">The full <em>17-day breakdown</em></h2>
+    <div class="section-divider"></div>
+    <p class="section-body">Every day planned. Drive times, highlights, where to sleep. Signature days marked.</p>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-number">01</div>
+        <div class="day-content">
+          <p class="day-location">Arica, Chile</p>
+          <h3 class="day-title">Wheels Down. Trip Begins.</h3>
+          <p class="day-desc">Fly into Chacalluta (ARI). Pick up the cross-border 4WD. Walk the cliff above the Pacific. Dinner at a cevicheria on the malecon.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>0 mi</span></span>
+            <span class="meta-item">Sleep <span>Arica</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">02</div>
+        <div class="day-content">
+          <p class="day-location">Arica &rarr; San Pedro de Atacama</p>
+          <h3 class="day-title">Into the Driest Place on Earth</h3>
+          <p class="day-desc">Head inland and climb. The coast disappears; the landscape turns ochre and copper. Arrive San Pedro at 7,900ft. The sky tonight is already extraordinary.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~190 mi</span></span>
+            <span class="meta-item">Sleep <span>San Pedro</span></span>
+            <span class="meta-item">Elev <span>7,900 ft</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card signature">
+        <div class="day-number">03</div>
+        <div class="day-content">
+          <div class="signature-badge">Signature Day</div>
+          <p class="day-location">San Pedro de Atacama</p>
+          <h3 class="day-title">Geysers at Dawn. Salt Flats at Dusk.</h3>
+          <p class="day-desc">Wake at 4am. El Tatio at 14,000ft &mdash; steam columns erupting in the pre-dawn freeze. Breakfast at the geysers. Afternoon: Valle de la Luna, the salt formations, the dunes at sunset. The day everyone talks about for years.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>60 mi roundtrip</span></span>
+            <span class="meta-item">Sleep <span>San Pedro</span></span>
+            <span class="meta-item">Highlight <span>El Tatio at 14,000 ft</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">04</div>
+        <div class="day-content">
+          <p class="day-location">San Pedro &rarr; Antofagasta</p>
+          <h3 class="day-title">Descend to the Coast</h3>
+          <p class="day-desc">Drop from the altiplano to sea level. The Pan-American hugs cliff edges through one of the most desolate coastlines on Earth. Antofagasta: resupply, eat seafood, sleep.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~230 mi</span></span>
+            <span class="meta-item">Sleep <span>Antofagasta</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">05</div>
+        <div class="day-content">
+          <p class="day-location">Antofagasta &rarr; La Serena</p>
+          <h3 class="day-title">South Through the Desert Coast</h3>
+          <p class="day-desc">Long coast drive as the landscape starts to green. Stop at Pan de Azucar National Park: rocky coast, sea lions, pelicans. Arrive La Serena by evening.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~290 mi</span></span>
+            <span class="meta-item">Sleep <span>La Serena</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card signature">
+        <div class="day-number">06</div>
+        <div class="day-content">
+          <div class="signature-badge">Signature Day</div>
+          <p class="day-location">Valle del Elqui</p>
+          <h3 class="day-title">Pisco &amp; the Clearest Skies on Earth</h3>
+          <p class="day-desc">Drive the Valle del Elqui: narrow, lush, impossibly green between arid mountains. Pisco distillery tour. Lunch in Pisco Elqui village. After dark: a guided stargazing session in skies nothing in the Northern Hemisphere prepares you for.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>60 mi roundtrip</span></span>
+            <span class="meta-item">Sleep <span>Valle del Elqui</span></span>
+            <span class="meta-item">Highlight <span>Night Sky Tour</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">07</div>
+        <div class="day-content">
+          <p class="day-location">La Serena &rarr; Santiago</p>
+          <h3 class="day-title">Midpoint. The City. Rest.</h3>
+          <p class="day-desc">Drive south through wine country. Mercado Central for lunch. Bellavista for dinner. Sleep in a real hotel. Restock and recharge. Patagonia starts tomorrow.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~280 mi</span></span>
+            <span class="meta-item">Sleep <span>Santiago</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">08</div>
+        <div class="day-content">
+          <p class="day-location">Santiago &rarr; Valdivia</p>
+          <h3 class="day-title">The Landscape Transforms</h3>
+          <p class="day-desc">South of Santiago: vineyards give way to forests, rivers, volcanoes. Arrive Valdivia &mdash; a river city with German roots and serious craft beer. The Lake District begins.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~480 mi</span></span>
+            <span class="meta-item">Sleep <span>Valdivia</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">09</div>
+        <div class="day-content">
+          <p class="day-location">Valdivia &rarr; Puerto Montt</p>
+          <h3 class="day-title">Volcanoes &amp; Lakes</h3>
+          <p class="day-desc">Osorno Volcano appears and stays on the horizon for hours. Stop in Puerto Varas for lunch with the volcano across Lago Llanquihue. Puerto Montt: last major city before the wild south.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~150 mi</span></span>
+            <span class="meta-item">Sleep <span>Puerto Montt</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">10</div>
+        <div class="day-content">
+          <p class="day-location">Puerto Montt &rarr; Chaiten</p>
+          <h3 class="day-title">The Road Gets Real</h3>
+          <p class="day-desc">Pavement ends. Carretera Austral begins. Short ferry to bypass Puerto Montt, then onto the legendary highway through temperate rainforest and hanging glaciers. Arrive Chaiten, rebuilt after a 2008 eruption buried it.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~130 mi + ferry</span></span>
+            <span class="meta-item">Sleep <span>Chaiten</span></span>
+            <span class="meta-item">Road <span>Carretera Austral begins</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card signature">
+        <div class="day-number">11</div>
+        <div class="day-content">
+          <div class="signature-badge">Signature Day</div>
+          <p class="day-location">Chaiten &rarr; Coyhaique</p>
+          <h3 class="day-title">The Marble Caves</h3>
+          <p class="day-desc">Drive south to Puerto Rio Tranquilo on Lago General Carrera &mdash; impossibly turquoise glacial water &mdash; and take a boat into the Marble Caves. Swirling blue-white marble carved by the lake. No photograph does it justice. Continue to Coyhaique.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~240 mi</span></span>
+            <span class="meta-item">Sleep <span>Coyhaique</span></span>
+            <span class="meta-item">Highlight <span>Marble Caves</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">12</div>
+        <div class="day-content">
+          <p class="day-location">Coyhaique &rarr; Puerto Natales</p>
+          <h3 class="day-title">The Long Push South</h3>
+          <p class="day-desc">Leave early. Cross into Argentina near Coyhaique, cut across the Argentine steppe, re-enter Chile south of Torres del Paine. The landscape becomes windswept and vast. Arrive Puerto Natales by evening.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~380 mi</span></span>
+            <span class="meta-item">Sleep <span>Puerto Natales</span></span>
+            <span class="meta-item">Border <span>Chile / Argentina x2</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card signature">
+        <div class="day-number">13</div>
+        <div class="day-content">
+          <div class="signature-badge">Signature Day</div>
+          <p class="day-location">Torres del Paine National Park</p>
+          <h3 class="day-title">The Towers</h3>
+          <p class="day-desc">Drive in at dawn. Hike Base Las Torres: 8 miles roundtrip to a glacial lake with granite spires overhead. Lago Grey and the glacier in the afternoon. January light until 10pm. This is why you came.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~70 mi</span></span>
+            <span class="meta-item">Sleep <span>Puerto Natales</span></span>
+            <span class="meta-item">Hike <span>Base Las Torres</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">14</div>
+        <div class="day-content">
+          <p class="day-location">Puerto Natales &rarr; Punta Arenas</p>
+          <h3 class="day-title">Gateway to the Strait</h3>
+          <p class="day-desc">Drive to Punta Arenas on the Strait of Magellan. Walk the city's extraordinary cemetery. Patagonian lamb dinner. Sleep early &mdash; the ferry departs in the morning.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~150 mi</span></span>
+            <span class="meta-item">Sleep <span>Punta Arenas</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">15</div>
+        <div class="day-content">
+          <p class="day-location">Punta Arenas &rarr; Porvenir &rarr; Rio Grande</p>
+          <h3 class="day-title">Crossing the Strait of Magellan</h3>
+          <p class="day-desc">Two hours on open southern water. Step off onto Tierra del Fuego. Drive east across the Chilean half, cross into Argentina. Guanacos on every hillside, condors overhead.</p>
+          <div class="day-meta">
+            <span class="meta-item">Ferry <span>Punta Arenas &rarr; Porvenir</span></span>
+            <span class="meta-item">Drive <span>~160 mi</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-number">16</div>
+        <div class="day-content">
+          <p class="day-location">Rio Grande &rarr; Ushuaia</p>
+          <h3 class="day-title">The Last Drive</h3>
+          <p class="day-desc">The road climbs through the Fuegian Andes &mdash; the southernmost mountain range on Earth &mdash; and drops to the Beagle Channel. Arrive Ushuaia. Walk to the waterfront. You drove here from Arica.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>~130 mi</span></span>
+            <span class="meta-item">Sleep <span>Ushuaia</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card signature">
+        <div class="day-number">17</div>
+        <div class="day-content">
+          <div class="signature-badge">Fin del Mundo</div>
+          <p class="day-location">Ushuaia, Argentina</p>
+          <h3 class="day-title">End of the World</h3>
+          <p class="day-desc">Tierra del Fuego National Park: the literal end of the Pan-American Highway. End-of-the-world post office. Beagle Channel boat tour. The best Malbec you can find. Return the 4WD. Fly home from USH.</p>
+          <div class="day-meta">
+            <span class="meta-item">Drive <span>30 mi</span></span>
+            <span class="meta-item">Fly <span>USH out</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROVISIONS -->
+<section class="provisions-section">
+  <p class="section-label">Provisions</p>
+  <h2 class="section-title">What you <em>eat along the way</em></h2>
+  <div class="section-divider"></div>
+  <p class="section-body">The food on this route is as good as the scenery. These are the non-negotiables &mdash; the meals that anchor each leg of the journey.</p>
+
+  <div class="provisions-grid">
+
+    <div class="provision-card">
+      <span class="provision-icon">&#x1F41F;</span>
+      <p class="provision-location">Arica &mdash; Day 1</p>
+      <h3 class="provision-dish">Ceviche de Corvina</h3>
+      <p class="provision-desc">Sea bass cured in lime, aji amarillo, red onion. Eaten on the malecon overlooking the Pacific. The official start of the trip.</p>
+    </div>
+
+    <div class="provision-card">
+      <span class="provision-icon">&#x1F376;</span>
+      <p class="provision-location">Valle del Elqui &mdash; Day 6</p>
+      <h3 class="provision-dish">Pisco Sour at the Source</h3>
+      <p class="provision-desc">Distillery-poured pisco sour in the valley where the grape is grown. Elqui pisco is lighter and more floral than Peruvian. Drink it cold, drink it there.</p>
+    </div>
+
+    <div class="provision-card">
+      <span class="provision-icon">&#x1F99E;</span>
+      <p class="provision-location">Santiago &mdash; Day 7</p>
+      <h3 class="provision-dish">Mercado Central Seafood</h3>
+      <p class="provision-desc">Whole grilled congrio, razor clams, sea urchin. Eat at the counter, not the tourist tables. One of the finest seafood markets in South America.</p>
+    </div>
+
+    <div class="provision-card">
+      <span class="provision-icon">&#x1F37A;</span>
+      <p class="provision-location">Valdivia &mdash; Day 8</p>
+      <h3 class="provision-dish">Chorillana + Local Craft Beer</h3>
+      <p class="provision-desc">Valdivia's signature dish: a platter of fries layered with caramelized onion, sliced beef, and fried eggs. Order one between two. Then order a Kunstmann or Bundor from the tap.</p>
+    </div>
+
+    <div class="provision-card">
+      <span class="provision-icon">&#x1F40F;</span>
+      <p class="provision-location">Rio Grande &mdash; Day 15</p>
+      <h3 class="provision-dish">Patagonian Asado</h3>
+      <p class="provision-desc">Lamb slow-roasted on an open cross-frame over wood fire. Tierra del Fuego lamb is world-class &mdash; the animals graze on windswept Patagonian steppe. This is the meal you came for.</p>
+    </div>
+
+    <div class="provision-card">
+      <span class="provision-icon">&#x1F980;</span>
+      <p class="provision-location">Ushuaia &mdash; Day 17</p>
+      <h3 class="provision-dish">Centolla &mdash; Southern King Crab</h3>
+      <p class="provision-desc">Caught that morning from the Beagle Channel. Served simply: cracked, with butter and lemon. One of the finest things you will eat anywhere. Order a bottle of Patagonian Malbec alongside it.</p>
+    </div>
+
+  </div>
+
+  <!-- Field kitchen -->
+  <div class="field-kitchen">
+    <span class="field-kitchen-icon">&#x1F373;</span>
+    <div>
+      <p class="field-kitchen-title">The Field Kitchen &mdash; Camp Nights on the Carretera Austral</p>
+      <ul class="field-kitchen-list">
+        <li>MSR Windburner stove system</li>
+        <li>Cast iron skillet (one small one)</li>
+        <li>Titanium cookset for boiling</li>
+        <li>High-proof whisky for the cold</li>
+        <li>Smoked chorizo + hard cheese</li>
+        <li>Dried pasta and olive oil</li>
+        <li>Coffee setup: AeroPress + ground</li>
+        <li>Emergency instant noodles</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- LOGISTICS -->
+<section class="logistics-section">
+  <div class="logistics-inner">
+    <p class="section-label">Making It Happen</p>
+    <h2 class="section-title">Logistics &amp; <em>planning guide</em></h2>
+    <div class="section-divider"></div>
+
+    <div class="highlight-box">
+      <p><strong>Most important booking:</strong> A cross-border authorized 4WD with high clearance. Companies that allow Chile/Argentina crossings are limited. Call &mdash; don't book online &mdash; at least 12&ndash;18 months out. This unlocks the whole trip.</p>
+    </div>
+
+    <div class="logistics-grid">
+
+      <div class="logistics-card card-vehicle">
+        <div class="logistics-icon">&#x1F699;</div>
+        <h3 class="logistics-title">The Vehicle</h3>
+        <ul class="logistics-list">
+          <li>Full-size 4WD SUV or pickup</li>
+          <li>Cross-border authorized: Chile and Argentina</li>
+          <li>High clearance required &mdash; Carretera Austral demands it</li>
+          <li>Roof rack and jerry cans recommended</li>
+          <li>Call Hertz Chile, Econorent, or Budget Chile &mdash; don't book online for cross-border</li>
+          <li>~$150&ndash;200/day split 4 ways = $40/person/day</li>
+        </ul>
+      </div>
+
+      <div class="logistics-card card-flights">
+        <div class="logistics-icon">&#x2708;</div>
+        <h3 class="logistics-title">Flights</h3>
+        <ul class="logistics-list">
+          <li>IN: Arica (ARI) via Santiago &mdash; LATAM, Sky, JetSmart</li>
+          <li>OUT: Ushuaia (USH) via Buenos Aires (EZE)</li>
+          <li>ATL routing: ATL &rarr; MIA or BOG &rarr; SCL &rarr; ARI (~18&ndash;22 hrs)</li>
+          <li>LATAM is SkyTeam &mdash; use Delta miles where possible</li>
+          <li>Book ~11 months out: March 2027</li>
+          <li>Budget $1,200&ndash;1,800/person roundtrip</li>
+        </ul>
+      </div>
+
+      <div class="logistics-card card-border">
+        <div class="logistics-icon">&#x1F6C2;</div>
+        <h3 class="logistics-title">Border Crossings</h3>
+        <ul class="logistics-list">
+          <li>Expect 4&ndash;6 crossings total &mdash; all routine</li>
+          <li>Passports accessible at all times</li>
+          <li>No visa for US citizens in Chile or Argentina</li>
+          <li>Declare all food &mdash; both countries are strict</li>
+          <li>Allow 30&ndash;60 min per crossing in drive estimates</li>
+          <li>Verify Argentina reciprocity fee status for 2028</li>
+        </ul>
+      </div>
+
+      <div class="logistics-card card-book">
+        <div class="logistics-icon">&#x1F4C5;</div>
+        <h3 class="logistics-title">What to Book When</h3>
+        <ul class="logistics-list">
+          <li><strong>Now:</strong> Verbal commits from all 4 guys</li>
+          <li><strong>Jan 2027:</strong> Torres del Paine lodging &mdash; EcoCamp and Las Torres book 12+ months out</li>
+          <li><strong>Mar 2027:</strong> Flights + 4WD rental</li>
+          <li><strong>Jun 2027:</strong> El Tatio tour, Marble Caves boat, Beagle Channel, Elqui stargazing</li>
+          <li><strong>Oct 2027:</strong> Punta Arenas &rarr; Porvenir ferry (Transbordadora Broom)</li>
+        </ul>
+      </div>
+
+      <div class="logistics-card card-budget">
+        <div class="logistics-icon">&#x1F4B0;</div>
+        <h3 class="logistics-title">Budget Per Person</h3>
+        <ul class="logistics-list">
+          <li>Flights: $1,400&ndash;1,800</li>
+          <li>Vehicle (split 4): $600&ndash;900</li>
+          <li>Fuel (split 4): $200&ndash;300</li>
+          <li>Lodging (split 4): $400&ndash;600</li>
+          <li>Food and drink: $600&ndash;900</li>
+          <li>Tours and activities: $300&ndash;500</li>
+          <li>Ferries and misc: $150&ndash;200</li>
+          <li><strong>Total: $3,650&ndash;5,200 per person</strong></li>
+        </ul>
+      </div>
+
+      <div class="logistics-card card-nav">
+        <div class="logistics-icon">&#x1F9ED;</div>
+        <h3 class="logistics-title">Navigation &amp; Comms</h3>
+        <ul class="logistics-list">
+          <li>Maps.me and Google Maps offline for all regions</li>
+          <li>iOverlander for remote camps and road conditions</li>
+          <li>Garmin inReach satellite communicator &mdash; cell vanishes on the Carretera Austral</li>
+          <li>Entel or Claro SIM from Santiago for best rural coverage</li>
+          <li>$500 USD cash per person &mdash; ATMs unreliable in small Patagonian towns</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GEAR -->
+<section class="gear-section">
+  <div class="gear-inner">
+    <p class="section-label">What to Pack</p>
+    <h2 class="section-title">The gear <em>list</em></h2>
+    <div class="section-divider"></div>
+    <p class="section-body">You are going from a desert at 14,000ft to a temperate rainforest to Patagonian wind to a glacial island. The Carretera Austral breaks unprepared vehicles. Come ready.</p>
+
+    <div class="gear-columns">
+
+      <div class="gear-category">
+        <p class="gear-cat-title">Clothing</p>
+        <ul class="gear-list">
+          <li>Waterproof hardshell jacket &mdash; essential</li>
+          <li>Fleece mid-layer x2</li>
+          <li>Merino wool base layers x3</li>
+          <li>Hiking pants x2</li>
+          <li>Quick-dry shorts x2</li>
+          <li>Warm hat and buff</li>
+          <li>Gloves (even in January)</li>
+          <li>Waterproof hiking boots</li>
+          <li>Camp sandals</li>
+          <li>Rain pants</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <p class="gear-cat-title">Vehicle &amp; Road</p>
+        <ul class="gear-list">
+          <li>Tire plug and patch kit</li>
+          <li>Portable air compressor</li>
+          <li>Tow strap</li>
+          <li>Basic tool kit</li>
+          <li>Jerry cans x2 (10L each)</li>
+          <li>Jumper cables</li>
+          <li>First aid kit</li>
+          <li>Fire extinguisher</li>
+          <li>Reflective triangles</li>
+          <li>Headlamps x4</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <p class="gear-cat-title">Camp &amp; Comfort</p>
+        <ul class="gear-list">
+          <li>Sleeping bag rated to 20F</li>
+          <li>Sleeping pad</li>
+          <li>3&ndash;4 season tent</li>
+          <li>MSR Windburner stove + fuel</li>
+          <li>Titanium cookset</li>
+          <li>Cast iron skillet (small)</li>
+          <li>Sawyer Squeeze water filter</li>
+          <li>Dry bags x4</li>
+          <li>Cooler</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <p class="gear-cat-title">Tech &amp; Documents</p>
+        <ul class="gear-list">
+          <li>Garmin inReach satellite communicator</li>
+          <li>Portable power banks x2</li>
+          <li>Multi-port car charger</li>
+          <li>Camera and extra SD cards</li>
+          <li>Drone &mdash; check regulations per country</li>
+          <li>Passport valid 6+ months past Feb 2028</li>
+          <li>International driving permit</li>
+          <li>Rental docs: digital and physical</li>
+          <li>Travel insurance documentation</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PITCH -->
+<section class="pitch-section">
+  <p class="section-label">The Pitch</p>
+  <div class="section-divider centered"></div>
+  <p class="pitch-quote">
+    "Some guys turn 40 and buy a watch. We're driving a 4WD to the <strong>bottom of the world</strong>."
+  </p>
+  <p class="pitch-body">
+    Several of us are crossing 40 around this time. There is no better way to mark the decade than driving 4,200 miles from the driest desert on Earth to the southernmost city in the world. The Atacama. The Carretera Austral. Torres del Paine. The Strait of Magellan. Ushuaia. One direction. No repeat.
+  </p>
+  <p class="pitch-close">
+    Forty looks good from the end of the world.<br>
+    January 28, 2028. You in?
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer class="trip-footer">
+  <p class="footer-title">Arica &rarr; Ushuaia</p>
+  <p class="footer-sub">January 28 &ndash; February 13, 2028 &nbsp;&middot;&nbsp; The 40th &nbsp;&middot;&nbsp; Fin del Mundo</p>
+</footer>
+
+<script>
+  // PARALLAX
+  const heroBg = document.getElementById('heroBg');
+  const heroTitle = document.getElementById('heroTitle');
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (heroBg) heroBg.style.transform = 'translateY(' + (y * 0.4) + 'px)';
+    if (heroTitle) heroTitle.style.transform = 'translateY(' + (y * 0.18) + 'px)';
+  }, { passive: true });
+
+  // COUNTDOWN to January 28, 2028 00:00:00 local
+  const target = new Date('2028-01-28T00:00:00');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent  = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent  = '00';
+      document.getElementById('cd-secs').textContent  = '00';
+      return;
+    }
+
+    const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs  = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cd-days').textContent  = String(days).padStart(3, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').textContent  = String(secs).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
