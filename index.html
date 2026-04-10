@@ -882,6 +882,244 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
+  /* PHASES */
+  .phases-section {
+    padding: 7rem 2rem 0;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: rgba(240,235,224,0.07);
+    border: 1px solid rgba(240,235,224,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+
+  .phase-card {
+    padding: 2rem 1.75rem;
+    background: var(--obsidian);
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .phase-card:hover { background: rgba(201,169,110,0.03); }
+
+  .phase-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(201,169,110,0.1);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .phase-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 0.4rem;
+  }
+
+  .phase-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .phase-desc {
+    font-size: 0.83rem;
+    line-height: 1.65;
+    color: rgba(240,235,224,0.48);
+  }
+
+  .phase-days {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.25);
+    margin-top: 0.85rem;
+  }
+
+  /* EXPERIENCE */
+  .experience-section {
+    background: #0e0e0e;
+    padding: 8rem 2rem;
+  }
+
+  .experience-inner { max-width: 1100px; margin: 0 auto; }
+
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+    margin-top: 3.5rem;
+    border: 1px solid rgba(240,235,224,0.07);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .experience-card {
+    padding: 2.25rem 2rem;
+    border-right: 1px solid rgba(240,235,224,0.07);
+    border-bottom: 1px solid rgba(240,235,224,0.07);
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .experience-card:hover { background: rgba(201,169,110,0.02); }
+
+  .experience-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(201,169,110,0.35);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .experience-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.65rem;
+  }
+
+  .experience-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(240,235,224,0.52);
+  }
+
+  /* REALITY CHECK */
+  .reality-section {
+    padding: 8rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .reality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .reality-card {
+    padding: 1.75rem;
+    border: 1px solid rgba(240,235,224,0.07);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.01);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reality-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--rust);
+    opacity: 0.6;
+  }
+
+  .reality-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .reality-desc {
+    font-size: 0.84rem;
+    line-height: 1.68;
+    color: rgba(240,235,224,0.52);
+  }
+
+  .reality-icon {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  /* WHO THIS IS FOR */
+  .who-section {
+    background: #0e0e0e;
+    padding: 8rem 2rem;
+  }
+
+  .who-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .who-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(240,235,224,0.08);
+  }
+
+  .who-col-title.is-for { color: var(--sage); border-color: rgba(90,122,94,0.3); }
+  .who-col-title.not-for { color: rgba(240,235,224,0.3); }
+
+  .who-list {
+    list-style: none;
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: rgba(240,235,224,0.6);
+  }
+
+  .who-list li { padding-left: 1.2rem; position: relative; margin-bottom: 0.2rem; }
+
+  .who-list.is-for li::before {
+    content: 'v';
+    position: absolute; left: 0;
+    color: var(--sage);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+  }
+
+  .who-list.not-for li::before {
+    content: 'x';
+    position: absolute; left: 0;
+    color: rgba(184,76,43,0.6);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .who-list.not-for li { color: rgba(240,235,224,0.35); }
+
+  @media (max-width: 600px) {
+    .who-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .phases-grid { grid-template-columns: 1fr 1fr; }
+    .experience-grid { grid-template-columns: 1fr; }
+    .reality-grid { grid-template-columns: 1fr; }
+    .who-section { padding: 5rem 1.25rem; }
+    .experience-section { padding: 5rem 1.25rem; }
+    .reality-section { padding: 5rem 1.25rem; }
+    .phases-section { padding: 5rem 1.25rem 0; }
+  }
+
   /* RESPONSIVE */
   @media (max-width: 600px) {
     .day-card { grid-template-columns: 42px 1fr; gap: 0.8rem; padding: 1.15rem; }
@@ -985,6 +1223,49 @@
 
     <div class="hero-divider"></div>
     <p class="scroll-hint">Scroll to explore</p>
+  </div>
+</section>
+
+<!-- PHASES -->
+<section class="phases-section">
+  <p class="section-label">Four Phases</p>
+  <h2 class="section-title">How the <em>journey unfolds</em></h2>
+  <div class="section-divider"></div>
+
+  <div class="phases-grid">
+
+    <div class="phase-card">
+      <div class="phase-number">I</div>
+      <p class="phase-label">Days 1&ndash;6</p>
+      <h3 class="phase-name">The Desert</h3>
+      <p class="phase-desc">Arica to Valle del Elqui. The Atacama. Geysers at 14,000ft. Salt flats. The clearest night skies on Earth. You are above the clouds and the world feels otherworldly.</p>
+      <p class="phase-days">Arica &rarr; San Pedro &rarr; La Serena</p>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-number">II</div>
+      <p class="phase-label">Day 7</p>
+      <h3 class="phase-name">The Reset</h3>
+      <p class="phase-desc">Santiago. One night. Real beds, real food, real city. Restock everything. The landscape south of here is a different world entirely.</p>
+      <p class="phase-days">Santiago</p>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-number">III</div>
+      <p class="phase-label">Days 8&ndash;14</p>
+      <h3 class="phase-name">Patagonia</h3>
+      <p class="phase-desc">Lake District to Torres del Paine. The Carretera Austral. Volcanoes, marble caves, glaciers, the towers. The core of the trip. The reason you came.</p>
+      <p class="phase-days">Valdivia &rarr; Puerto Montt &rarr; Carretera Austral &rarr; Torres del Paine</p>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-number">IV</div>
+      <p class="phase-label">Days 15&ndash;17</p>
+      <h3 class="phase-name">The End</h3>
+      <p class="phase-desc">Cross the Strait of Magellan onto Tierra del Fuego. Drive through the Fuegian Andes. Arrive Ushuaia &mdash; the southernmost city on Earth. The trip is done.</p>
+      <p class="phase-days">Punta Arenas &rarr; Tierra del Fuego &rarr; Ushuaia</p>
+    </div>
+
   </div>
 </section>
 
@@ -1183,6 +1464,80 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section">
+  <div class="experience-inner">
+    <p class="section-label">What It Actually Feels Like</p>
+    <h2 class="section-title">Five moments you <em>won't forget</em></h2>
+    <div class="section-divider"></div>
+
+    <div class="experience-grid">
+
+      <div class="experience-card">
+        <p class="experience-num">01</p>
+        <h3 class="experience-title">4am. Fourteen thousand feet. Steam rising before the sun.</h3>
+        <p class="experience-desc">You drove to El Tatio in the dark, half-asleep, in freezing thin air. Then the geysers erupt around you as the Andes light up. Nobody says anything for a while. You don't need to.</p>
+      </div>
+
+      <div class="experience-card">
+        <p class="experience-num">02</p>
+        <h3 class="experience-title">The Carretera Austral. No signal. Just road.</h3>
+        <p class="experience-desc">Four hundred miles of unpaved highway through a rainforest that feels prehistoric. You are genuinely far from help. The 4WD is earning it. So are you.</p>
+      </div>
+
+      <div class="experience-card">
+        <p class="experience-num">03</p>
+        <h3 class="experience-title">The towers come into view at dawn.</h3>
+        <p class="experience-desc">Torres del Paine. Three granite spires rising 8,000ft above nothing. You've seen the photos. The photos are wrong &mdash; they flatten something that fills your whole field of view. You hike toward them anyway.</p>
+      </div>
+
+      <div class="experience-card">
+        <p class="experience-num">04</p>
+        <h3 class="experience-title">The ferry. The other side. Tierra del Fuego.</h3>
+        <p class="experience-desc">Two hours across the Strait of Magellan on open southern water. Wind from Antarctica. The continent ends behind you. An island begins ahead. You drove here from the Atacama desert. Let that land.</p>
+      </div>
+
+      <div class="experience-card">
+        <p class="experience-num">05</p>
+        <h3 class="experience-title">Ushuaia. Last dinner. Saying nothing much.</h3>
+        <p class="experience-desc">King crab and Malbec at the bottom of the world. The conversation isn't about the trip &mdash; it's about everything else. Turns out that's what 4,200 miles and 17 days does. It creates space. You hadn't talked like this in years.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="who-section">
+  <div class="who-inner">
+    <div>
+      <p class="section-label">This trip is</p>
+      <h2 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.8rem);">Built for <em>this exact crew</em></h2>
+      <div class="section-divider"></div>
+      <ul class="who-list is-for">
+        <li>Endurance &mdash; long drives, early starts, real effort</li>
+        <li>Discomfort as part of the deal</li>
+        <li>Stories that take 10 minutes to tell</li>
+        <li>Guys who don't need itinerary hand-holding</li>
+        <li>A trip you mark a decade with</li>
+        <li>One direction, no going back</li>
+      </ul>
+    </div>
+    <div>
+      <p class="section-label" style="color: rgba(240,235,224,0.3);">This trip is not</p>
+      <h2 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.8rem); color: rgba(240,235,224,0.4);">A vacation</h2>
+      <div class="section-divider" style="background: rgba(240,235,224,0.15);"></div>
+      <ul class="who-list not-for">
+        <li>Luxury or spa hotels</li>
+        <li>A couples trip</li>
+        <li>Sightseeing with a tour group</li>
+        <li>Comfortable weather, predictable days</li>
+        <li>Something you could do at 55</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -1675,6 +2030,54 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- REALITY CHECK -->
+<section class="reality-section">
+  <p class="section-label">Eyes Open</p>
+  <h2 class="section-title">The reality <em>check</em></h2>
+  <div class="section-divider"></div>
+  <p class="section-body">This is not a hard trip to talk yourself into. It is a hard trip to actually do. Here is what is real. The hardship is the point &mdash; but you should know what you're signing up for.</p>
+
+  <div class="reality-grid">
+
+    <div class="reality-card">
+      <span class="reality-icon">&#x1F697;</span>
+      <h3 class="reality-heading">Some days you drive 8 hours and see no one</h3>
+      <p class="reality-desc">The Carretera Austral is not a scenic byway. It is a remote gravel highway through one of the least-populated places on Earth. Breakdowns happen. You will need to solve them. That's part of it.</p>
+    </div>
+
+    <div class="reality-card">
+      <span class="reality-icon">&#x1F32C;</span>
+      <h3 class="reality-heading">Patagonian weather does not care about your itinerary</h3>
+      <p class="reality-desc">January is summer in the southern hemisphere &mdash; the best time to go. It is still cold, still wet, and still windy enough to knock you sideways on a ridge in Torres del Paine. Pack accordingly. Adjust accordingly.</p>
+    </div>
+
+    <div class="reality-card">
+      <span class="reality-icon">&#x1F4B8;</span>
+      <h3 class="reality-heading">This is not cheap</h3>
+      <p class="reality-desc">Budget $4,000&ndash;5,000 per person all-in. Flights alone are $1,500+. The 4WD is expensive. Torres del Paine lodging is expensive. Split four ways it is manageable &mdash; but it is real money for a real trip.</p>
+    </div>
+
+    <div class="reality-card">
+      <span class="reality-icon">&#x1F6EB;</span>
+      <h3 class="reality-heading">Getting there and back takes most of two days</h3>
+      <p class="reality-desc">Arica is not a direct flight from Atlanta. You're looking at 18&ndash;22 hours each way with connections. Plan the days before and after accordingly. It is worth it.</p>
+    </div>
+
+    <div class="reality-card">
+      <span class="reality-icon">&#x1F4F5;</span>
+      <h3 class="reality-heading">You will be unreachable for stretches</h3>
+      <p class="reality-desc">Cell service disappears on the Carretera Austral for days at a time. A satellite communicator handles emergencies. For everything else &mdash; that's the point. You're not supposed to be reachable.</p>
+    </div>
+
+    <div class="reality-card">
+      <span class="reality-icon">&#x2705;</span>
+      <h3 class="reality-heading">You come back different</h3>
+      <p class="reality-desc">Every hard thing about this trip is also the reason it works. The drives, the cold, the remoteness, the logistics &mdash; they strip everything else away. What's left is four guys, a 4WD, and the bottom of the world. That's plenty.</p>
+    </div>
+
   </div>
 </section>
 
