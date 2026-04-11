@@ -901,7 +901,170 @@ body::after {
 .plan-c .stop-tag.tag-epic { color: var(--sage); border-color: rgba(90,122,94,0.35); background: rgba(90,122,94,0.06); }
 .plan-c .route-spine::before { background: linear-gradient(to bottom, var(--rust) 0%, var(--sage) 50%, var(--glacier) 100%); }
 
-/* Flight bridge */
+/* Plan D uses rust/warm as accent */
+.plan-d .day-card.signature { border-color: rgba(184,76,43,0.2); background: rgba(184,76,43,0.03); }
+.plan-d .day-card.signature::before { background: linear-gradient(to bottom, var(--rust), rgba(184,76,43,0.2)); }
+.plan-d .day-card.signature .day-number { color: rgba(184,76,43,0.28); }
+.plan-d .day-card.signature .day-location { color: rgba(184,76,43,0.8); }
+.plan-d .day-badge.signature-badge { color: var(--rust); border-color: rgba(184,76,43,0.3); background: rgba(184,76,43,0.06); }
+.plan-d .section-divider { background: var(--rust); }
+.plan-d .section-title em { color: var(--rust); }
+.plan-d .section-label { color: var(--rust); }
+.plan-d .phase-label { color: var(--rust); }
+.plan-d .stop-days { color: var(--rust); }
+.plan-d .route-spine::before { background: linear-gradient(to bottom, var(--rust) 0%, var(--sand) 50%, var(--glacier) 100%); }
+
+/* DECISION PANEL */
+.decision-panel {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 0;
+}
+.decision-box {
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 4px;
+  padding: 2rem 2.5rem;
+  background: rgba(201,169,110,0.03);
+  position: relative;
+}
+.decision-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--rust), var(--sand), var(--sage), var(--glacier));
+  border-radius: 4px 4px 0 0;
+}
+.decision-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 0.75rem;
+}
+.decision-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  line-height: 1.25;
+}
+.decision-picks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.decision-pick {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(240,235,224,0.7);
+}
+.decision-pick strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pick-a strong { color: var(--sand); }
+.pick-b strong { color: var(--glacier); }
+.pick-c strong { color: var(--sage); }
+.pick-d strong { color: var(--rust); }
+.decision-rec {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(240,235,224,0.55);
+  border-top: 1px solid rgba(240,235,224,0.08);
+  padding-top: 1rem;
+}
+.decision-rec em {
+  color: var(--bone);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* COMPARISON MATRIX */
+.matrix-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 2.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.matrix {
+  width: 100%;
+  min-width: 580px;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+.matrix th, .matrix td {
+  padding: 0.6rem 0.85rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(240,235,224,0.06);
+}
+.matrix th {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240,235,224,0.35);
+  font-weight: 600;
+  padding-bottom: 0.8rem;
+}
+.matrix th:first-child { text-align: left; }
+.matrix td:first-child {
+  text-align: left;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.64rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(240,235,224,0.45);
+}
+.matrix td { color: rgba(240,235,224,0.6); }
+.matrix .col-a { color: var(--sand); }
+.matrix .col-b { color: var(--glacier); }
+.matrix .col-c { color: var(--sage); }
+.matrix .col-d { color: var(--rust); }
+.matrix .rec-row td {
+  border-top: 1px solid rgba(240,235,224,0.1);
+  border-bottom: none;
+  padding-top: 0.8rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.matrix .rec-row .col-d {
+  background: rgba(184,76,43,0.06);
+  border-radius: 3px;
+}
+
+/* TAB RECOMMENDATION CHIPS */
+.tab-rec {
+  display: block;
+  font-size: 0.44rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+  font-weight: 400;
+  opacity: 0.45;
+}
+.plan-tab.active .tab-rec { opacity: 0.7; }
+
+@media (max-width: 600px) {
+  .decision-picks { grid-template-columns: 1fr; gap: 0.6rem; }
+  .decision-box { padding: 1.5rem; }
+  .matrix-wrap { padding: 1rem 1.25rem 2rem; }
+}
+
+/* Flight bridge (continued) */
 .flight-bridge {
   background: rgba(90,122,94,0.05);
   border: 1px solid rgba(90,122,94,0.2);
@@ -934,6 +1097,7 @@ body::after {
 @media (max-width: 600px) {
   .plan-tab { padding: 0.9rem 1.2rem; font-size: 0.6rem; letter-spacing: 0.18em; }
   .plan-tab .tab-sub { display: none; }
+  .plan-tab .tab-rec { display: none; }
   .planb-tradeoff { grid-template-columns: 1fr; gap: 1rem; }
   .planb-stats { flex-wrap: wrap; }
   .planb-stat { min-width: 50%; }
@@ -988,15 +1152,15 @@ body::after {
   <div class="hero-topo"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">January 28 &ndash; February 13, 2028 &nbsp;&middot;&nbsp; 4 Men &nbsp;&middot;&nbsp; One Direction &nbsp;&middot;&nbsp; The 40th</p>
+    <p class="hero-eyebrow">January 16 &ndash; February 1, 2028 &nbsp;&middot;&nbsp; 4 Men &nbsp;&middot;&nbsp; One Direction &nbsp;&middot;&nbsp; The 40th</p>
     <h1 class="hero-title" id="heroTitle">
       End of<br><span class="line-accent">the World</span>
     </h1>
     <p class="hero-subtitle">Arica, Chile &nbsp;&rarr;&nbsp; Tierra del Fuego</p>
-    <p class="hero-deck">Seventeen days. Four men. From 14,000-foot geysers to the Beagle Channel.</p>
+    <p class="hero-deck">Twelve to seventeen days. Four men. From 14,000-foot geysers to the Beagle Channel.</p>
 
     <div class="hero-stats">
-      <div class="stat"><span class="stat-number">17</span><span class="stat-label">Days</span></div>
+      <div class="stat"><span class="stat-number">12–17</span><span class="stat-label">Days</span></div>
       <div class="stat"><span class="stat-number">4</span><span class="stat-label">Guys</span></div>
       <div class="stat"><span class="stat-number">4,200</span><span class="stat-label">Miles</span></div>
       <div class="stat"><span class="stat-number">14,000</span><span class="stat-label">Feet</span></div>
@@ -1024,17 +1188,69 @@ body::after {
   <div class="tab-indicator" id="tabIndicator"></div>
   <button class="plan-tab active" data-plan="a">
     The Expedition
-    <span class="tab-sub">Arica &rarr; Ushuaia &nbsp;&middot;&nbsp; Heroic</span>
+    <span class="tab-sub">Arica &rarr; Ushuaia &nbsp;&middot;&nbsp; 17 Days</span>
+    <span class="tab-rec">Best story, highest grind</span>
   </button>
   <button class="plan-tab" data-plan="b">
     The Sweet Spot
-    <span class="tab-sub">Santiago &rarr; Ushuaia &nbsp;&middot;&nbsp; Wise</span>
+    <span class="tab-sub">Santiago &rarr; Ushuaia &nbsp;&middot;&nbsp; 17 Days</span>
+    <span class="tab-rec">Safest full-length option</span>
   </button>
   <button class="plan-tab" data-plan="c">
     The Sharp Call
-    <span class="tab-sub">Desert + Patagonia &nbsp;&middot;&nbsp; Sharp</span>
+    <span class="tab-sub">Desert + Patagonia &nbsp;&middot;&nbsp; 17 Days</span>
+    <span class="tab-rec">Best overall trip</span>
+  </button>
+  <button class="plan-tab" data-plan="d">
+    The Real One
+    <span class="tab-sub">Desert + Patagonia &nbsp;&middot;&nbsp; 12 Days</span>
+    <span class="tab-rec">Best realistic call &larr;</span>
   </button>
 </nav>
+
+<!-- DECISION PANEL -->
+<div class="decision-panel reveal">
+  <div class="decision-box">
+    <p class="decision-label">Read This First</p>
+    <h2 class="decision-title">Four plans. Here's the call.</h2>
+    <div class="decision-picks">
+      <div class="decision-pick pick-a"><strong>Plan A</strong> Best story. Highest suffering. 17 days, 4,200 miles, multiple days that might break you.</div>
+      <div class="decision-pick pick-b"><strong>Plan B</strong> Safest full-length option. Skips the Atacama. 17 days with room to breathe.</div>
+      <div class="decision-pick pick-c"><strong>Plan C</strong> Best overall trip. Desert + Patagonia + Fitz Roy. 17 days, zero filler.</div>
+      <div class="decision-pick pick-d"><strong>Plan D</strong> Plan C compressed to 12 days. 6 PTO days. Same landmarks, no flex days.</div>
+    </div>
+    <p class="decision-rec"><em>My recommendation:</em> Plan D if you need to protect PTO and family calendar. Plan C if you can swing 17 days. Plans A and B are there for context &mdash; they show how we got here and why the final two are better. Start with Plan D.</p>
+  </div>
+</div>
+
+<!-- COMPARISON MATRIX -->
+<div class="matrix-wrap reveal">
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="col-a">Plan A</th>
+        <th class="col-b">Plan B</th>
+        <th class="col-c">Plan C</th>
+        <th class="col-d">Plan D</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Days</td><td class="col-a">17</td><td class="col-b">17</td><td class="col-c">17</td><td class="col-d">12</td></tr>
+      <tr><td>PTO Days</td><td class="col-a">11–12</td><td class="col-b">11–12</td><td class="col-c">11–12</td><td class="col-d">6</td></tr>
+      <tr><td>Drive Miles</td><td class="col-a">~4,200</td><td class="col-b">~2,400</td><td class="col-c">~2,000</td><td class="col-d">~1,600</td></tr>
+      <tr><td>Signature Days</td><td class="col-a">5</td><td class="col-b">5</td><td class="col-c">7</td><td class="col-d">5</td></tr>
+      <tr><td>Atacama</td><td class="col-a">&#10003;</td><td class="col-b">&#10005;</td><td class="col-c">&#10003;</td><td class="col-d">&#10003;</td></tr>
+      <tr><td>Fitz Roy</td><td class="col-a">&#10005;</td><td class="col-b">&#10005;</td><td class="col-c">&#10003;</td><td class="col-d">&#10003;</td></tr>
+      <tr><td>Torres del Paine</td><td class="col-a">2 days</td><td class="col-b">3 days</td><td class="col-c">3 days</td><td class="col-d">1 day</td></tr>
+      <tr><td>Ushuaia</td><td class="col-a">1 day</td><td class="col-b">2 days</td><td class="col-c">2 days</td><td class="col-d">1 day</td></tr>
+      <tr><td>Brutal Days</td><td class="col-a">3+</td><td class="col-b">1</td><td class="col-c">0</td><td class="col-d">1</td></tr>
+      <tr><td>Flex Days</td><td class="col-a">0</td><td class="col-b">3</td><td class="col-c">2</td><td class="col-d">0</td></tr>
+      <tr><td>Logistics Risk</td><td class="col-a">Very High</td><td class="col-b">Medium</td><td class="col-c">Low</td><td class="col-d">Low</td></tr>
+      <tr class="rec-row"><td>Verdict</td><td class="col-a">Heroic</td><td class="col-b">Safe</td><td class="col-c">Best Trip</td><td class="col-d">Best Call</td></tr>
+    </tbody>
+  </table>
+</div>
 
 <!-- ═══════════════════════════════════════════════════ -->
 <!-- PLAN A: FULL OVERLAND -->
@@ -1369,13 +1585,13 @@ body::after {
   </p>
   <p class="pitch-close reveal reveal-delay-4">
     Forty looks good from the end of the world.<br>
-    January 28, 2028. You in?
+    January 16, 2028. You in?
   </p>
 </section>
 
 <footer class="trip-footer">
   <p class="footer-title">Arica &rarr; Ushuaia</p>
-  <p class="footer-sub">January 28 &ndash; February 13, 2028 &nbsp;&middot;&nbsp; The 40th &nbsp;&middot;&nbsp; Fin del Mundo</p>
+  <p class="footer-sub">January 16 &ndash; February 1, 2028 &nbsp;&middot;&nbsp; The 40th &nbsp;&middot;&nbsp; Fin del Mundo</p>
 </footer>
 
 </div><!-- /plan-a -->
@@ -1459,7 +1675,7 @@ body::after {
     <div class="section-divider centered reveal reveal-delay-1" style="background: var(--glacier);"></div>
     <p class="pitch-quote reveal reveal-delay-2" style="font-size: clamp(1.2rem, 3vw, 1.8rem);">"The Atacama deserves its own trip. <strong style="color: var(--glacier);">Patagonia deserves your full attention.</strong>"</p>
     <p class="pitch-body reveal reveal-delay-3">Plan A is heroic. This is wise. Three days in Torres del Paine instead of two. A second full day in Ushuaia where you're not exhausted. Room to stay somewhere an extra night if it earns it. The finish line is identical. The condition you arrive in is not. If you want the desert too &mdash; see Plan C.</p>
-    <p class="pitch-close reveal reveal-delay-4">Same question, all three plans.<br>January 28, 2028. You in?</p>
+    <p class="pitch-close reveal reveal-delay-4">Four plans. One question.<br>January 16, 2028. You in?</p>
   </section>
 
 </div><!-- /plan-b -->
@@ -1566,10 +1782,102 @@ body::after {
     <div class="section-divider centered reveal reveal-delay-1" style="background: var(--sage);"></div>
     <p class="pitch-quote reveal reveal-delay-2" style="font-size: clamp(1.2rem, 3vw, 1.8rem);">"Stop forcing one continuous drive. <strong style="color: var(--sage);">Take the best parts and do them right.</strong>"</p>
     <p class="pitch-body reveal reveal-delay-3">Plan A is heroic. Plan B is wise. This is sharp. You see El Tatio and the Atacama night sky. You drive the full Carretera Austral. You stand under Fitz Roy at sunrise and the Towers at sunset &mdash; the two greatest mountain views in Patagonia, two days apart. Three days in Torres del Paine. Two days in Ushuaia. You finish with something left in the tank. At 40, that's the move.</p>
-    <p class="pitch-close reveal reveal-delay-4">Same question, all three plans.<br>January 28, 2028. You in?</p>
+    <p class="pitch-close reveal reveal-delay-4">Four plans. One question.<br>January 16, 2028. You in?</p>
   </section>
 
 </div><!-- /plan-c -->
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PLAN D: THE REAL ONE (12 DAYS) -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="plan-content plan-d" id="plan-d">
+
+  <div style="padding: 4rem 2rem 0;">
+    <div class="planb-intro reveal" style="border-color: rgba(184,76,43,0.2);">
+      <p class="planb-intro-label" style="color: var(--rust);">The Real One</p>
+      <h2 class="planb-intro-title">Same landmarks. Twelve days. Six PTO days.</h2>
+      <p class="planb-intro-body">Plan C is the dream. This is Plan C minus the days you can't get approved. Leave Friday January 16 over MLK weekend, back Tuesday January 27. Six days of PTO. Home five days before Arthur's birthday. Home sixteen days before Eleanor's. Every signature experience from Plan C survives: El Tatio, the Atacama night sky, the overnight ferry, the Marble Caves, Fitz Roy, Torres del Paine, and Ushuaia. What goes: the flex days, the second Ushuaia day, and the third Torres del Paine day. What stays: everything you'd actually talk about for the next decade.</p>
+      <div class="planb-tradeoff">
+        <div class="planb-tradeoff-col">
+          <p class="planb-tradeoff-title gain" style="color: var(--rust); border-color: rgba(184,76,43,0.3);">What you get</p>
+          <ul class="planb-tradeoff-list gain"><li>El Tatio, Valle de la Luna, Atacama night sky</li><li>Marble Caves &mdash; no rushing</li><li>Fitz Roy sunrise hike &mdash; full day</li><li>Torres del Paine &mdash; Base Torres day hike</li><li>Ushuaia with a full day to finish</li><li>Only 6 PTO days (MLK Monday free)</li><li>Home before both kids' birthdays</li></ul>
+        </div>
+        <div class="planb-tradeoff-col">
+          <p class="planb-tradeoff-title lose">What you give up vs. Plan C</p>
+          <ul class="planb-tradeoff-list lose"><li>Third Torres del Paine day (flex day)</li><li>Second Ushuaia day</li><li>All breathing room &mdash; every day is committed</li><li>5 days shorter than Plan C</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="planb-stats reveal" style="border-color: rgba(184,76,43,0.18);">
+      <div class="planb-stat" style="border-color: rgba(184,76,43,0.12);"><span class="planb-stat-num" style="color: var(--rust);">12</span><span class="planb-stat-lbl">Days</span></div>
+      <div class="planb-stat" style="border-color: rgba(184,76,43,0.12);"><span class="planb-stat-num" style="color: var(--rust);">6</span><span class="planb-stat-lbl">PTO Days</span></div>
+      <div class="planb-stat" style="border-color: rgba(184,76,43,0.12);"><span class="planb-stat-num" style="color: var(--rust);">~1,600</span><span class="planb-stat-lbl">Drive Miles</span></div>
+      <div class="planb-stat" style="border-color: rgba(184,76,43,0.12);"><span class="planb-stat-num" style="color: var(--rust);">5</span><span class="planb-stat-lbl">Signature Days</span></div>
+      <div class="planb-stat" style="border-color: rgba(184,76,43,0.12);"><span class="planb-stat-num" style="color: var(--rust);">40</span><span class="planb-stat-lbl">The Number</span></div>
+    </div>
+  </div>
+
+  <section class="phases-section">
+    <p class="section-label reveal">Two Acts</p>
+    <h2 class="section-title reveal reveal-delay-1">How <em>the real one</em> plays out</h2>
+    <div class="section-divider reveal reveal-delay-2"></div>
+    <div class="phases-grid reveal reveal-delay-3" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+      <div class="phase-card"><div class="phase-number">I</div><p class="phase-label" style="color: var(--rust);">Days 1&ndash;3 &nbsp;&middot;&nbsp; Guided</p><h3 class="phase-name">The Atacama</h3><p class="phase-desc">Fly in Friday evening. Three days in the desert with a local guide. El Tatio at 14,000ft before sunrise. Valle de la Luna at dusk. Night sky tour under the clearest skies on Earth. No self-drive needed.</p><p class="phase-days">San Pedro de Atacama</p></div>
+      <div class="phase-card"><div class="phase-number" style="color: rgba(184,76,43,0.15);">&#x2708;</div><p class="phase-label" style="color: rgba(240,235,224,0.3);">Day 4 &nbsp;&middot;&nbsp; The Pivot</p><h3 class="phase-name" style="color: rgba(240,235,224,0.5);">Fly South. Board the Ferry.</h3><p class="phase-desc" style="color: rgba(240,235,224,0.3);">Calama &rarr; Puerto Montt via Santiago. Pick up the 4WD from LYS. Board the Naviera Austral overnight ferry to Chait&eacute;n at 11pm. Sleep on the boat.</p><p class="phase-days" style="color: rgba(240,235,224,0.18);">~4hr flight &middot; 9hr overnight ferry</p></div>
+      <div class="phase-card"><div class="phase-number">II</div><p class="phase-label" style="color: var(--rust);">Days 5&ndash;12 &nbsp;&middot;&nbsp; 4WD</p><h3 class="phase-name">Patagonia</h3><p class="phase-desc">Wake up on the Carretera Austral. Marble Caves. Ruta 40 to El Chalt&eacute;n. Fitz Roy at sunrise. Torres del Paine. The Strait of Magellan. Tierra del Fuego. Ushuaia. Eight days, five landmarks, zero filler.</p><p class="phase-days">Chait&eacute;n &rarr; Ushuaia &nbsp;&middot;&nbsp; 8 days</p></div>
+    </div>
+  </section>
+
+  <section class="itinerary-section">
+    <div class="itinerary-inner">
+      <p class="section-label reveal">Day by Day</p>
+      <h2 class="section-title reveal reveal-delay-1">The <em>12-day breakdown</em></h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+      <p class="section-body reveal reveal-delay-3">Everything that matters from Plan C. Nothing that doesn't. Leave Friday, back Tuesday. Six PTO days.</p>
+      <div class="itinerary-legend reveal">
+        <div class="legend-item"><div class="legend-dot signature" style="background: rgba(184,76,43,0.5);"></div> Signature Day</div>
+        <div class="legend-item"><div class="legend-dot hard"></div> Hard Day</div>
+        <div class="legend-item"><div class="legend-dot transit"></div> Transit / Rest</div>
+      </div>
+      <div class="days-grid">
+
+        <div class="day-card reveal"><div class="day-number">01</div><div class="day-content"><p class="day-location">Fly &rarr; Calama / San Pedro de Atacama</p><h3 class="day-title">Act I Begins. The Desert.</h3><p class="day-desc">Fly ATL &rarr; SCL &rarr; CJC (Calama). Transfer to San Pedro de Atacama &mdash; 1 hour by road. Check in. Walk the dusty main street. The altitude hits immediately: 7,900ft. The sky tonight is different from anything at home. Friday night &mdash; the trip has started.</p><div class="day-meta"><span class="meta-item">Transport <span>Flight + transfer</span></span><span class="meta-item">Sleep <span>San Pedro de Atacama</span></span><span class="meta-item">Elev <span>7,900 ft</span></span></div></div></div>
+
+        <div class="day-card signature reveal"><div class="day-number">02</div><div class="day-content"><div class="day-badge signature-badge">Signature Day</div><p class="day-location">San Pedro de Atacama</p><h3 class="day-title">Geysers at Dawn. Salt Flats at Dusk.</h3><p class="day-desc">Your local guide picks you up at 4am. El Tatio at 14,000ft &mdash; steam columns erupting in pre-dawn freeze, the Andes igniting behind them. Breakfast at the geysers. Afternoon: Valle de la Luna, the salt formations, the dunes at sunset. This day is the reason the Atacama exists in the itinerary.</p><div class="day-meta"><span class="meta-item">Mode <span>Local guided vehicle</span></span><span class="meta-item">Sleep <span>San Pedro</span></span><span class="meta-item">Highlight <span>El Tatio, 14,000 ft</span></span></div></div></div>
+
+        <div class="day-card signature reveal"><div class="day-number">03</div><div class="day-content"><div class="day-badge signature-badge">Signature Day</div><p class="day-location">San Pedro de Atacama</p><h3 class="day-title">Salt Flats &amp; the Night Sky</h3><p class="day-desc">Morning: Salar de Atacama and the flamingo lagoons. Afternoon: free time in San Pedro &mdash; this is your last slow afternoon for a while. After dark: guided night sky tour at a private observatory above the village. The Atacama hosts more world-class telescopes than anywhere on Earth for a reason. This sky is the reason. MLK Monday.</p><div class="day-meta"><span class="meta-item">Mode <span>Local guided vehicle</span></span><span class="meta-item">Sleep <span>San Pedro</span></span><span class="meta-item">Highlight <span>Night Sky Tour</span></span></div></div></div>
+
+        <div class="day-card hard reveal"><div class="day-number">04</div><div class="day-content"><div class="day-badge hard-badge">The Pivot</div><p class="day-location">San Pedro &rarr; Calama &rarr; Puerto Montt</p><h3 class="day-title">Fly South. Pick Up the 4WD. Board the Ferry.</h3><p class="day-desc">Transfer to Calama airport. Fly CJC &rarr; SCL &rarr; PMC (~4 hrs with connection). Pick up the expedition 4WD from LYS at Puerto Montt airport. Dinner in town. At 11pm, drive onto the Naviera Austral overnight ferry to Chait&eacute;n. Sleep on the boat. You lose zero daylight and skip the Hornopir&eacute;n bottleneck entirely.</p><div class="day-meta"><span class="meta-item">Flight <span>CJC &rarr; SCL &rarr; PMC</span></span><span class="meta-item">Ferry <span>PMC &rarr; Chait&eacute;n (overnight, ~9 hrs)</span></span><span class="meta-item">Note <span>4WD pickup at PMC airport</span></span></div></div></div>
+
+        <div class="day-card signature reveal"><div class="day-number">05</div><div class="day-content"><div class="day-badge signature-badge">Signature Day</div><p class="day-location">Chait&eacute;n &rarr; Marble Caves</p><h3 class="day-title">Wake Up on the Carretera Austral. The Marble Caves.</h3><p class="day-desc">Arrive Chait&eacute;n by early morning. Drive off the ferry and you are on the Carretera Austral. Drive south to Puerto Rio Tranquilo on Lago General Carrera &mdash; turquoise glacial water &mdash; and take a boat into the Marble Caves. Swirling blue-white marble carved by the lake over millennia. Stay the night nearby.</p><div class="day-meta"><span class="meta-item">Drive <span>~250 mi south on Ruta 7</span></span><span class="meta-item">Sleep <span>Puerto Rio Tranquilo</span></span><span class="meta-item">Highlight <span>Marble Caves</span></span></div></div></div>
+
+        <div class="day-card reveal"><div class="day-number">06</div><div class="day-content"><p class="day-location">Marble Caves &rarr; Coyhaique</p><h3 class="day-title">South to Coyhaique</h3><p class="day-desc">Continue south on the Carretera Austral to Coyhaique &mdash; Patagonian capital, good food, real resupply. No border crossings today. Use the afternoon to check the vehicle, restock, and rest. Tomorrow you cross into Argentina.</p><div class="day-meta"><span class="meta-item">Drive <span>~120 mi</span></span><span class="meta-item">Sleep <span>Coyhaique</span></span></div></div></div>
+
+        <div class="day-card reveal"><div class="day-number">07</div><div class="day-content"><p class="day-location">Coyhaique &rarr; El Chalt&eacute;n, Argentina</p><h3 class="day-title">Cross Into Argentina. Ruta 40.</h3><p class="day-desc">Cross the border near Coyhaique into Argentina. Pick up Ruta 40 and drive south through the steppe. The wind starts. Guanacos appear. The landscape opens to something enormous. Arrive El Chalt&eacute;n by evening &mdash; a small mountain town built for exactly one thing: Fitz Roy.</p><div class="day-meta"><span class="meta-item">Drive <span>~280 mi</span></span><span class="meta-item">Sleep <span>El Chalt&eacute;n</span></span><span class="meta-item">Border <span>Chile &rarr; Argentina</span></span></div></div></div>
+
+        <div class="day-card signature reveal"><div class="day-number">08</div><div class="day-content"><div class="day-badge signature-badge">Signature Day</div><p class="day-location">El Chalt&eacute;n &mdash; Fitz Roy</p><h3 class="day-title">The Other Icon</h3><p class="day-desc">Wake before dawn. Hike Laguna de los Tres &mdash; 10 miles roundtrip, ~7 hours, with a brutal final moraine push to a glacial lake directly beneath the Fitz Roy massif. The granite spire catches the first light and turns orange for about four minutes. The Patagonia logo is a silhouette of this mountain. Now you know why.</p><div class="day-meta"><span class="meta-item">Hike <span>10 mi roundtrip (~7 hrs)</span></span><span class="meta-item">Sleep <span>El Chalt&eacute;n</span></span><span class="meta-item">Highlight <span>Fitz Roy sunrise</span></span></div></div></div>
+
+        <div class="day-card reveal"><div class="day-number">09</div><div class="day-content"><p class="day-location">El Chalt&eacute;n &rarr; Puerto Natales, Chile</p><h3 class="day-title">South to Torres</h3><p class="day-desc">Drive south on Ruta 40 to El Calafate, then west across the border back into Chile toward Puerto Natales. ~4&ndash;5 hours of driving, one border crossing. The Torres del Paine massif appears on the horizon. Arrive by late afternoon.</p><div class="day-meta"><span class="meta-item">Drive <span>~230 mi</span></span><span class="meta-item">Sleep <span>Puerto Natales</span></span><span class="meta-item">Border <span>Argentina &rarr; Chile</span></span></div></div></div>
+
+        <div class="day-card signature reveal"><div class="day-number">10</div><div class="day-content"><div class="day-badge signature-badge">Signature Day</div><p class="day-location">Torres del Paine</p><h3 class="day-title">The Towers</h3><p class="day-desc">Private transfer to the trailhead by 8am to beat the 3pm moraine cutoff. Hike Base Las Torres: 12 miles roundtrip, ~8 hours, to a glacial lake with the granite spires directly overhead. Two days ago you stood under Fitz Roy. Today you stand under the Towers. These are the two greatest mountain views in Patagonia and you saw both. Drive back to Puerto Natales.</p><div class="day-meta"><span class="meta-item">Hike <span>12 mi roundtrip (~8 hrs)</span></span><span class="meta-item">Sleep <span>Puerto Natales</span></span><span class="meta-item">Note <span>Book private transfer + trail ticket via pasesparques.cl</span></span></div></div></div>
+
+        <div class="day-card hard reveal"><div class="day-number">11</div><div class="day-content"><div class="day-badge hard-badge">Hard Day</div><p class="day-location">Puerto Natales &rarr; Primera Angostura &rarr; R&iacute;o Grande</p><h3 class="day-title">Crossing the Strait</h3><p class="day-desc">The plan's one big transit day. Drive north to Primera Angostura &mdash; the narrow point of the Strait of Magellan. The ferry is 20 minutes, runs all day, no advance booking. Drive off onto Tierra del Fuego. Cross into Argentina. Guanacos on every hillside. Sleep in R&iacute;o Grande. Tomorrow is the finish line.</p><div class="day-meta"><span class="meta-item">Ferry <span>Primera Angostura (~20 min)</span></span><span class="meta-item">Drive <span>~280 mi total</span></span><span class="meta-item">Border <span>Chile &rarr; Argentina</span></span></div></div></div>
+
+        <div class="day-card signature reveal"><div class="day-number">12</div><div class="day-content"><div class="day-badge final-badge">Fin del Mundo</div><p class="day-location">R&iacute;o Grande &rarr; Ushuaia, Argentina</p><h3 class="day-title">End of the World</h3><p class="day-desc">The road climbs through the Fuegian Andes &mdash; the southernmost mountain range on Earth &mdash; and drops to the Beagle Channel. Arrive Ushuaia. Tierra del Fuego National Park: the end of Argentina's Ruta 3. End-of-the-world post office. Beagle Channel boat tour. King crab. The best Malbec you can find. You started in the Atacama at 14,000 feet twelve days ago. Return the 4WD. Fly home tomorrow morning. You made it.</p><div class="day-meta"><span class="meta-item">Drive <span>~130 mi</span></span><span class="meta-item">Fly <span>USH out next morning</span></span><span class="meta-item">Vibe <span>Ceremonial</span></span></div></div></div>
+
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 6rem 2rem; max-width: 760px; margin: 0 auto; text-align: center;">
+    <p class="section-label reveal" style="color: var(--rust);">The Real One</p>
+    <div class="section-divider centered reveal reveal-delay-1" style="background: var(--rust);"></div>
+    <p class="pitch-quote reveal reveal-delay-2" style="font-size: clamp(1.2rem, 3vw, 1.8rem);">"Plan C is the dream. This is <strong style="color: var(--rust);">the version that actually happens.</strong>"</p>
+    <p class="pitch-body reveal reveal-delay-3">Six PTO days. Leave Friday over MLK weekend, back Tuesday the 27th. Home before Arthur's birthday. Home before Eleanor's birthday. El Tatio at dawn, Fitz Roy at sunrise, the Towers at sunset, king crab in Ushuaia. Five signature days in twelve. Every landmark from Plan C, none of the days you can't afford to take. The 17-day plan is the dream. This is the one you can actually say yes to.</p>
+    <p class="pitch-close reveal reveal-delay-4">Four plans. One question.<br>January 16, 2028. You in?</p>
+  </section>
+
+</div><!-- /plan-d -->
 
 <script>
   // ═══ TAB SWITCHING with animated indicator ═══
@@ -1688,7 +1996,7 @@ body::after {
   observeReveals();
 
   // ═══ COUNTDOWN ═══
-  const target = new Date('2028-01-28T00:00:00');
+  const target = new Date('2028-01-16T00:00:00');
   function updateCountdown() {
     const diff = target - new Date();
     if (diff <= 0) {
