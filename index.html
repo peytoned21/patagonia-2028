@@ -45,14 +45,12 @@
     opacity: 0.55;
   }
 
-  /* PROGRESS */
   .progress {
     position: fixed; top: 0; left: 0; height: 2px;
     background: var(--rust); width: 0%; z-index: 200;
     transition: width 0.1s;
   }
 
-  /* BACK TO TOP */
   .back-top {
     position: fixed; bottom: 2rem; right: 2rem;
     width: 2.5rem; height: 2.5rem;
@@ -156,9 +154,7 @@
 
   /* ===== ACTS ===== */
   .acts-section { padding: 4rem 2rem 2rem; max-width: 900px; margin: 0 auto; }
-
   .acts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--faint); margin-top: 2rem; }
-
   .act-card { background: var(--dark); padding: 2.5rem; }
   .act-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; font-style: italic; color: var(--faint); line-height: 1; margin-bottom: 1rem; }
   .act-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
@@ -175,7 +171,6 @@
 
   /* ===== DAYS ===== */
   .days-section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
-
   .days-list { display: flex; flex-direction: column; margin-top: 3rem; border-left: 1px solid var(--faint); }
 
   .day-card {
@@ -200,10 +195,7 @@
     width: 7px; height: 7px; border-radius: 50%;
     background: var(--mid); border: 1px solid rgba(240,235,224,0.25);
   }
-  .day-card.signature .day-dot {
-    background: var(--rust); border-color: var(--rust);
-    animation: dotPulse 3s infinite;
-  }
+  .day-card.signature .day-dot { background: var(--rust); border-color: var(--rust); animation: dotPulse 3s infinite; }
   .day-card.pivot-day .day-dot { background: var(--glacier); border-color: var(--glacier); }
 
   .day-number { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; font-style: italic; color: rgba(240,235,224,0.08); line-height: 1; }
@@ -282,16 +274,8 @@
   .close-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2.8vw, 1.5rem); font-weight: 300; font-style: italic; line-height: 1.55; color: rgba(240,235,224,0.65); margin-bottom: 3rem; }
   .close-quote strong { color: var(--bone); font-style: normal; font-weight: 400; }
   .close-ask { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 300; line-height: 1.1; margin-bottom: 2.5rem; }
-
-  .close-btn {
-    display: inline-block; font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--dark); background: var(--rust);
-    padding: 1rem 3rem; text-decoration: none; margin-bottom: 2rem;
-    transition: background 0.25s ease, transform 0.2s ease;
-  }
+  .close-btn { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dark); background: var(--rust); padding: 1rem 3rem; text-decoration: none; margin-bottom: 2rem; transition: background 0.25s ease, transform 0.2s ease; }
   .close-btn:hover { background: var(--bone); transform: scale(1.04); }
-
   .close-date { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rust); }
 
   /* ===== FOOTER ===== */
@@ -317,7 +301,6 @@
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
 
-  /* ===== MOBILE ===== */
   @media (max-width: 640px) {
     .acts-grid, .moments-grid, .logistics-grid, .two-col, .reality-grid { grid-template-columns: 1fr; }
     .day-card { grid-template-columns: 3.5rem 1fr; }
@@ -436,9 +419,9 @@
       <div class="act-num">II</div>
       <div class="act-title">Patagonia</div>
       <div class="act-dates">January 15&ndash;26 &middot; Days 5&ndash;16</div>
-      <div class="act-desc">Fly to Balmaceda. Pick up the 4WD. Drive south through the Carretera Austral, east along the most beautiful lakeside road in Chile, down Ruta 40 to Fitz Roy, into Torres del Paine, across the Strait, to Ushuaia.</div>
+      <div class="act-desc">Fly to Balmaceda. Pick up the 4WD. Drive south through the Carretera Austral, east along the most beautiful lakeside road in Chile, down Ruta 40 to Fitz Roy, into Torres del Paine, across the Strait of Magellan. Drop the car in Punta Arenas. Cross to Ushuaia.</div>
       <div class="act-stops">
-        <div class="act-stop">Carretera Austral &mdash; Marble Caves</div>
+        <div class="act-stop">Carretera Austral &mdash; Queulat &amp; Marble Caves</div>
         <div class="act-stop">Ruta 265 &mdash; lakeside drive to Chile Chico</div>
         <div class="act-stop">Cerro Torre &mdash; Laguna Torre hike</div>
         <div class="act-stop">Base Las Torres &mdash; 12 mi, 8 hrs</div>
@@ -510,18 +493,18 @@
       <div class="day-content">
         <div class="day-location">Wednesday Jan 15 &middot; Calama &rarr; Balmaceda &rarr; Coyhaique</div>
         <div class="day-headline">Fly south. Pick up the 4WD. Act II begins.</div>
-        <div class="day-body">Transfer to Calama airport. Fly CJC &rarr; SCL &rarr; BBA (~5 hours with connection). Pick up the expedition 4WD from LYS at Balmaceda airport &mdash; high-clearance diesel, cross-border authorized, Ushuaia drop confirmed. 45 minutes to Coyhaique. Resupply: fuel, cash, food. Sleep in Coyhaique. Tomorrow: the Carretera Austral.</div>
-        <div class="day-meta"><div class="meta-item">Flight <span>CJC &rarr; SCL &rarr; BBA</span></div><div class="meta-item">Vehicle <span>LYS 4WD &mdash; BBA airport</span></div><div class="meta-item">Sleep <span>Coyhaique</span></div></div>
+        <div class="day-body">Transfer to Calama airport. Fly CJC &rarr; SCL &rarr; BBA (~5 hours with connection). Pick up the expedition 4WD from LYS at Balmaceda airport &mdash; high-clearance diesel, cross-border authorized. 45 minutes to Coyhaique. Resupply: fuel, cash, food. Dinner at Mamma Gaucha &mdash; centrally located, cozy, Patagonian lamb worth the stop. Sleep in Coyhaique. Tomorrow: the Carretera Austral.</div>
+        <div class="day-meta"><div class="meta-item">Flight <span>CJC &rarr; SCL &rarr; BBA</span></div><div class="meta-item">Vehicle <span>LYS 4WD &mdash; BBA airport</span></div><div class="meta-item">Dinner <span>Mamma Gaucha, Coyhaique</span></div><div class="meta-item">Sleep <span>Coyhaique</span></div></div>
       </div>
     </div>
 
     <div class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">06</div><div class="day-tag">Signature</div></div>
       <div class="day-content">
-        <div class="day-location">Thursday Jan 16 &middot; Coyhaique &rarr; Marble Caves</div>
-        <div class="day-headline">The Carretera Austral. The turquoise lake. The caves.</div>
-        <div class="day-body">Drive south on Ruta 7. Villa Cerro Castillo rises ahead &mdash; a dramatic granite spire above the valley, worth a stop. Continue 134 miles to Puerto R&iacute;o Tranquilo on Lago General Carrera. The water is an impossible shade of blue-green. Book the dawn boat tour for tomorrow. Sleep near the lake.</div>
-        <div class="day-meta"><div class="meta-item">Drive <span>134 mi &middot; ~5 hrs gravel</span></div><div class="meta-item">Road <span>Carretera Austral</span></div><div class="meta-item">Sleep <span>Puerto R&iacute;o Tranquilo</span></div></div>
+        <div class="day-location">Thursday Jan 16 &middot; Coyhaique &rarr; Queulat &rarr; Puerto R&iacute;o Tranquilo</div>
+        <div class="day-headline">The Carretera Austral opens up. Then a hanging glacier appears.</div>
+        <div class="day-body">Drive south on Ruta 7. Villa Cerro Castillo rises ahead &mdash; dramatic granite, worth a stop. Continue into Parque Nacional Queulat: the Ventisquero Colgante is a hanging glacier suspended between two cliffs, calving directly into a milky lagoon below. Take the short trail for the close-up view or the 2-hour trek for the high vantage. Either way, stop. Then 134 miles to Puerto R&iacute;o Tranquilo on Lago General Carrera. The water is an impossible shade of blue-green. The road on the Carretera Austral demands respect &mdash; narrow, gravel, no guardrails, and conditions that have rolled vehicles. Drive deliberately.</div>
+        <div class="day-meta"><div class="meta-item">Stop <span>Parque Queulat &mdash; Ventisquero Colgante</span></div><div class="meta-item">Drive <span>~5 hrs gravel total</span></div><div class="meta-item">Road <span>Carretera Austral &mdash; drive carefully</span></div><div class="meta-item">Sleep <span>Puerto R&iacute;o Tranquilo</span></div></div>
       </div>
     </div>
 
@@ -530,8 +513,8 @@
       <div class="day-content">
         <div class="day-location">Friday Jan 17 &middot; Puerto R&iacute;o Tranquilo</div>
         <div class="day-headline">Into the caves. Swirling marble lit from below.</div>
-        <div class="day-body">Boat into the Marble Caves at first light, when turquoise water reflects up into the carved ceiling and everything glows blue-white. No photograph does it justice and every person who has been here will tell you that. No rush today. Afternoon on the lake. Sleep nearby.</div>
-        <div class="day-meta"><div class="meta-item">Tour <span>Marble Caves boat &mdash; dawn</span></div><div class="meta-item">Sleep <span>Puerto R&iacute;o Tranquilo</span></div></div>
+        <div class="day-body">Boat into the Marble Caves at first light &mdash; book with Pedro's tour operation in Puerto R&iacute;o Tranquilo; his son Johnny runs the boats and knows these caves better than anyone. Best light is 9:30am when turquoise water reflects up into the carved ceiling and everything glows blue-white, though afternoon light (around 4pm) is also extraordinary. No photograph does it justice. No rush today. Afternoon on the lake. Sleep nearby.</div>
+        <div class="day-meta"><div class="meta-item">Tour <span>Pedro's boats &mdash; ask for Johnny &middot; 9:30am</span></div><div class="meta-item">Sleep <span>Puerto R&iacute;o Tranquilo</span></div></div>
       </div>
     </div>
 
@@ -540,7 +523,7 @@
       <div class="day-content">
         <div class="day-location">Saturday Jan 18 &middot; Ruta 265 &rarr; Chile Chico &rarr; Los Antiguos</div>
         <div class="day-headline">The lakeside drive. 130 miles of cliffside road above turquoise water.</div>
-        <div class="day-body">Drive east on Ruta 265 along the southern shore of Lago General Carrera. Cliffside road, the lake hundreds of feet below, the Andes overhead. Nobody talks about this road as one of Chile's best. They should. Cross at Paso R&iacute;o Jeinemeni into Los Antiguos, Argentina. You're on Ruta 40. Sleep in Los Antiguos. Critical: Ruta 265 averages 25&ndash;30 mph on gravel. The Jeinemeni border crossing closes at 8&ndash;10pm. Leave Puerto R&iacute;o Tranquilo by 9am and be at the border by 5pm.</div>
+        <div class="day-body">Drive east on Ruta 265 along the southern shore of Lago General Carrera. Cliffside road, the lake hundreds of feet below, the Andes overhead. Nobody talks about this road as one of Chile's best. They should. Cross at Paso R&iacute;o Jeinemeni into Los Antiguos, Argentina. You're on Ruta 40. Sleep in Los Antiguos. Critical: Ruta 265 averages 25&ndash;30 mph on gravel. The Jeinemeni border crossing closes at 8pm. Leave Puerto R&iacute;o Tranquilo by 9am and be at the border by 5pm.</div>
         <div class="day-meta"><div class="meta-item">Depart <span>9:00am hard</span></div><div class="meta-item">Drive <span>~130 mi &middot; Ruta 265</span></div><div class="meta-item">Border <span>Chile &rarr; Argentina &middot; cross by 5pm</span></div><div class="meta-item">Sleep <span>Los Antiguos</span></div></div>
       </div>
     </div>
@@ -598,10 +581,10 @@
     <div class="day-card hard reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">14</div><div class="day-tag" style="color:var(--ember)">The Crossing</div></div>
       <div class="day-content">
-        <div class="day-location">Friday Jan 24 &middot; Puerto Natales &rarr; Strait of Magellan &rarr; R&iacute;o Grande</div>
-        <div class="day-headline">Cross the Strait. Drive onto Tierra del Fuego.</div>
-        <div class="day-body">Drive north to Primera Angostura &mdash; the narrow point of the Strait of Magellan. The ferry is 20 minutes, runs all day from dawn to midnight, no advance booking required. Drive off onto Tierra del Fuego. Cross into Argentina. Guanacos on every hillside. The island feels like the edge of something. Sleep in R&iacute;o Grande. Note: the Chilean Navy shuts the crossing when wind exceeds safe thresholds. Check the TABSA website and Twitter the night before. If it's closed, Punta Arenas is the contingency sleep &mdash; Ushuaia arrival compresses to the next morning.</div>
-        <div class="day-meta"><div class="meta-item">Ferry <span>Primera Angostura &middot; 20 min</span></div><div class="meta-item">Drive <span>~280 mi total</span></div><div class="meta-item">Border <span>Chile &rarr; Argentina</span></div><div class="meta-item">Contingency <span>Check TABSA night before</span></div><div class="meta-item">Sleep <span>R&iacute;o Grande</span></div></div>
+        <div class="day-location">Friday Jan 24 &middot; Torres del Paine &rarr; Punta Arenas</div>
+        <div class="day-headline">Drive to the Strait. Drop the car. Cross to the island.</div>
+        <div class="day-body">Drive north from Torres del Paine toward Punta Arenas &mdash; ~155 miles. Drop the 4WD with LYS at Punta Arenas. Then: cross the Strait of Magellan at Primera Angostura by bus or transfer &mdash; 20 minutes, runs all day. Drive onto Tierra del Fuego. Cross into Argentina. Guanacos on every hillside. The island feels like the edge of something. Sleep in R&iacute;o Grande. Note: the Chilean Navy shuts the crossing when wind exceeds safe thresholds. Check the TABSA website the night before. If it's closed, sleep in Punta Arenas and cross first thing.</div>
+        <div class="day-meta"><div class="meta-item">Drive <span>~155 mi to Punta Arenas</span></div><div class="meta-item">Car drop <span>LYS &mdash; Punta Arenas</span></div><div class="meta-item">Ferry <span>Primera Angostura &middot; 20 min &middot; by bus</span></div><div class="meta-item">Contingency <span>Check TABSA night before</span></div><div class="meta-item">Sleep <span>R&iacute;o Grande</span></div></div>
       </div>
     </div>
 
@@ -610,8 +593,8 @@
       <div class="day-content">
         <div class="day-location">Saturday Jan 25 &middot; R&iacute;o Grande &rarr; Ushuaia</div>
         <div class="day-headline">The Fuegian Andes. Then the Beagle Channel appears below.</div>
-        <div class="day-body">The road climbs through the Fuegian Andes &mdash; the southernmost mountain range on Earth &mdash; and drops to the Beagle Channel. Arrive Ushuaia. Walk to the waterfront. You started in the Atacama at 14,000 feet. You drove here. King crab for dinner. The best Malbec available. The conversation isn't about the trip.</div>
-        <div class="day-meta"><div class="meta-item">Drive <span>~130 mi &middot; Fuegian Andes</span></div><div class="meta-item">Sleep <span>Ushuaia</span></div><div class="meta-item">Dinner <span>Centolla. Malbec.</span></div></div>
+        <div class="day-body">The road climbs through the Fuegian Andes &mdash; the southernmost mountain range on Earth &mdash; and drops to the Beagle Channel. Arrive Ushuaia. Walk to the waterfront. You started in the Atacama at 14,000 feet. You drove to the bottom of the world. King crab for dinner. The best Malbec available. The conversation isn't about the trip.</div>
+        <div class="day-meta"><div class="meta-item">Drive <span>~130 mi &middot; Fuegian Andes &middot; transfer or local hire</span></div><div class="meta-item">Sleep <span>Ushuaia</span></div><div class="meta-item">Dinner <span>Centolla. Malbec.</span></div></div>
       </div>
     </div>
 
@@ -620,7 +603,7 @@
       <div class="day-content">
         <div class="day-location">Sunday Jan 26 &middot; Ushuaia &rarr; Buenos Aires &rarr; Atlanta</div>
         <div class="day-headline">End of the world. Then home.</div>
-        <div class="day-body">Morning flight USH &rarr; AEP. Taxi across Buenos Aires to EZE &mdash; allow 5&ndash;6 hours minimum between landing at AEP and departing EZE. The airports are on opposite ends of the city and USH flights delay frequently for weather. Do not book a tight connection. Evening flight home. Land Atlanta Sunday night. Back at your desk Tuesday. In between: the Atacama, the Carretera Austral, Ruta 265, Cerro Torre, the Towers, the Strait of Magellan, the Fuegian Andes, and the Beagle Channel.</div>
+        <div class="day-body">Morning flight USH &rarr; AEP. Taxi across Buenos Aires to EZE &mdash; allow 5&ndash;6 hours minimum between landing at AEP and departing EZE. The airports are on opposite ends of the city and USH flights delay frequently for weather. Do not book a tight connection. Evening flight home. Land Atlanta Sunday night. Back at your desk Tuesday. In between: the Atacama, the Carretera Austral, Ventisquero Colgante, the Marble Caves, Ruta 265, Cerro Torre, the Towers, the Strait of Magellan, the Fuegian Andes, and the Beagle Channel.</div>
         <div class="day-meta"><div class="meta-item">Fly <span>USH &rarr; AEP &rarr; EZE &rarr; ATL</span></div><div class="meta-item">Buffer <span>5&ndash;6 hrs min AEP &rarr; EZE</span></div><div class="meta-item">Home <span>Sunday night</span></div></div>
       </div>
     </div>
@@ -675,7 +658,7 @@
       <div class="col-title">Food Along the Route</div>
       <div class="logistics-items">
         <div class="logistics-item"><strong>San Pedro</strong> &mdash; Pisco sour. Lighter and more floral than Peruvian. Drink it cold, drink it there.</div>
-        <div class="logistics-item"><strong>Coyhaique</strong> &mdash; Patagonian lamb and a real resupply. Last good restaurant before the road gets remote.</div>
+        <div class="logistics-item"><strong>Coyhaique</strong> &mdash; Mamma Gaucha for dinner on arrival night. Centrally located, cozy, Patagonian lamb. Last good restaurant before the road gets remote.</div>
         <div class="logistics-item"><strong>El Chalte&iacute;n</strong> &mdash; Craft beer after Laguna Torre. The town was built for exactly this moment.</div>
         <div class="logistics-item"><strong>Torres del Paine</strong> &mdash; Whatever you're carrying, eaten somewhere extraordinary in January light.</div>
         <div class="logistics-item"><strong>Ushuaia</strong> &mdash; Centolla. King crab from the Beagle Channel, cracked with butter. A Patagonian Malbec alongside it. Take your time.</div>
@@ -750,7 +733,7 @@
       <div class="reality-item reveal reveal-delay-2">
         <div class="reality-icon">&#x1F4B8;</div>
         <div class="reality-title">This is not cheap</div>
-        <div class="reality-body">Budget $4,200&ndash;5,800 per person all-in. Flights alone are $1,400&ndash;1,800. The 4WD with Total Protection and Ushuaia drop is ~$900&ndash;1,125/person split four ways. Commit to the number before you commit to the trip.</div>
+        <div class="reality-body">Budget $4,000&ndash;5,500 per person all-in. Flights alone are $1,400&ndash;1,800. The 4WD with premium insurance and Punta Arenas drop runs ~$700/person split four ways. Commit to the number before you commit to the trip.</div>
       </div>
       <div class="reality-item reveal reveal-delay-1">
         <div class="reality-icon">&#x1F4F5;</div>
@@ -759,8 +742,8 @@
       </div>
       <div class="reality-item reveal">
         <div class="reality-icon">&#x26A1;</div>
-        <div class="reality-title">No flex days</div>
-        <div class="reality-body">Every day is committed. This trip requires four guys who are fit, decisive, and okay when something goes sideways without a backup day to absorb it.</div>
+        <div class="reality-title">The roads are serious</div>
+        <div class="reality-body">The Carretera Austral is narrow gravel with no guardrails. Patagonian crosswinds on Ruta 40 have rolled high-clearance pickups. Drive deliberately, keep speed down on ripio, and both hands on the wheel when the wind picks up. This is not a highway cruise.</div>
       </div>
       <div class="reality-item reveal reveal-delay-1">
         <div class="reality-icon">&#x1F3D4;</div>
@@ -781,22 +764,24 @@
 <section class="logistics-section">
   <div class="section-label reveal">Making It Happen</div>
   <h2 class="section-title reveal reveal-delay-1">Logistics &amp; <em>planning guide</em></h2>
-  <p class="section-body reveal reveal-delay-2"><strong>Most critical booking:</strong> LYS Rent a Car (lys.cl) &mdash; the only agency confirmed to offer one-way drop from Balmaceda to Ushuaia with a cross-border 4WD. Contact Andr&eacute;s Gabor at WhatsApp +56 977 062 967. Request Total Protection insurance that explicitly covers tires, glass, and undercarriage on ripio &mdash; standard CDW voids on gravel.</p>
+  <p class="section-body reveal reveal-delay-2"><strong>Most critical booking:</strong> LYS Rent a Car (lys.cl) &mdash; the only agency confirmed to support a one-way cross-border 4WD from Balmaceda to Punta Arenas. Contact Andr&eacute;s Gabor directly: WhatsApp +56 977 062 967 &middot; rent@lys.cl. He is the owner, speaks fluent English, and provides 24/7 support &mdash; this matters when you're broken down in Argentina with no signal.</p>
 
   <div class="logistics-grid">
     <div class="logistics-block reveal">
       <div class="logistics-title">The Vehicle</div>
       <div class="logistics-items">
-        <div class="logistics-item">4WD diesel pickup (Toyota Hilux or similar) &mdash; non-negotiable</div>
-        <div class="logistics-item">Cross-border authorized: Chile and Argentina</div>
+        <div class="logistics-item">Mitsubishi L200 or similar double-cabin 4x4 diesel pickup &mdash; non-negotiable for ripio roads</div>
+        <div class="logistics-item">Cross-border authorized: Chile and Argentina (3 crossings)</div>
         <div class="logistics-item">Pickup: Balmaceda Airport (BBA) &mdash; Day 5</div>
-        <div class="logistics-item">Drop-off: Ushuaia (USH) &mdash; Day 16</div>
+        <div class="logistics-item">Drop-off: Punta Arenas (PUQ) &mdash; Day 14</div>
         <div class="logistics-item">LYS Rent a Car &middot; lys.cl &middot; Andr&eacute;s Gabor: WhatsApp +56 977 062 967 &middot; rent@lys.cl</div>
-        <div class="logistics-item">First question to ask LYS: confirm there is no 30-day minimum rental requirement for the BBA&rarr;USH one-way route. Get written confirmation of the 11-day duration before committing to the trip.</div>
-        <div class="logistics-item">One-way drop fee: ~$0.45/km over ~1,800km = ~$810 total (~$205/person split four ways) &mdash; budget for this on top of the daily rate</div>
-        <div class="logistics-item">Formulario &Uacute;nico permit: request 10+ business days before pickup</div>
-        <div class="logistics-item">Day 5 mandatory: before leaving BBA airport, all four check every digit of the VIN and license plate on the physical vehicle against the permit. A single typo gets you turned back at the border.</div>
-        <div class="logistics-item">All-in estimate: ~$3,500&ndash;4,500 split 4 ways = ~$900&ndash;1,125/person</div>
+        <div class="logistics-item">Base rate (11 days, L200): $1,380 &middot; Premium insurance: $28/day ($308) &middot; Border permit: $220 &middot; One-way drop fee (BBA&rarr;PUQ): $880</div>
+        <div class="logistics-item">All-in vehicle total: ~$2,788 &divide; 4 = <strong>~$697/person</strong></div>
+        <div class="logistics-item">Premium insurance covers CDW + theft deductibles + windshield + tires (up to $300 in Argentina) &mdash; required for ripio, do not skip</div>
+        <div class="logistics-item">No towing or road assistance in Argentina &mdash; LYS has contacts for garages, tow, and tire repair across the border and remains reachable 24/7</div>
+        <div class="logistics-item">Formulario &Uacute;nico permit: LYS prepares it &mdash; request 10+ business days before pickup</div>
+        <div class="logistics-item">Day 5 mandatory: before leaving BBA airport, all four verify every digit of the VIN and plate against the permit. One typo gets you turned back at the border.</div>
+        <div class="logistics-item">Cancellation: 100% refund up to 5 days before rental start &middot; 50% up to 2 days &middot; no refund inside 2 days</div>
       </div>
     </div>
     <div class="logistics-block reveal reveal-delay-1">
@@ -805,7 +790,7 @@
         <div class="logistics-item">IN: ATL &rarr; MIA or BOG &rarr; SCL &rarr; CJC (Calama)</div>
         <div class="logistics-item">PIVOT: CJC &rarr; SCL &rarr; BBA (Balmaceda) &mdash; Day 5</div>
         <div class="logistics-item">OUT: USH &rarr; AEP (Buenos Aires domestic) &rarr; taxi to EZE &rarr; ATL</div>
-        <div class="logistics-item">AEP and EZE are different airports &mdash; 1hr taxi. Do not book a tight connection.</div>
+        <div class="logistics-item">AEP and EZE are different airports &mdash; 1hr taxi. Allow 5&ndash;6 hours minimum. USH flights delay for weather.</div>
         <div class="logistics-item">Delta&ndash;LATAM joint venture &mdash; earn and burn Delta miles on LATAM flights</div>
         <div class="logistics-item">Book ~11 months out: March 2027</div>
         <div class="logistics-item">Budget $1,400&ndash;1,800/person including all internal legs</div>
@@ -814,8 +799,8 @@
     <div class="logistics-block reveal">
       <div class="logistics-title">Border Crossings</div>
       <div class="logistics-items">
-        <div class="logistics-item">3 crossings: Chile&rarr;Argentina at Los Antiguos (D8), Argentina&rarr;Chile near Puerto Natales (D11), Chile&rarr;Argentina at Tierra del Fuego (D14)</div>
-        <div class="logistics-item">Border hours: Paso Jeinemeni (D8) open 8am&ndash;8pm &middot; Paso Don Guillermo (D11) open 8am&ndash;10pm &middot; Paso San Sebasti&aacute;n, Tierra del Fuego (D14) open 6am&ndash;10pm</div>
+        <div class="logistics-item">3 crossings: Chile&rarr;Argentina at Los Antiguos (D8), Argentina&rarr;Chile near Puerto Natales (D11), Chile&rarr;Argentina at Tierra del Fuego (D14 &mdash; by bus after car drop)</div>
+        <div class="logistics-item">Border hours: Paso Jeinemeni (D8) 8am&ndash;8pm &middot; Paso Don Guillermo (D11) 8am&ndash;10pm &middot; Paso San Sebasti&aacute;n, Tierra del Fuego open 6am&ndash;10pm</div>
         <div class="logistics-item">No visa required for US citizens in Chile or Argentina</div>
         <div class="logistics-item">No fresh fruit, meat, dairy, or honey &mdash; a single apple is a $300 fine and 2-hour delay</div>
         <div class="logistics-item">Allow 60&ndash;90 min per crossing in drive estimates</div>
@@ -826,7 +811,7 @@
       <div class="logistics-items">
         <div class="logistics-item">Google Maps offline + Gaia GPS &mdash; download all regions before departure</div>
         <div class="logistics-item">iOverlander &mdash; real-time road conditions and remote camps</div>
-        <div class="logistics-item">Garmin inReach satellite communicator &mdash; rent from LYS or bring your own</div>
+        <div class="logistics-item">Garmin inReach satellite communicator &mdash; non-negotiable south of Coyhaique</div>
         <div class="logistics-item">Entel SIM from Santiago &mdash; best rural Chile coverage (not WOM or Claro)</div>
         <div class="logistics-item">$500 USD cash per person &mdash; ATMs unreliable south of Puerto R&iacute;o Tranquilo</div>
         <div class="logistics-item">Carry Chilean pesos AND Argentine pesos &mdash; both needed for rural fuel</div>
@@ -849,8 +834,8 @@
     </div>
     <div class="timeline-item critical reveal">
       <div class="timeline-date">Summer 2026 &middot; June&ndash;July</div>
-      <div class="timeline-action">Contact LYS Rent a Car</div>
-      <div class="timeline-note">Andr&eacute;s Gabor, WhatsApp +56 977 062 967. Confirm BBA pickup and Ushuaia drop for January 2028. Get written confirmation. This is the highest-stakes logistical confirm on the trip.</div>
+      <div class="timeline-action">Contact LYS &amp; book the vehicle</div>
+      <div class="timeline-note">Andr&eacute;s Gabor, WhatsApp +56 977 062 967. Confirm BBA pickup and Punta Arenas drop for January 2028. 35% deposit via PayPal to secure. This is the highest-stakes logistical confirm on the trip.</div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-date">Summer 2026</div>
@@ -860,7 +845,7 @@
     <div class="timeline-item reveal">
       <div class="timeline-date">March 2027</div>
       <div class="timeline-action">Book flights</div>
-      <div class="timeline-note">ATL&rarr;SCL&rarr;CJC inbound. CJC&rarr;SCL&rarr;BBA pivot. USH&rarr;AEP&rarr;EZE&rarr;ATL outbound. ~11 months out is when international availability opens and prices are best. Four guys on the same flights.</div>
+      <div class="timeline-note">ATL&rarr;SCL&rarr;CJC inbound. CJC&rarr;SCL&rarr;BBA pivot. USH&rarr;AEP&rarr;EZE&rarr;ATL outbound. ~11 months out is when international availability opens. Four guys on the same flights.</div>
     </div>
     <div class="timeline-item critical reveal">
       <div class="timeline-date">April&ndash;June 2027 &middot; Critical Window</div>
@@ -869,13 +854,13 @@
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-date">April&ndash;June 2027</div>
-      <div class="timeline-action">Book Puerto Natales accommodation</div>
-      <div class="timeline-note">Lodges near Torres del Paine fill on the same timeline as trail tickets. Book nights of January 21&ndash;24 simultaneously.</div>
+      <div class="timeline-action">Book Torres del Paine accommodation</div>
+      <div class="timeline-note">Lodges inside the park fill on the same timeline as trail tickets. Book nights of January 21&ndash;24 simultaneously. Sleep inside the park &mdash; not Puerto Natales.</div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-date">October&ndash;November 2027</div>
       <div class="timeline-action">Book El Chalte&iacute;n accommodation &middot; Marble Caves boat tour</div>
-      <div class="timeline-note">January 19&ndash;21 in El Chalte&iacute;n. Morning boat tour for Marble Caves on January 17. Both fill in peak season.</div>
+      <div class="timeline-note">January 19&ndash;21 in El Chalte&iacute;n. Morning boat tour with Pedro (ask for Johnny) for Marble Caves on January 17. Both fill in peak season.</div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-date">January 2028 &middot; Before departure</div>
@@ -893,17 +878,19 @@
     <h2 class="section-title reveal reveal-delay-1">Per person, <em>all in</em></h2>
     <table class="budget-table reveal reveal-delay-2">
       <tr><td>Flights (ATL&rarr;CJC&rarr;BBA + USH&rarr;ATL, all legs)</td><td>$1,400&ndash;1,800</td></tr>
-      <tr><td>Vehicle + Total Protection insurance + Ushuaia drop (&divide;4)</td><td>$900&ndash;1,125</td></tr>
-      <tr><td>One-way international drop fee (~$810 total &divide;4)</td><td>~$205</td></tr>
+      <tr><td>Vehicle base rate &mdash; L200, 11 days (&divide;4)</td><td>$345</td></tr>
+      <tr><td>Premium insurance &mdash; $28/day &times; 11 (&divide;4)</td><td>$77</td></tr>
+      <tr><td>Border crossing permit (&divide;4)</td><td>$55</td></tr>
+      <tr><td>One-way drop fee BBA&rarr;PUQ (&divide;4)</td><td>$220</td></tr>
       <tr><td>Fuel (&divide;4)</td><td>$200&ndash;300</td></tr>
       <tr><td>Atacama guide + tours (El Tatio, observatory)</td><td>$300&ndash;400</td></tr>
       <tr><td>Lodging (&divide;4)</td><td>$400&ndash;650</td></tr>
       <tr><td>Torres del Paine entry + trail tickets</td><td>$50&ndash;100</td></tr>
-      <tr><td>Marble Caves, Beagle Channel, other tours</td><td>$150&ndash;250</td></tr>
+      <tr><td>Marble Caves, Queulat, other tours</td><td>$150&ndash;250</td></tr>
       <tr><td>Food and drink</td><td>$600&ndash;900</td></tr>
-      <tr><td>Primera Angostura ferry + border fees</td><td>$50&ndash;80</td></tr>
+      <tr><td>Strait crossing + Tierra del Fuego transfer</td><td>$80&ndash;120</td></tr>
       <tr><td>Cash buffer, SIM card, satellite communicator</td><td>$150&ndash;200</td></tr>
-      <tr class="budget-total"><td>Total &nbsp;&middot;&nbsp; Realistic center: $4,800</td><td>$4,200&ndash;5,800</td></tr>
+      <tr class="budget-total"><td>Total &nbsp;&middot;&nbsp; Realistic center: $4,500</td><td>$4,000&ndash;5,500</td></tr>
     </table>
   </div>
 </section>
@@ -925,9 +912,8 @@
 </footer>
 
 <script>
-  // Countdown to Jan 10 2028 8pm Atlanta (UTC-5 in January)
   function updateCountdown() {
-    const target = new Date('2028-01-11T01:00:00Z'); // 8pm EST = 01:00 UTC next day
+    const target = new Date('2028-01-11T01:00:00Z');
     const now = new Date();
     const diff = target - now;
     if (diff <= 0) {
@@ -946,14 +932,12 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // Progress bar + back to top
   window.addEventListener('scroll', () => {
     const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
     document.getElementById('progress').style.width = pct + '%';
     document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
   });
 
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
