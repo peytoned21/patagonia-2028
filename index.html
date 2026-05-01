@@ -1,3 +1,6 @@
+Here is the fully updated HTML with the hardening fixes plus the content-consistency pass applied.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -301,6 +304,31 @@
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
 
+  .back-top:focus-visible,
+  .close-btn:focus-visible {
+    outline: 2px solid var(--bone);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .reveal,
+    .day-card {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .scroll-hint { animation: none !important; }
+  }
+
   @media (max-width: 640px) {
     .acts-grid, .moments-grid, .logistics-grid, .two-col, .reality-grid { grid-template-columns: 1fr; }
     .day-card { grid-template-columns: 3.5rem 1fr; }
@@ -313,7 +341,7 @@
 <body>
 
 <div class="progress" id="progress"></div>
-<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<button class="back-top" id="backTop" type="button" aria-label="Back to top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">&#8593;</button>
 
 <!-- HERO -->
 <section class="hero">
@@ -325,7 +353,7 @@
     <p class="hero-pitch">A two-act overland run from the driest desert on Earth to the bottom of the world &nbsp;&middot;&nbsp; January 10&ndash;26, 2028</p>
 
     <div class="hero-stats">
-      <div class="stat"><div class="stat-num">17</div><div class="stat-label">Days</div></div>
+      <div class="stat"><div class="stat-num">16</div><div class="stat-label">Itinerary Days</div></div>
       <div class="stat"><div class="stat-num">4</div><div class="stat-label">Men</div></div>
       <div class="stat"><div class="stat-num">~1,800</div><div class="stat-label">Drive Miles</div></div>
       <div class="stat"><div class="stat-num">14,000</div><div class="stat-label">Feet &mdash; El Tatio</div></div>
@@ -335,7 +363,7 @@
     <div class="divider-line"></div>
 
     <div class="countdown">
-      <div class="countdown-label">Departure in</div>
+      <div class="countdown-label">Departure in (Atlanta time)</div>
       <div class="cd-unit"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Days</div></div>
       <div class="cd-unit"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Hours</div></div>
       <div class="cd-unit"><div class="cd-num" id="cd-min">--</div><div class="cd-label">Min</div></div>
@@ -378,7 +406,7 @@
     <text x="450" y="41" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#7ab3c4">D6&#8211;7</text>
 
     <circle cx="545" cy="57" r="4" fill="#7ab3c4"/>
-    <text x="545" y="77" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" fill="rgba(240,235,224,0.45)">EL CHALTE&#769;N</text>
+    <text x="545" y="77" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" fill="rgba(240,235,224,0.45)">EL CHALT&Eacute;N</text>
     <text x="545" y="40" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#7ab3c4">D9&#8211;10</text>
 
     <circle cx="635" cy="57" r="4" fill="#7ab3c4"/>
@@ -531,27 +559,27 @@
     <div class="day-card hard reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">09</div><div class="day-tag" style="color:var(--ember)">Long Drive</div></div>
       <div class="day-content">
-        <div class="day-location">Sunday Jan 19 &middot; Los Antiguos &rarr; El Chalte&iacute;n</div>
+        <div class="day-location">Sunday Jan 19 &middot; Los Antiguos &rarr; El Chalt&eacute;n</div>
         <div class="day-headline">Ruta 40. The steppe opens. Then Fitz Roy fills the windshield.</div>
         <div class="day-body">Leave by 6am. ~370 miles south on Ruta 40 &mdash; expect 9&ndash;10 hours, not 6. The stretch between Gobernador Gregores and Tres Lagos is 70km of brutal washboard ripio. Fill the jerry cans in Los Antiguos and top off at every open station &mdash; Bajo Caracoles frequently runs dry. Keep speed below 60 km/h on gravel and both hands on the wheel: Patagonian crosswinds hit 60&ndash;80 mph on the steppe and have rolled high-clearance pickups. Then in the final hour Fitz Roy rises on the horizon and grows until you're there. The drive earns the arrival.</div>
-        <div class="day-meta"><div class="meta-item">Depart <span>6:00am hard</span></div><div class="meta-item">Drive <span>~370 mi &middot; 9&ndash;10 hrs &middot; Ruta 40</span></div><div class="meta-item">Fuel <span>Fill jerry cans in Los Antiguos</span></div><div class="meta-item">Sleep <span>El Chalte&iacute;n</span></div></div>
+        <div class="day-meta"><div class="meta-item">Depart <span>6:00am hard</span></div><div class="meta-item">Drive <span>~370 mi &middot; 9&ndash;10 hrs &middot; Ruta 40</span></div><div class="meta-item">Fuel <span>Fill jerry cans in Los Antiguos</span></div><div class="meta-item">Sleep <span>El Chalt&eacute;n</span></div></div>
       </div>
     </div>
 
     <div class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">10</div><div class="day-tag">MLK Day</div></div>
       <div class="day-content">
-        <div class="day-location">Monday Jan 20 &middot; El Chalte&iacute;n &middot; Martin Luther King Day</div>
+        <div class="day-location">Monday Jan 20 &middot; El Chalt&eacute;n &middot; Martin Luther King Day</div>
         <div class="day-headline">Laguna Torre. Cerro Torre. The federal holiday lands here.</div>
         <div class="day-body">Wake without an alarm. Hike Laguna Torre &mdash; 11 miles roundtrip, ~5 hours. Cerro Torre is a near-vertical granite needle that wasn't summited until 1974 and is still considered one of the hardest climbs on Earth. The glacial lake at its base is still and cold and completely surrounded by nothing. Back by afternoon. Craft beer in town. Early sleep. Tomorrow you drive.</div>
-        <div class="day-meta"><div class="meta-item">Hike <span>Laguna Torre &middot; 11 mi &middot; ~5 hrs</span></div><div class="meta-item">Sleep <span>El Chalte&iacute;n</span></div></div>
+        <div class="day-meta"><div class="meta-item">Hike <span>Laguna Torre &middot; 11 mi &middot; ~5 hrs</span></div><div class="meta-item">Sleep <span>El Chalt&eacute;n</span></div></div>
       </div>
     </div>
 
     <div class="day-card hard reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">11</div><div class="day-tag" style="color:var(--ember)">Long Drive</div></div>
       <div class="day-content">
-        <div class="day-location">Tuesday Jan 21 &middot; El Chalte&iacute;n &rarr; Puerto Natales</div>
+        <div class="day-location">Tuesday Jan 21 &middot; El Chalt&eacute;n &rarr; Puerto Natales</div>
         <div class="day-headline">South to Torres. One border. The massif appears.</div>
         <div class="day-body">Leave by 7am. 259 miles, one border crossing back into Chile via Paso R&iacute;o Don Guillermo. Drive west on Ruta 9. In the final stretch, the Torres del Paine massif rises on the horizon &mdash; three granite towers above the Patagonian plain. Arrive Puerto Natales by late afternoon. Rest. Tomorrow is the park.</div>
         <div class="day-meta"><div class="meta-item">Depart <span>7:00am</span></div><div class="meta-item">Drive <span>~259 mi</span></div><div class="meta-item">Border <span>Argentina &rarr; Chile</span></div><div class="meta-item">Sleep <span>Puerto Natales</span></div></div>
@@ -593,8 +621,8 @@
       <div class="day-content">
         <div class="day-location">Saturday Jan 25 &middot; R&iacute;o Grande &rarr; Ushuaia</div>
         <div class="day-headline">The Fuegian Andes. Then the Beagle Channel appears below.</div>
-        <div class="day-body">The road climbs through the Fuegian Andes &mdash; the southernmost mountain range on Earth &mdash; and drops to the Beagle Channel. Arrive Ushuaia. Walk to the waterfront. You started in the Atacama at 14,000 feet. You drove to the bottom of the world. King crab for dinner. The best Malbec available. The conversation isn't about the trip.</div>
-        <div class="day-meta"><div class="meta-item">Drive <span>~130 mi &middot; Fuegian Andes &middot; transfer or local hire</span></div><div class="meta-item">Sleep <span>Ushuaia</span></div><div class="meta-item">Dinner <span>Centolla. Malbec.</span></div></div>
+        <div class="day-body">Travel south through the Fuegian Andes &mdash; the southernmost mountain range on Earth &mdash; and drop to the Beagle Channel. Arrive Ushuaia. Walk to the waterfront. You started in the Atacama at 14,000 feet. You made it to the bottom of the world. King crab for dinner. The best Malbec available. The conversation isn't about the trip.</div>
+        <div class="day-meta"><div class="meta-item">Transfer <span>~130 mi &middot; bus or private transfer</span></div><div class="meta-item">Sleep <span>Ushuaia</span></div><div class="meta-item">Dinner <span>Centolla. Malbec.</span></div></div>
       </div>
     </div>
 
@@ -659,7 +687,7 @@
       <div class="logistics-items">
         <div class="logistics-item"><strong>San Pedro</strong> &mdash; Pisco sour. Lighter and more floral than Peruvian. Drink it cold, drink it there.</div>
         <div class="logistics-item"><strong>Coyhaique</strong> &mdash; Mamma Gaucha for dinner on arrival night. Centrally located, cozy, Patagonian lamb. Last good restaurant before the road gets remote.</div>
-        <div class="logistics-item"><strong>El Chalte&iacute;n</strong> &mdash; Craft beer after Laguna Torre. The town was built for exactly this moment.</div>
+        <div class="logistics-item"><strong>El Chalt&eacute;n</strong> &mdash; Craft beer after Laguna Torre. The town was built for exactly this moment.</div>
         <div class="logistics-item"><strong>Torres del Paine</strong> &mdash; Whatever you're carrying, eaten somewhere extraordinary in January light.</div>
         <div class="logistics-item"><strong>Ushuaia</strong> &mdash; Centolla. King crab from the Beagle Channel, cracked with butter. A Patagonian Malbec alongside it. Take your time.</div>
       </div>
@@ -723,7 +751,7 @@
       <div class="reality-item reveal">
         <div class="reality-icon">&#x1F697;</div>
         <div class="reality-title">Two long drive days</div>
-        <div class="reality-body">Day 9 (Los Antiguos &rarr; El Chalte&iacute;n, 370 miles) and Day 11 (El Chalte&iacute;n &rarr; Puerto Natales, 259 miles) are real. Leave early, drive steady, arrive before dark. These days ask something of you.</div>
+        <div class="reality-body">Day 9 (Los Antiguos &rarr; El Chalt&eacute;n, 370 miles) and Day 11 (El Chalt&eacute;n &rarr; Puerto Natales, 259 miles) are real. Leave early, drive steady, arrive before dark. These days ask something of you.</div>
       </div>
       <div class="reality-item reveal reveal-delay-1">
         <div class="reality-icon">&#x1F32C;</div>
@@ -828,7 +856,7 @@
 
   <div class="timeline">
     <div class="timeline-item critical reveal">
-      <div class="timeline-date">Now &middot; April 2026</div>
+      <div class="timeline-date">Now &middot; May 2026</div>
       <div class="timeline-action">Get four confirmed commitments</div>
       <div class="timeline-note">Not "sounds great" &mdash; calendar blocks for January 10&ndash;26, 2028. Everything else follows from four people saying yes.</div>
     </div>
@@ -859,8 +887,8 @@
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-date">October&ndash;November 2027</div>
-      <div class="timeline-action">Book El Chalte&iacute;n accommodation &middot; Marble Caves boat tour</div>
-      <div class="timeline-note">January 19&ndash;21 in El Chalte&iacute;n. Morning boat tour with Pedro (ask for Johnny) for Marble Caves on January 17. Both fill in peak season.</div>
+      <div class="timeline-action">Book El Chalt&eacute;n accommodation &middot; Marble Caves boat tour</div>
+      <div class="timeline-note">January 19&ndash;21 in El Chalt&eacute;n. Morning boat tour with Pedro (ask for Johnny) for Marble Caves on January 17. Both fill in peak season.</div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-date">January 2028 &middot; Before departure</div>
@@ -913,37 +941,76 @@
 
 <script>
   function updateCountdown() {
-    const target = new Date('2028-01-11T01:00:00Z');
+    const target = new Date('2028-01-10T20:00:00-05:00');
     const now = new Date();
     const diff = target - now;
+
+    const ids = ['cd-days', 'cd-hours', 'cd-min', 'cd-sec'];
+
     if (diff <= 0) {
-      ['cd-days','cd-hours','cd-min','cd-sec'].forEach(id => document.getElementById(id).textContent = '00');
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = '00';
+      });
       return;
     }
+
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-min').textContent = String(m).padStart(2,'0');
-    document.getElementById('cd-sec').textContent = String(s).padStart(2,'0');
+
+    const vals = [d, h, m, s].map((v) => String(v).padStart(2, '0'));
+    ids.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = vals[i];
+    });
   }
+
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
+  const progressEl = document.getElementById('progress');
+  const backTopEl = document.getElementById('backTop');
+  let scrollTicking = false;
+
+  function updateScrollUI() {
+    const denom = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    const rawPct = (window.scrollY / denom) * 100;
+    const pct = Math.min(100, Math.max(0, rawPct));
+
+    if (progressEl) progressEl.style.width = pct + '%';
+    if (backTopEl) backTopEl.classList.toggle('visible', window.scrollY > 400);
+
+    scrollTicking = false;
+  }
+
   window.addEventListener('scroll', () => {
-    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-    document.getElementById('progress').style.width = pct + '%';
-    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
-  });
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(updateScrollUI);
+    }
+  }, { passive: true });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  updateScrollUI();
 
-  document.querySelectorAll('.reveal, .day-card').forEach(el => observer.observe(el));
+  const revealTargets = document.querySelectorAll('.reveal, .day-card');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    revealTargets.forEach((el) => observer.observe(el));
+  } else {
+    revealTargets.forEach((el) => el.classList.add('visible'));
+  }
 </script>
 
 </body>
 </html>
+```
+
+If you want, next I can generate a second version where the stat stays 17 Days and the day cards become Day 00-16 so the calendar framing is mathematically explicit.
