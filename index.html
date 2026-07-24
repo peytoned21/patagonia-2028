@@ -1,15 +1,40 @@
-Here is the fully updated HTML with the hardening fixes plus the content-consistency pass applied.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
+<!--
+  v2 (July 2026) - audit fixes applied.
+  KEY DECISION: trip dates shifted from Jan 10-26 to Jan 7-23, 2028 so the weekday
+  framing (Friday-night departure, MLK Day on Day 10, Sunday-night return) matches
+  the real 2028 calendar. To keep Jan 10-26 instead, revert dates and rewrite the
+  Day 1 / Day 10 / Day 16 copy.
+  OWNER TODO: (1) commit og.jpg (1200x630) to repo root; (2) reconfirm 10-day LYS
+  rate (~$1,255 base / $280 ins is derived from the 11-day quote) BEFORE deposit;
+  (3) optional: 3 photos (one per act + the Towers), self-hosted, lazy, <=120KB;
+  (4) on each friend's yes: in the commit tracker, add class "yes" + their name.
+  FACTS THAT LIVE IN MORE THAN ONE PLACE (edit all when changing):
+  - trip dates: hero pitch / timeline item 1 / close-date / mailto+copy line / countdown target
+  - vehicle $: vehicle block AND budget rows 2-5 AND reality "~$660"
+  - day 9 & 11 drives: day card body+meta AND reality check
+  - Jeinemeni 8pm: Day 8 body AND border block
+  - El Tatio 14,000ft: hero stat, route prose, Act I, Day 3, moment 01, reality
+-->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>End of the World &mdash; January 2028</title>
+<meta name="description" content="Sixteen days, four men, one 4WD. San Pedro de Atacama to Ushuaia, January 7–23, 2028.">
+<link rel="canonical" href="https://peytoned21.github.io/patagonia-2028/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="End of the World &mdash; January 2028">
+<meta property="og:description" content="Atacama to Ushuaia. Sixteen days. Four men. You in?">
+<meta property="og:url" content="https://peytoned21.github.io/patagonia-2028/">
+<!-- og.jpg does not exist yet: commit a 1200x630 JPEG to the repo root to activate the preview image -->
+<meta property="og:image" content="https://peytoned21.github.io/patagonia-2028/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f0e0b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23c4623a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=Barlow+Condensed:wght@300;400;500;600&amp;family=Barlow:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <style>
   :root {
     --bone: #f0ebe0;
@@ -23,7 +48,7 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
     --ink: #1a1814;
     --dust: #2a2720;
     --mid: #3a3530;
-    --muted: rgba(240,235,224,0.4);
+    --muted: rgba(240,235,224,0.55);
     --faint: rgba(240,235,224,0.12);
   }
 
@@ -56,7 +81,7 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
 
   .back-top {
     position: fixed; bottom: 2rem; right: 2rem;
-    width: 2.5rem; height: 2.5rem;
+    width: 2.75rem; height: 2.75rem;
     border: 1px solid var(--muted); background: rgba(15,14,11,0.85);
     color: var(--bone); font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.65rem; letter-spacing: 0.1em;
@@ -117,7 +142,7 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
   .hero-pitch {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(240,235,224,0.35); margin-bottom: 3rem;
+    color: rgba(240,235,224,0.5); margin-bottom: 3rem;
     opacity: 0; animation: fadeUp 0.8s ease forwards 0.65s;
   }
 
@@ -153,7 +178,7 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
   .section-title em { font-style: italic; color: var(--rust); }
   .section-body { font-size: 0.95rem; line-height: 1.75; color: rgba(240,235,224,0.65); max-width: 600px; margin-bottom: 3rem; }
 
-  .route-map { width: 100%; height: auto; max-height: 130px; margin: 3rem 0; overflow: visible; }
+  .route-map { width: 100%; height: auto; max-height: 150px; margin: 3rem 0; overflow: visible; }
 
   /* ===== ACTS ===== */
   .acts-section { padding: 4rem 2rem 2rem; max-width: 900px; margin: 0 auto; }
@@ -204,15 +229,15 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
   .day-number { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; font-style: italic; color: rgba(240,235,224,0.08); line-height: 1; }
   .day-card.signature .day-number { color: rgba(196,98,58,0.25); }
 
-  .day-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.48rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); text-align: right; }
+  .day-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); text-align: right; }
 
   .day-content { padding: 2rem 0 2rem 2rem; border-bottom: 1px solid var(--faint); }
   .day-location { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
   .day-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.25rem, 3vw, 1.75rem); font-weight: 400; line-height: 1.15; margin-bottom: 0.8rem; }
-  .day-body { font-size: 0.875rem; line-height: 1.72; color: rgba(240,235,224,0.58); margin-bottom: 1rem; }
+  .day-body { font-size: 0.875rem; line-height: 1.72; color: rgba(240,235,224,0.62); margin-bottom: 1rem; max-width: 62ch; }
   .day-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  .meta-item { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,235,224,0.28); display: flex; align-items: center; gap: 0.4rem; }
-  .meta-item span { color: rgba(240,235,224,0.5); }
+  .meta-item { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,235,224,0.5); display: flex; align-items: center; gap: 0.4rem; }
+  .meta-item span { color: rgba(240,235,224,0.72); }
 
   /* ===== MOMENTS ===== */
   .moments-section { padding: 6rem 2rem; background: var(--dust); position: relative; overflow: hidden; }
@@ -240,7 +265,7 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
   .timeline-item.critical::before { background: var(--rust); border-color: var(--rust); }
   .timeline-date { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.3rem; }
   .timeline-action { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 500; margin-bottom: 0.3rem; }
-  .timeline-note { font-size: 0.825rem; color: rgba(240,235,224,0.48); line-height: 1.55; }
+  .timeline-note { font-size: 0.825rem; color: rgba(240,235,224,0.58); line-height: 1.55; }
 
   /* ===== BUDGET ===== */
   .budget-section { padding: 4rem 2rem; background: var(--dust); }
@@ -283,8 +308,8 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
 
   /* ===== FOOTER ===== */
   footer { padding: 3rem 2rem; border-top: 1px solid var(--faint); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; max-width: 900px; margin: 0 auto; }
-  .footer-left { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,235,224,0.2); }
-  .footer-right { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; font-style: italic; color: rgba(240,235,224,0.2); }
+  .footer-left { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,235,224,0.38); }
+  .footer-right { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; font-style: italic; color: rgba(240,235,224,0.38); }
 
   .hr { width: 100%; height: 1px; background: var(--faint); }
 
@@ -329,19 +354,74 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
     .scroll-hint { animation: none !important; }
   }
 
+  section[id] { scroll-margin-top: 3.6rem; }
+
+  /* ===== JUMP NAV ===== */
+  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 150; display: flex; gap: 1.6rem; justify-content: center; align-items: center; padding: 0.75rem 1rem; background: rgba(15,14,11,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--faint); opacity: 0; pointer-events: none; transition: opacity 0.3s; overflow-x: auto; white-space: nowrap; }
+  .site-nav.visible { opacity: 1; pointer-events: auto; }
+  .site-nav a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(240,235,224,0.6); text-decoration: none; }
+  .site-nav a:hover, .site-nav a:focus-visible { color: var(--rust); }
+  .site-nav a.nav-cta { color: var(--rust); }
+
+  /* ===== VERIFIED / DON'T-MISS ===== */
+  .verified-note { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: -1.5rem 0 2.5rem; }
+  .dontmiss { border: 1px solid rgba(196,98,58,0.45); padding: 1.5rem 1.75rem; margin-bottom: 3rem; }
+  .dontmiss-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rust); margin-bottom: 1rem; }
+  .dontmiss .logistics-item { margin-bottom: 0.55rem; }
+
+  /* ===== SKIP TO ASK ===== */
+  .ask-link { display: inline-block; margin-top: 2.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rust); text-decoration: none; border-bottom: 1px solid rgba(196,98,58,0.4); padding-bottom: 0.3rem; }
+  .ask-link:hover, .ask-link:focus-visible { color: var(--bone); border-color: var(--bone); }
+
+  /* ===== COMMIT TRACKER ===== */
+  .commit-count { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .commit-status { display: flex; gap: 2.2rem; justify-content: center; margin-bottom: 2.75rem; }
+  .commit-slot { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .commit-slot .dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(240,235,224,0.35); }
+  .commit-slot.yes { color: var(--bone); }
+  .commit-slot.yes .dot { background: var(--rust); border-color: var(--rust); }
+  .close-alt { margin: -0.75rem 0 2rem; font-size: 0.8rem; color: rgba(240,235,224,0.55); }
+  .close-alt a { color: var(--glacier); }
+  button.close-btn { border: 0; cursor: pointer; }
+
+  /* ===== GEAR ACCORDIONS ===== */
+  summary.col-title { cursor: pointer; list-style: none; }
+  summary.col-title::-webkit-details-marker { display: none; }
+  summary.col-title::after { content: ' +'; color: var(--muted); }
+  details[open] > summary.col-title::after { content: ''; }
+
+  /* ===== BUDGET HEAD ===== */
+  .budget-table th { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); font-weight: 500; text-align: left; padding: 0 0 0.6rem; }
+  .budget-table th:last-child { text-align: right; }
+
   @media (max-width: 640px) {
     .acts-grid, .moments-grid, .logistics-grid, .two-col, .reality-grid { grid-template-columns: 1fr; }
     .day-card { grid-template-columns: 3.5rem 1fr; }
     .hero-stats { gap: 1.5rem; }
     .pivot-card { flex-direction: column; gap: 1rem; }
     .budget-table td { font-size: 0.8rem; }
+    .day-body, .section-body { font-size: 0.95rem; font-weight: 400; }
+    .site-nav { justify-content: flex-start; gap: 1.2rem; }
+    .commit-status { gap: 1.4rem; }
   }
 </style>
 </head>
 <body>
 
 <div class="progress" id="progress"></div>
+
+<nav class="site-nav" id="siteNav" aria-label="Page sections">
+  <a href="#route">Route</a>
+  <a href="#days">Days</a>
+  <a href="#reality">Reality</a>
+  <a href="#logistics">Logistics</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#budget">Budget</a>
+  <a class="nav-cta" href="#commit">I&rsquo;m In</a>
+</nav>
 <button class="back-top" id="backTop" type="button" aria-label="Back to top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">&#8593;</button>
+
+<main>
 
 <!-- HERO -->
 <section class="hero">
@@ -350,12 +430,12 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
     <div class="hero-label">The 40th &nbsp;&middot;&nbsp; Four Men &nbsp;&middot;&nbsp; One Direction</div>
     <h1 class="hero-title">End of<br>the <em>World</em></h1>
     <p class="hero-sub">San Pedro de Atacama &nbsp;&rarr;&nbsp; Ushuaia, Argentina</p>
-    <p class="hero-pitch">A two-act overland run from the driest desert on Earth to the bottom of the world &nbsp;&middot;&nbsp; January 10&ndash;26, 2028</p>
+    <p class="hero-pitch">A two-act overland run from the driest desert on Earth to the bottom of the world &nbsp;&middot;&nbsp; January 7&ndash;23, 2028</p>
 
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">16</div><div class="stat-label">Itinerary Days</div></div>
       <div class="stat"><div class="stat-num">4</div><div class="stat-label">Men</div></div>
-      <div class="stat"><div class="stat-num">~1,800</div><div class="stat-label">Drive Miles</div></div>
+      <div class="stat"><div class="stat-num">~1,200</div><div class="stat-label">Drive Miles</div></div>
       <div class="stat"><div class="stat-num">14,000</div><div class="stat-label">Feet &mdash; El Tatio</div></div>
       <div class="stat"><div class="stat-num">40</div><div class="stat-label">The Number</div></div>
     </div>
@@ -375,7 +455,7 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
 
 <!-- ROUTE -->
 <div class="hr"></div>
-<section class="route-section">
+<section class="route-section" id="route">
   <div class="section-label reveal">The Route</div>
   <h2 class="section-title reveal reveal-delay-1">Driest desert to <em>the end of the earth</em></h2>
   <p class="section-body reveal reveal-delay-2">Some birthdays you mark with a dinner. Some you mark with a drive across a continent. Two acts, two of the world's most extraordinary landscapes, zero filler. The Atacama &mdash; otherworldly, 14,000 feet, geysers before sunrise, the clearest skies on Earth. Then Patagonia &mdash; the Carretera Austral, the most beautiful lakeside road in Chile, Cerro Torre, the Towers, the Strait of Magellan, Ushuaia. No overnight ferry. No single point of failure. Every drive day on roads worth driving.</p>
@@ -386,41 +466,41 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
     <path d="M 340 60 C 430 56 520 60 620 57 C 670 55 720 58 760 56" stroke="#7ab3c4" stroke-width="1.5" opacity="0.55"/>
 
     <circle cx="55" cy="60" r="3" fill="#c4623a"/>
-    <text x="55" y="80" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" fill="rgba(240,235,224,0.45)">CALAMA</text>
-    <text x="55" y="43" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#c4623a">D1</text>
+    <text x="55" y="80" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="13" fill="rgba(240,235,224,0.45)">CALAMA</text>
+    <text x="55" y="43" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" fill="#c4623a">D1</text>
 
     <circle cx="175" cy="57" r="5" fill="#c4623a"/>
-    <text x="175" y="77" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" fill="rgba(240,235,224,0.45)">SAN PEDRO</text>
-    <text x="175" y="40" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#c4623a">D2&#8211;4</text>
+    <text x="175" y="77" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="13" fill="rgba(240,235,224,0.45)">SAN PEDRO</text>
+    <text x="175" y="40" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" fill="#c4623a">D2&#8211;4</text>
 
     <path d="M 308 52 L 332 52" stroke="#7ab3c4" stroke-width="1" stroke-dasharray="2 2"/>
     <polygon points="332,49 337,52 332,55" fill="#7ab3c4" opacity="0.6"/>
-    <text x="320" y="44" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#7ab3c4">FLY</text>
+    <text x="320" y="44" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" fill="#7ab3c4">FLY</text>
 
     <circle cx="360" cy="60" r="3" fill="#7ab3c4"/>
-    <text x="360" y="80" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" fill="rgba(240,235,224,0.45)">COYHAIQUE</text>
-    <text x="360" y="43" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#7ab3c4">D5</text>
+    <text x="360" y="80" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="13" fill="rgba(240,235,224,0.45)">COYHAIQUE</text>
+    <text x="360" y="43" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" fill="#7ab3c4">D5</text>
 
     <circle cx="450" cy="58" r="3" fill="#7ab3c4"/>
-    <text x="450" y="78" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" fill="rgba(240,235,224,0.45)">MARBLE CAVES</text>
-    <text x="450" y="41" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#7ab3c4">D6&#8211;7</text>
+    <text x="450" y="78" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="13" fill="rgba(240,235,224,0.45)">MARBLE CAVES</text>
+    <text x="450" y="41" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" fill="#7ab3c4">D6&#8211;7</text>
 
     <circle cx="545" cy="57" r="4" fill="#7ab3c4"/>
-    <text x="545" y="77" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" fill="rgba(240,235,224,0.45)">EL CHALT&Eacute;N</text>
-    <text x="545" y="40" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#7ab3c4">D9&#8211;10</text>
+    <text x="545" y="77" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="13" fill="rgba(240,235,224,0.45)">EL CHALT&Eacute;N</text>
+    <text x="545" y="40" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" fill="#7ab3c4">D9&#8211;10</text>
 
     <circle cx="635" cy="57" r="4" fill="#7ab3c4"/>
-    <text x="635" y="77" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" fill="rgba(240,235,224,0.45)">TORRES</text>
-    <text x="635" y="40" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#7ab3c4">D12&#8211;13</text>
+    <text x="635" y="77" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="13" fill="rgba(240,235,224,0.45)">TORRES</text>
+    <text x="635" y="40" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" fill="#7ab3c4">D12&#8211;13</text>
 
     <circle cx="745" cy="56" r="5" fill="#c4623a"/>
-    <text x="745" y="76" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="8" fill="rgba(240,235,224,0.45)">USHUAIA</text>
-    <text x="745" y="39" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="7" fill="#c4623a">D15&#8211;16</text>
+    <text x="745" y="76" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="13" fill="rgba(240,235,224,0.45)">USHUAIA</text>
+    <text x="745" y="39" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" fill="#c4623a">D15&#8211;16</text>
 
     <line x1="35" y1="110" x2="55" y2="110" stroke="#c4623a" stroke-width="1.5" opacity="0.55"/>
-    <text x="60" y="113" font-family="Barlow Condensed, sans-serif" font-size="7" fill="rgba(240,235,224,0.35)">ATACAMA</text>
+    <text x="60" y="113" font-family="Barlow Condensed, sans-serif" font-size="11" fill="rgba(240,235,224,0.35)">ATACAMA</text>
     <line x1="140" y1="110" x2="160" y2="110" stroke="#7ab3c4" stroke-width="1.5" opacity="0.55"/>
-    <text x="165" y="113" font-family="Barlow Condensed, sans-serif" font-size="7" fill="rgba(240,235,224,0.35)">PATAGONIA</text>
+    <text x="165" y="113" font-family="Barlow Condensed, sans-serif" font-size="11" fill="rgba(240,235,224,0.35)">PATAGONIA</text>
   </svg>
 </section>
 
@@ -434,31 +514,31 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
     <div class="act-card reveal">
       <div class="act-num">I</div>
       <div class="act-title">The Desert</div>
-      <div class="act-dates">January 11&ndash;14 &middot; Days 1&ndash;4</div>
+      <div class="act-dates">January 8&ndash;11 &middot; Days 1&ndash;4</div>
       <div class="act-desc">Fly into Calama. A local guide picks you up before dawn. Three days in the driest non-polar desert on Earth &mdash; no rental car, no logistics to manage. The Atacama is better with someone who knows where to be before sunrise.</div>
-      <div class="act-stops">
-        <div class="act-stop">El Tatio Geysers &mdash; 14,000ft before dawn</div>
-        <div class="act-stop">Valle de la Luna at dusk</div>
-        <div class="act-stop">Salar de Atacama, flamingos</div>
-        <div class="act-stop">Private observatory, night sky</div>
+      <div class="act-stops" role="list">
+        <div role="listitem" class="act-stop">El Tatio Geysers &mdash; 14,000ft before dawn</div>
+        <div role="listitem" class="act-stop">Valle de la Luna at dusk</div>
+        <div role="listitem" class="act-stop">Salar de Atacama, flamingos</div>
+        <div role="listitem" class="act-stop">Private observatory, night sky</div>
       </div>
     </div>
     <div class="act-card reveal reveal-delay-1">
       <div class="act-num">II</div>
       <div class="act-title">Patagonia</div>
-      <div class="act-dates">January 15&ndash;26 &middot; Days 5&ndash;16</div>
+      <div class="act-dates">January 12&ndash;23 &middot; Days 5&ndash;16</div>
       <div class="act-desc">Fly to Balmaceda. Pick up the 4WD. Drive south through the Carretera Austral, east along the most beautiful lakeside road in Chile, down Ruta 40 to Fitz Roy, into Torres del Paine, across the Strait of Magellan. Drop the car in Punta Arenas. Cross to Ushuaia.</div>
-      <div class="act-stops">
-        <div class="act-stop">Carretera Austral &mdash; Queulat &amp; Marble Caves</div>
-        <div class="act-stop">Ruta 265 &mdash; lakeside drive to Chile Chico</div>
-        <div class="act-stop">Cerro Torre &mdash; Laguna Torre hike</div>
-        <div class="act-stop">Base Las Torres &mdash; 12 mi, 8 hrs</div>
-        <div class="act-stop">Primera Angostura &mdash; Strait of Magellan</div>
-        <div class="act-stop">Ushuaia &mdash; the Beagle Channel</div>
+      <div class="act-stops" role="list">
+        <div role="listitem" class="act-stop">Carretera Austral &mdash; Cerro Castillo &amp; Marble Caves</div>
+        <div role="listitem" class="act-stop">Ruta 265 &mdash; lakeside drive to Chile Chico</div>
+        <div role="listitem" class="act-stop">Cerro Torre &mdash; Laguna Torre hike</div>
+        <div role="listitem" class="act-stop">Base Las Torres &mdash; 12 mi, 8 hrs</div>
+        <div role="listitem" class="act-stop">Primera Angostura &mdash; Strait of Magellan</div>
+        <div role="listitem" class="act-stop">Ushuaia &mdash; the Beagle Channel</div>
       </div>
     </div>
     <div class="pivot-card reveal">
-      <div class="pivot-icon">&#x2708;</div>
+      <div class="pivot-icon" aria-hidden="true">&#x2708;</div>
       <div class="pivot-text">
         <div class="pivot-title">The Balmaceda Pivot &middot; Day 5</div>
         <div class="pivot-desc">Fly CJC &rarr; SCL &rarr; BBA. Pick up the 4WD from LYS at Balmaceda airport. No overnight ferry, no single point of failure, no logistical gamble. You land on the Carretera Austral with 11 days ahead of you and nothing in the way.</div>
@@ -469,169 +549,169 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
 
 <!-- DAYS -->
 <div class="hr"></div>
-<section class="days-section">
+<section class="days-section" id="days">
   <div class="section-label reveal">The Plan</div>
   <h2 class="section-title reveal reveal-delay-1">Day by <em>day</em></h2>
   <p class="section-body reveal reveal-delay-2">Every day earns its place. No filler, no slog, no wasted hours on highway pavement. Built against real distances and real drive times &mdash; then pressure-tested.</p>
 
-  <div class="days-list">
+  <div class="days-list" role="list">
 
-    <div class="day-card reveal">
+    <div role="listitem" class="day-card reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">01</div></div>
       <div class="day-content">
-        <div class="day-location">Friday Jan 10 &rarr; Saturday Jan 11 &middot; Atlanta &rarr; Calama</div>
+        <div class="day-location">Friday Jan 7 &rarr; Saturday Jan 8 &middot; Atlanta &rarr; Calama</div>
         <div class="day-headline">Wheels up. The trip begins.</div>
         <div class="day-body">Fly out Friday night after work. ATL &rarr; MIA or BOG &rarr; SCL &rarr; CJC. 18&ndash;22 hours of travel. Arrive Calama Saturday afternoon, one hour transfer to San Pedro de Atacama. 7,900ft. Walk the dusty main street. Early dinner. The sky tonight is already different from anything at home.</div>
         <div class="day-meta"><div class="meta-item">Sleep <span>San Pedro de Atacama</span></div><div class="meta-item">Elev <span>7,900 ft</span></div></div>
       </div>
     </div>
 
-    <div class="day-card reveal">
+    <div role="listitem" class="day-card reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">02</div></div>
       <div class="day-content">
-        <div class="day-location">Sunday Jan 12 &middot; San Pedro de Atacama</div>
+        <div class="day-location">Sunday Jan 9 &middot; San Pedro de Atacama</div>
         <div class="day-headline">Settle in. Let the altitude do its work.</div>
         <div class="day-body">Don't push it. 7,900ft hits harder than you expect after 20 hours of travel. Walk the dusty main street. Eat something slow. The desert light in the late afternoon is already unlike anything at home. Early sleep &mdash; tomorrow starts at 4am and the alarm is non-negotiable.</div>
         <div class="day-meta"><div class="meta-item">Sleep <span>San Pedro</span></div><div class="meta-item">Note <span>Early bed &mdash; 4am departure tomorrow</span></div></div>
       </div>
     </div>
 
-    <div class="day-card signature reveal">
+    <div role="listitem" class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">03</div><div class="day-tag">Signature</div></div>
       <div class="day-content">
-        <div class="day-location">Monday Jan 13 &middot; El Tatio Geysers &middot; 14,000ft</div>
+        <div class="day-location">Monday Jan 10 &middot; El Tatio Geysers &middot; 14,000ft</div>
         <div class="day-headline">Steam rising before the sun. Nobody says anything.</div>
         <div class="day-body">Your guide picks you up at 4am. El Tatio at 14,000ft &mdash; columns erupting in the pre-dawn freeze while the Andes ignite behind them. Breakfast at the geysers. Afternoon: Valle de la Luna, salt formations, dunes at sunset. This is the reason the Atacama is in the itinerary.</div>
         <div class="day-meta"><div class="meta-item">Depart <span>4:00am</span></div><div class="meta-item">Elev <span>14,000 ft</span></div><div class="meta-item">Sleep <span>San Pedro</span></div></div>
       </div>
     </div>
 
-    <div class="day-card signature reveal">
+    <div role="listitem" class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">04</div><div class="day-tag">Signature</div></div>
       <div class="day-content">
-        <div class="day-location">Tuesday Jan 14 &middot; Salar de Atacama &middot; Night Sky</div>
+        <div class="day-location">Tuesday Jan 11 &middot; Salar de Atacama &middot; Night Sky</div>
         <div class="day-headline">Salt flats, flamingos, then the clearest sky on Earth.</div>
         <div class="day-body">Morning: Salar de Atacama and the flamingo lagoons &mdash; pink birds on white salt beneath the Andes. Afternoon: free time in San Pedro, your last slow afternoon for a while. After dark: guided tour at a private observatory above the village. The Atacama hosts more world-class telescopes than anywhere on Earth. This sky is the reason.</div>
         <div class="day-meta"><div class="meta-item">Highlight <span>Private observatory</span></div><div class="meta-item">Sleep <span>San Pedro &mdash; last night</span></div></div>
       </div>
     </div>
 
-    <div class="day-card pivot-day reveal">
+    <div role="listitem" class="day-card pivot-day reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">05</div><div class="day-tag" style="color:var(--glacier)">The Pivot</div></div>
       <div class="day-content">
-        <div class="day-location">Wednesday Jan 15 &middot; Calama &rarr; Balmaceda &rarr; Coyhaique</div>
+        <div class="day-location">Wednesday Jan 12 &middot; Calama &rarr; Balmaceda &rarr; Coyhaique</div>
         <div class="day-headline">Fly south. Pick up the 4WD. Act II begins.</div>
         <div class="day-body">Transfer to Calama airport. Fly CJC &rarr; SCL &rarr; BBA (~5 hours with connection). Pick up the expedition 4WD from LYS at Balmaceda airport &mdash; high-clearance diesel, cross-border authorized. 45 minutes to Coyhaique. Resupply: fuel, cash, food. Dinner at Mamma Gaucha &mdash; centrally located, cozy, Patagonian lamb worth the stop. Sleep in Coyhaique. Tomorrow: the Carretera Austral.</div>
         <div class="day-meta"><div class="meta-item">Flight <span>CJC &rarr; SCL &rarr; BBA</span></div><div class="meta-item">Vehicle <span>LYS 4WD &mdash; BBA airport</span></div><div class="meta-item">Dinner <span>Mamma Gaucha, Coyhaique</span></div><div class="meta-item">Sleep <span>Coyhaique</span></div></div>
       </div>
     </div>
 
-    <div class="day-card signature reveal">
+    <div role="listitem" class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">06</div><div class="day-tag">Signature</div></div>
       <div class="day-content">
-        <div class="day-location">Thursday Jan 16 &middot; Coyhaique &rarr; Queulat &rarr; Puerto R&iacute;o Tranquilo</div>
-        <div class="day-headline">The Carretera Austral opens up. Then a hanging glacier appears.</div>
-        <div class="day-body">Drive south on Ruta 7. Villa Cerro Castillo rises ahead &mdash; dramatic granite, worth a stop. Continue into Parque Nacional Queulat: the Ventisquero Colgante is a hanging glacier suspended between two cliffs, calving directly into a milky lagoon below. Take the short trail for the close-up view or the 2-hour trek for the high vantage. Either way, stop. Then 134 miles to Puerto R&iacute;o Tranquilo on Lago General Carrera. The water is an impossible shade of blue-green. The road on the Carretera Austral demands respect &mdash; narrow, gravel, no guardrails, and conditions that have rolled vehicles. Drive deliberately.</div>
-        <div class="day-meta"><div class="meta-item">Stop <span>Parque Queulat &mdash; Ventisquero Colgante</span></div><div class="meta-item">Drive <span>~5 hrs gravel total</span></div><div class="meta-item">Road <span>Carretera Austral &mdash; drive carefully</span></div><div class="meta-item">Sleep <span>Puerto R&iacute;o Tranquilo</span></div></div>
+        <div class="day-location">Thursday Jan 13 &middot; Coyhaique &rarr; Cerro Castillo &rarr; Puerto R&iacute;o Tranquilo</div>
+        <div class="day-headline">The Carretera Austral opens up. Then the bluest lake in Chile.</div>
+        <div class="day-body">Drive south on Ruta 7 as the pavement gives way to ripio. The road demands respect from the first mile &mdash; narrow, gravel, no guardrails, and conditions that have rolled vehicles. Drive deliberately. Villa Cerro Castillo rises ahead &mdash; dramatic granite spires above the village, worth the stop and the photo. Then on to Puerto R&iacute;o Tranquilo on Lago General Carrera &mdash; 134 miles and ~5 hours of gravel in total. The water is an impossible shade of blue-green, and tomorrow you get on it.</div>
+        <div class="day-meta"><div class="meta-item">Stop <span>Villa Cerro Castillo &mdash; mirador</span></div><div class="meta-item">Drive <span>~5 hrs gravel total</span></div><div class="meta-item">Road <span>Carretera Austral &mdash; drive carefully</span></div><div class="meta-item">Sleep <span>Puerto R&iacute;o Tranquilo</span></div></div>
       </div>
     </div>
 
-    <div class="day-card signature reveal">
+    <div role="listitem" class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">07</div><div class="day-tag">Signature</div></div>
       <div class="day-content">
-        <div class="day-location">Friday Jan 17 &middot; Puerto R&iacute;o Tranquilo</div>
+        <div class="day-location">Friday Jan 14 &middot; Puerto R&iacute;o Tranquilo</div>
         <div class="day-headline">Into the caves. Swirling marble lit from below.</div>
         <div class="day-body">Boat into the Marble Caves at first light &mdash; book with Pedro's tour operation in Puerto R&iacute;o Tranquilo; his son Johnny runs the boats and knows these caves better than anyone. Best light is 9:30am when turquoise water reflects up into the carved ceiling and everything glows blue-white, though afternoon light (around 4pm) is also extraordinary. No photograph does it justice. No rush today. Afternoon on the lake. Sleep nearby.</div>
         <div class="day-meta"><div class="meta-item">Tour <span>Pedro's boats &mdash; ask for Johnny &middot; 9:30am</span></div><div class="meta-item">Sleep <span>Puerto R&iacute;o Tranquilo</span></div></div>
       </div>
     </div>
 
-    <div class="day-card signature reveal">
+    <div role="listitem" class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">08</div><div class="day-tag">Signature</div></div>
       <div class="day-content">
-        <div class="day-location">Saturday Jan 18 &middot; Ruta 265 &rarr; Chile Chico &rarr; Los Antiguos</div>
+        <div class="day-location">Saturday Jan 15 &middot; Ruta 265 &rarr; Chile Chico &rarr; Los Antiguos</div>
         <div class="day-headline">The lakeside drive. 130 miles of cliffside road above turquoise water.</div>
         <div class="day-body">Drive east on Ruta 265 along the southern shore of Lago General Carrera. Cliffside road, the lake hundreds of feet below, the Andes overhead. Nobody talks about this road as one of Chile's best. They should. Cross at Paso R&iacute;o Jeinemeni into Los Antiguos, Argentina. You're on Ruta 40. Sleep in Los Antiguos. Critical: Ruta 265 averages 25&ndash;30 mph on gravel. The Jeinemeni border crossing closes at 8pm. Leave Puerto R&iacute;o Tranquilo by 9am and be at the border by 5pm.</div>
         <div class="day-meta"><div class="meta-item">Depart <span>9:00am hard</span></div><div class="meta-item">Drive <span>~130 mi &middot; Ruta 265</span></div><div class="meta-item">Border <span>Chile &rarr; Argentina &middot; cross by 5pm</span></div><div class="meta-item">Sleep <span>Los Antiguos</span></div></div>
       </div>
     </div>
 
-    <div class="day-card hard reveal">
+    <div role="listitem" class="day-card hard reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">09</div><div class="day-tag" style="color:var(--ember)">Long Drive</div></div>
       <div class="day-content">
-        <div class="day-location">Sunday Jan 19 &middot; Los Antiguos &rarr; El Chalt&eacute;n</div>
+        <div class="day-location">Sunday Jan 16 &middot; Los Antiguos &rarr; El Chalt&eacute;n</div>
         <div class="day-headline">Ruta 40. The steppe opens. Then Fitz Roy fills the windshield.</div>
         <div class="day-body">Leave by 6am. ~370 miles south on Ruta 40 &mdash; expect 9&ndash;10 hours, not 6. The stretch between Gobernador Gregores and Tres Lagos is 70km of brutal washboard ripio. Fill the jerry cans in Los Antiguos and top off at every open station &mdash; Bajo Caracoles frequently runs dry. Keep speed below 60 km/h on gravel and both hands on the wheel: Patagonian crosswinds hit 60&ndash;80 mph on the steppe and have rolled high-clearance pickups. Then in the final hour Fitz Roy rises on the horizon and grows until you're there. The drive earns the arrival.</div>
         <div class="day-meta"><div class="meta-item">Depart <span>6:00am hard</span></div><div class="meta-item">Drive <span>~370 mi &middot; 9&ndash;10 hrs &middot; Ruta 40</span></div><div class="meta-item">Fuel <span>Fill jerry cans in Los Antiguos</span></div><div class="meta-item">Sleep <span>El Chalt&eacute;n</span></div></div>
       </div>
     </div>
 
-    <div class="day-card signature reveal">
+    <div role="listitem" class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">10</div><div class="day-tag">MLK Day</div></div>
       <div class="day-content">
-        <div class="day-location">Monday Jan 20 &middot; El Chalt&eacute;n &middot; Martin Luther King Day</div>
+        <div class="day-location">Monday Jan 17 &middot; El Chalt&eacute;n &middot; Martin Luther King Day</div>
         <div class="day-headline">Laguna Torre. Cerro Torre. The federal holiday lands here.</div>
         <div class="day-body">Wake without an alarm. Hike Laguna Torre &mdash; 11 miles roundtrip, ~5 hours. Cerro Torre is a near-vertical granite needle that wasn't summited until 1974 and is still considered one of the hardest climbs on Earth. The glacial lake at its base is still and cold and completely surrounded by nothing. Back by afternoon. Craft beer in town. Early sleep. Tomorrow you drive.</div>
         <div class="day-meta"><div class="meta-item">Hike <span>Laguna Torre &middot; 11 mi &middot; ~5 hrs</span></div><div class="meta-item">Sleep <span>El Chalt&eacute;n</span></div></div>
       </div>
     </div>
 
-    <div class="day-card hard reveal">
+    <div role="listitem" class="day-card hard reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">11</div><div class="day-tag" style="color:var(--ember)">Long Drive</div></div>
       <div class="day-content">
-        <div class="day-location">Tuesday Jan 21 &middot; El Chalt&eacute;n &rarr; Puerto Natales</div>
+        <div class="day-location">Tuesday Jan 18 &middot; El Chalt&eacute;n &rarr; Puerto Natales</div>
         <div class="day-headline">South to Torres. One border. The massif appears.</div>
         <div class="day-body">Leave by 7am. 259 miles, one border crossing back into Chile via Paso R&iacute;o Don Guillermo. Drive west on Ruta 9. In the final stretch, the Torres del Paine massif rises on the horizon &mdash; three granite towers above the Patagonian plain. Arrive Puerto Natales by late afternoon. Rest. Tomorrow is the park.</div>
         <div class="day-meta"><div class="meta-item">Depart <span>7:00am</span></div><div class="meta-item">Drive <span>~259 mi</span></div><div class="meta-item">Border <span>Argentina &rarr; Chile</span></div><div class="meta-item">Sleep <span>Puerto Natales</span></div></div>
       </div>
     </div>
 
-    <div class="day-card reveal">
+    <div role="listitem" class="day-card reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">12</div></div>
       <div class="day-content">
-        <div class="day-location">Wednesday Jan 22 &middot; Torres del Paine &mdash; Day One</div>
+        <div class="day-location">Wednesday Jan 19 &middot; Torres del Paine &mdash; Day One</div>
         <div class="day-headline">Into the park. Lago Grey. Let the scale settle.</div>
         <div class="day-body">Drive into Torres del Paine. Day one is not the hike &mdash; it's orientation. Lago Grey and the glacier, which calves ice directly into the water in front of you. Mirador Las Torres from below. Let the place arrive before you put your legs into it. January light until 10pm. Sleep inside the park or at Villa R&iacute;o Serrano &mdash; not Puerto Natales. The trailhead is 1.5 hours each way from Natales; adding 3 hours of driving to an 8-hour hike day is avoidable.</div>
         <div class="day-meta"><div class="meta-item">Drive <span>~70 mi into park</span></div><div class="meta-item">Sleep <span>Villa R&iacute;o Serrano or park lodge &mdash; not Puerto Natales</span></div></div>
       </div>
     </div>
 
-    <div class="day-card signature reveal">
+    <div role="listitem" class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">13</div><div class="day-tag">Signature</div></div>
       <div class="day-content">
-        <div class="day-location">Thursday Jan 23 &middot; Torres del Paine &mdash; Base Las Torres</div>
+        <div class="day-location">Thursday Jan 20 &middot; Torres del Paine &mdash; Base Las Torres</div>
         <div class="day-headline">The towers. They fill the sky. The photos are wrong.</div>
         <div class="day-body">Private transfer to the trailhead by 8am. 12 miles roundtrip, ~8 hours, 3,000ft of gain to a glacial lake directly beneath three granite spires. Every photograph flattens them. In person they occupy your entire field of view. Two days ago you stood at the base of Cerro Torre. Today you stand under the Towers. These are the two greatest mountain views in Patagonia and you saw both.</div>
         <div class="day-meta"><div class="meta-item">Depart <span>8:00am</span></div><div class="meta-item">Hike <span>12 mi &middot; ~8 hrs &middot; 3,000 ft gain</span></div><div class="meta-item">Sleep <span>Villa R&iacute;o Serrano or park lodge</span></div></div>
       </div>
     </div>
 
-    <div class="day-card hard reveal">
+    <div role="listitem" class="day-card hard reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">14</div><div class="day-tag" style="color:var(--ember)">The Crossing</div></div>
       <div class="day-content">
-        <div class="day-location">Friday Jan 24 &middot; Torres del Paine &rarr; Punta Arenas</div>
+        <div class="day-location">Friday Jan 21 &middot; Torres del Paine &rarr; Punta Arenas</div>
         <div class="day-headline">Drive to the Strait. Drop the car. Cross to the island.</div>
-        <div class="day-body">Drive north from Torres del Paine toward Punta Arenas &mdash; ~155 miles. Drop the 4WD with LYS at Punta Arenas. Then: cross the Strait of Magellan at Primera Angostura by bus or transfer &mdash; 20 minutes, runs all day. Drive onto Tierra del Fuego. Cross into Argentina. Guanacos on every hillside. The island feels like the edge of something. Sleep in R&iacute;o Grande. Note: the Chilean Navy shuts the crossing when wind exceeds safe thresholds. Check the TABSA website the night before. If it's closed, sleep in Punta Arenas and cross first thing.</div>
+        <div class="day-body">Drive south from Torres del Paine to Punta Arenas &mdash; ~155 miles. Drop the 4WD with LYS at Punta Arenas. Then: cross the Strait of Magellan at Primera Angostura by bus or transfer &mdash; 20 minutes, runs all day. Drive onto Tierra del Fuego. Cross into Argentina. Guanacos on every hillside. The island feels like the edge of something. Sleep in R&iacute;o Grande. Critical: the Chilean Navy shuts the crossing when wind exceeds safe thresholds. Check the TABSA website the night before. If it's closed, sleep in Punta Arenas and cross first thing.</div>
         <div class="day-meta"><div class="meta-item">Drive <span>~155 mi to Punta Arenas</span></div><div class="meta-item">Car drop <span>LYS &mdash; Punta Arenas</span></div><div class="meta-item">Ferry <span>Primera Angostura &middot; 20 min &middot; by bus</span></div><div class="meta-item">Contingency <span>Check TABSA night before</span></div><div class="meta-item">Sleep <span>R&iacute;o Grande</span></div></div>
       </div>
     </div>
 
-    <div class="day-card signature reveal">
+    <div role="listitem" class="day-card signature reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">15</div><div class="day-tag">Finish Line</div></div>
       <div class="day-content">
-        <div class="day-location">Saturday Jan 25 &middot; R&iacute;o Grande &rarr; Ushuaia</div>
+        <div class="day-location">Saturday Jan 22 &middot; R&iacute;o Grande &rarr; Ushuaia</div>
         <div class="day-headline">The Fuegian Andes. Then the Beagle Channel appears below.</div>
         <div class="day-body">Travel south through the Fuegian Andes &mdash; the southernmost mountain range on Earth &mdash; and drop to the Beagle Channel. Arrive Ushuaia. Walk to the waterfront. You started in the Atacama at 14,000 feet. You made it to the bottom of the world. King crab for dinner. The best Malbec available. The conversation isn't about the trip.</div>
         <div class="day-meta"><div class="meta-item">Transfer <span>~130 mi &middot; bus or private transfer</span></div><div class="meta-item">Sleep <span>Ushuaia</span></div><div class="meta-item">Dinner <span>Centolla. Malbec.</span></div></div>
       </div>
     </div>
 
-    <div class="day-card reveal">
+    <div role="listitem" class="day-card reveal">
       <div class="day-num-col"><div class="day-dot"></div><div class="day-number">16</div></div>
       <div class="day-content">
-        <div class="day-location">Sunday Jan 26 &middot; Ushuaia &rarr; Buenos Aires &rarr; Atlanta</div>
+        <div class="day-location">Sunday Jan 23 &middot; Ushuaia &rarr; Buenos Aires &rarr; Atlanta</div>
         <div class="day-headline">End of the world. Then home.</div>
-        <div class="day-body">Morning flight USH &rarr; AEP. Taxi across Buenos Aires to EZE &mdash; allow 5&ndash;6 hours minimum between landing at AEP and departing EZE. The airports are on opposite ends of the city and USH flights delay frequently for weather. Do not book a tight connection. Evening flight home. Land Atlanta Sunday night. Back at your desk Tuesday. In between: the Atacama, the Carretera Austral, Ventisquero Colgante, the Marble Caves, Ruta 265, Cerro Torre, the Towers, the Strait of Magellan, the Fuegian Andes, and the Beagle Channel.</div>
+        <div class="day-body">Morning flight USH &rarr; AEP. Taxi across Buenos Aires to EZE &mdash; allow 5&ndash;6 hours minimum between landing at AEP and departing EZE. The airports are on opposite ends of the city and USH flights delay frequently for weather. Do not book a tight connection. Evening flight home. Land Atlanta Sunday night. Back at your desk Tuesday. In between: the Atacama, the Carretera Austral, the Marble Caves, Ruta 265, Cerro Torre, the Towers, the Strait of Magellan, the Fuegian Andes, and the Beagle Channel.</div>
         <div class="day-meta"><div class="meta-item">Fly <span>USH &rarr; AEP &rarr; EZE &rarr; ATL</span></div><div class="meta-item">Buffer <span>5&ndash;6 hrs min AEP &rarr; EZE</span></div><div class="meta-item">Home <span>Sunday night</span></div></div>
       </div>
     </div>
@@ -669,7 +749,7 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
       <div class="moment reveal reveal-delay-2">
         <div class="moment-num">05</div>
         <div class="moment-title">Ushuaia. Last dinner. The conversation isn't about the trip.</div>
-        <div class="moment-body">King crab and Malbec at the bottom of the world. It's about everything else. Turns out that's what this distance does &mdash; it creates space. You hadn't talked like this in years.</div>
+        <div class="moment-body">King crab and Malbec at the bottom of the world. It's about everything else. That's what the distance is for.</div>
       </div>
     </div>
   </div>
@@ -684,14 +764,15 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
   <div class="two-col">
     <div>
       <div class="col-title">Food Along the Route</div>
-      <div class="logistics-items">
-        <div class="logistics-item"><strong>San Pedro</strong> &mdash; Pisco sour. Lighter and more floral than Peruvian. Drink it cold, drink it there.</div>
-        <div class="logistics-item"><strong>Coyhaique</strong> &mdash; Mamma Gaucha for dinner on arrival night. Centrally located, cozy, Patagonian lamb. Last good restaurant before the road gets remote.</div>
-        <div class="logistics-item"><strong>El Chalt&eacute;n</strong> &mdash; Craft beer after Laguna Torre. The town was built for exactly this moment.</div>
-        <div class="logistics-item"><strong>Torres del Paine</strong> &mdash; Whatever you're carrying, eaten somewhere extraordinary in January light.</div>
-        <div class="logistics-item"><strong>Ushuaia</strong> &mdash; Centolla. King crab from the Beagle Channel, cracked with butter. A Patagonian Malbec alongside it. Take your time.</div>
+      <div class="logistics-items" role="list">
+        <div role="listitem" class="logistics-item"><strong>San Pedro</strong> &mdash; Pisco sour. Lighter and more floral than Peruvian. Drink it cold, drink it there.</div>
+        <div role="listitem" class="logistics-item"><strong>Coyhaique</strong> &mdash; Mamma Gaucha for dinner on arrival night. Centrally located, cozy, Patagonian lamb. Last good restaurant before the road gets remote.</div>
+        <div role="listitem" class="logistics-item"><strong>El Chalt&eacute;n</strong> &mdash; Craft beer after Laguna Torre. The town was built for exactly this moment.</div>
+        <div role="listitem" class="logistics-item"><strong>Torres del Paine</strong> &mdash; Whatever you're carrying, eaten somewhere extraordinary in January light.</div>
+        <div role="listitem" class="logistics-item"><strong>Ushuaia</strong> &mdash; Centolla. King crab from the Beagle Channel, cracked with butter. A Patagonian Malbec alongside it. Take your time.</div>
       </div>
-      <div class="col-title second">The Field Kitchen</div>
+      <details class="acc" open>
+      <summary class="col-title second">The Field Kitchen</summary>
       <ul class="gear-list">
         <li>MSR Windburner stove</li>
         <li>Cast iron skillet (small)</li>
@@ -702,9 +783,11 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
         <li>AeroPress + ground coffee</li>
         <li>Emergency instant noodles</li>
       </ul>
+      </details>
     </div>
     <div>
-      <div class="col-title">Clothing</div>
+      <details class="acc" open>
+      <summary class="col-title">Clothing</summary>
       <ul class="gear-list">
         <li>Waterproof hardshell jacket &mdash; essential</li>
         <li>Fleece mid-layer &times;2</li>
@@ -715,7 +798,9 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
         <li>Waterproof hiking boots</li>
         <li>Rain pants</li>
       </ul>
-      <div class="col-title second">Vehicle &amp; Road</div>
+      </details>
+      <details class="acc" open>
+      <summary class="col-title second">Vehicle &amp; Road</summary>
       <ul class="gear-list">
         <li>Tire plug and patch kit &mdash; non-negotiable</li>
         <li>Portable air compressor &mdash; non-negotiable</li>
@@ -725,7 +810,9 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
         <li>First aid kit + fire extinguisher</li>
         <li>Headlamps &times;4</li>
       </ul>
-      <div class="col-title second">Tech &amp; Documents</div>
+      </details>
+      <details class="acc" open>
+      <summary class="col-title second">Tech &amp; Documents</summary>
       <ul class="gear-list">
         <li>Garmin inReach satellite communicator</li>
         <li>Portable power banks &times;2</li>
@@ -736,113 +823,126 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
         <li>Printed Formulario &Uacute;nico border permit</li>
         <li>Park tickets via pasesparques.cl</li>
       </ul>
+      </details>
     </div>
   </div>
 </section>
 
 <!-- REALITY CHECK -->
 <div class="hr"></div>
-<section class="reality-section">
+<section class="reality-section" id="reality">
   <div class="reality-inner">
     <div class="section-label reveal">Eyes Open</div>
     <h2 class="section-title reveal reveal-delay-1">The reality <em>check</em></h2>
     <p class="section-body reveal reveal-delay-2">The hardship is the point. But you should know exactly what you're signing up for.</p>
     <div class="reality-grid">
       <div class="reality-item reveal">
-        <div class="reality-icon">&#x1F697;</div>
+        <div class="reality-icon" aria-hidden="true">&#x1F697;</div>
         <div class="reality-title">Two long drive days</div>
         <div class="reality-body">Day 9 (Los Antiguos &rarr; El Chalt&eacute;n, 370 miles) and Day 11 (El Chalt&eacute;n &rarr; Puerto Natales, 259 miles) are real. Leave early, drive steady, arrive before dark. These days ask something of you.</div>
       </div>
       <div class="reality-item reveal reveal-delay-1">
-        <div class="reality-icon">&#x1F32C;</div>
+        <div class="reality-icon" aria-hidden="true">&#x1F32C;</div>
         <div class="reality-title">Patagonian weather doesn't care</div>
         <div class="reality-body">January is the best time to go. It is still cold, wet, and windy enough to knock you sideways in Torres del Paine. Pack for the weather. Adjust for the weather. That's part of the deal.</div>
       </div>
       <div class="reality-item reveal reveal-delay-2">
-        <div class="reality-icon">&#x1F4B8;</div>
+        <div class="reality-icon" aria-hidden="true">&#x1F4B8;</div>
         <div class="reality-title">This is not cheap</div>
-        <div class="reality-body">Budget $4,000&ndash;5,500 per person all-in. Flights alone are $1,400&ndash;1,800. The 4WD with premium insurance and Punta Arenas drop runs ~$700/person split four ways. Commit to the number before you commit to the trip.</div>
+        <div class="reality-body">Budget $4,000&ndash;5,400 per person all-in. Flights alone are $1,400&ndash;1,800. The 4WD with premium insurance and Punta Arenas drop runs ~$660/person split four ways. Commit to the number before you commit to the trip.</div>
       </div>
       <div class="reality-item reveal reveal-delay-1">
-        <div class="reality-icon">&#x1F4F5;</div>
+        <div class="reality-icon" aria-hidden="true">&#x1F4F5;</div>
         <div class="reality-title">You will be unreachable</div>
         <div class="reality-body">Cell service disappears on the Carretera Austral for stretches. A Garmin inReach handles emergencies. For everything else &mdash; that's the point.</div>
       </div>
       <div class="reality-item reveal">
-        <div class="reality-icon">&#x26A1;</div>
+        <div class="reality-icon" aria-hidden="true">&#x26A1;</div>
         <div class="reality-title">The roads are serious</div>
         <div class="reality-body">The Carretera Austral is narrow gravel with no guardrails. Patagonian crosswinds on Ruta 40 have rolled high-clearance pickups. Drive deliberately, keep speed down on ripio, and both hands on the wheel when the wind picks up. This is not a highway cruise.</div>
       </div>
       <div class="reality-item reveal reveal-delay-1">
-        <div class="reality-icon">&#x1F3D4;</div>
+        <div class="reality-icon" aria-hidden="true">&#x1F3D4;</div>
         <div class="reality-title">Altitude is real</div>
         <div class="reality-body">San Pedro sits at 7,900ft. El Tatio on Day 3 is 14,000ft &mdash; 60% of sea-level oxygen. Going from Atlanta to 14,000ft in 60 hours is textbook Acute Mountain Sickness territory. Get Diamox (Acetazolamide) prescriptions before you leave the US. Start taking it 24 hours before landing in Calama. Hydrate aggressively on Days 1 and 2.</div>
       </div>
       <div class="reality-item reveal reveal-delay-1">
-        <div class="reality-icon">&#x2705;</div>
+        <div class="reality-icon" aria-hidden="true">&#x2705;</div>
         <div class="reality-title">You come back different</div>
         <div class="reality-body">Every hard thing about this trip is also the reason it works. The drives, the cold, the remoteness, the early starts &mdash; they strip everything else away. What's left is four guys, a 4WD, and the bottom of the world. That's plenty.</div>
       </div>
     </div>
+    <a class="ask-link" href="#commit">Ready? Skip to the ask &darr;</a>
   </div>
 </section>
 
 <!-- LOGISTICS -->
 <div class="hr"></div>
-<section class="logistics-section">
+<section class="logistics-section" id="logistics">
   <div class="section-label reveal">Making It Happen</div>
   <h2 class="section-title reveal reveal-delay-1">Logistics &amp; <em>planning guide</em></h2>
   <p class="section-body reveal reveal-delay-2"><strong>Most critical booking:</strong> LYS Rent a Car (lys.cl) &mdash; the only agency confirmed to support a one-way cross-border 4WD from Balmaceda to Punta Arenas. Contact Andr&eacute;s Gabor directly: WhatsApp +56 977 062 967 &middot; rent@lys.cl. He is the owner, speaks fluent English, and provides 24/7 support &mdash; this matters when you're broken down in Argentina with no signal.</p>
 
+  <p class="verified-note reveal">Quotes, prices &amp; border hours verified July 2026 &middot; re-verify October 2027</p>
+
+  <div class="dontmiss reveal" role="list" aria-label="Critical constraints">
+    <div class="dontmiss-title">Don't-Miss Constraints</div>
+    <div role="listitem" class="logistics-item"><strong>Diamox</strong> &mdash; prescriptions before leaving the US; start 24 hours before landing in Calama</div>
+    <div role="listitem" class="logistics-item"><strong>Formulario &Uacute;nico</strong> &mdash; request from LYS 10+ business days before pickup</div>
+    <div role="listitem" class="logistics-item"><strong>VIN check</strong> &mdash; all four verify VIN and plate against the permit before leaving BBA airport</div>
+    <div role="listitem" class="logistics-item"><strong>AEP &rarr; EZE</strong> &mdash; allow 5&ndash;6 hours minimum between Buenos Aires airports on Day 16</div>
+    <div role="listitem" class="logistics-item"><strong>Fuel</strong> &mdash; fill jerry cans in Los Antiguos on Day 9; Bajo Caracoles frequently runs dry</div>
+  </div>
+
   <div class="logistics-grid">
     <div class="logistics-block reveal">
       <div class="logistics-title">The Vehicle</div>
-      <div class="logistics-items">
-        <div class="logistics-item">Mitsubishi L200 or similar double-cabin 4x4 diesel pickup &mdash; non-negotiable for ripio roads</div>
-        <div class="logistics-item">Cross-border authorized: Chile and Argentina (3 crossings)</div>
-        <div class="logistics-item">Pickup: Balmaceda Airport (BBA) &mdash; Day 5</div>
-        <div class="logistics-item">Drop-off: Punta Arenas (PUQ) &mdash; Day 14</div>
-        <div class="logistics-item">LYS Rent a Car &middot; lys.cl &middot; Andr&eacute;s Gabor: WhatsApp +56 977 062 967 &middot; rent@lys.cl</div>
-        <div class="logistics-item">Base rate (11 days, L200): $1,380 &middot; Premium insurance: $28/day ($308) &middot; Border permit: $220 &middot; One-way drop fee (BBA&rarr;PUQ): $880</div>
-        <div class="logistics-item">All-in vehicle total: ~$2,788 &divide; 4 = <strong>~$697/person</strong></div>
-        <div class="logistics-item">Premium insurance covers CDW + theft deductibles + windshield + tires (up to $300 in Argentina) &mdash; required for ripio, do not skip</div>
-        <div class="logistics-item">No towing or road assistance in Argentina &mdash; LYS has contacts for garages, tow, and tire repair across the border and remains reachable 24/7</div>
-        <div class="logistics-item">Formulario &Uacute;nico permit: LYS prepares it &mdash; request 10+ business days before pickup</div>
-        <div class="logistics-item">Day 5 mandatory: before leaving BBA airport, all four verify every digit of the VIN and plate against the permit. One typo gets you turned back at the border.</div>
-        <div class="logistics-item">Cancellation: 100% refund up to 5 days before rental start &middot; 50% up to 2 days &middot; no refund inside 2 days</div>
+      <div class="logistics-items" role="list">
+        <div role="listitem" class="logistics-item">Mitsubishi L200 or similar double-cabin 4x4 diesel pickup &mdash; non-negotiable for ripio roads</div>
+        <div role="listitem" class="logistics-item">Cross-border authorized: Chile and Argentina (2 vehicle crossings &mdash; Days 8 &amp; 11; the Day 14 crossing is by bus after the car drop)</div>
+        <div role="listitem" class="logistics-item">Pickup: Balmaceda Airport (BBA) &mdash; Day 5</div>
+        <div role="listitem" class="logistics-item">Drop-off: Punta Arenas (PUQ) &mdash; Day 14</div>
+        <div role="listitem" class="logistics-item">LYS Rent a Car &middot; lys.cl &middot; Andr&eacute;s Gabor: WhatsApp +56 977 062 967 &middot; rent@lys.cl</div>
+        <div role="listitem" class="logistics-item">Base rate (10 days, L200): ~$1,255 &middot; Premium insurance: $28/day ($280) &middot; Border permit: $220 &middot; One-way drop fee (BBA&rarr;PUQ): $880</div>
+        <div role="listitem" class="logistics-item">All-in vehicle total: ~$2,635 &divide; 4 = <strong>~$659/person</strong> &mdash; reconfirm the exact 10-day rate with LYS before the deposit</div>
+        <div role="listitem" class="logistics-item">Premium insurance covers CDW + theft deductibles + windshield + tires (up to $300 in Argentina) &mdash; required for ripio, do not skip</div>
+        <div role="listitem" class="logistics-item">No towing or road assistance in Argentina &mdash; LYS has contacts for garages, tow, and tire repair across the border and remains reachable 24/7</div>
+        <div role="listitem" class="logistics-item">Formulario &Uacute;nico permit: LYS prepares it &mdash; request 10+ business days before pickup</div>
+        <div role="listitem" class="logistics-item">Day 5 mandatory: before leaving BBA airport, all four verify every digit of the VIN and plate against the permit. One typo gets you turned back at the border.</div>
+        <div role="listitem" class="logistics-item">Cancellation: 100% refund up to 5 days before rental start &middot; 50% up to 2 days &middot; no refund inside 2 days</div>
       </div>
     </div>
     <div class="logistics-block reveal reveal-delay-1">
       <div class="logistics-title">Flights</div>
-      <div class="logistics-items">
-        <div class="logistics-item">IN: ATL &rarr; MIA or BOG &rarr; SCL &rarr; CJC (Calama)</div>
-        <div class="logistics-item">PIVOT: CJC &rarr; SCL &rarr; BBA (Balmaceda) &mdash; Day 5</div>
-        <div class="logistics-item">OUT: USH &rarr; AEP (Buenos Aires domestic) &rarr; taxi to EZE &rarr; ATL</div>
-        <div class="logistics-item">AEP and EZE are different airports &mdash; 1hr taxi. Allow 5&ndash;6 hours minimum. USH flights delay for weather.</div>
-        <div class="logistics-item">Delta&ndash;LATAM joint venture &mdash; earn and burn Delta miles on LATAM flights</div>
-        <div class="logistics-item">Book ~11 months out: March 2027</div>
-        <div class="logistics-item">Budget $1,400&ndash;1,800/person including all internal legs</div>
+      <div class="logistics-items" role="list">
+        <div role="listitem" class="logistics-item">IN: ATL &rarr; MIA or BOG &rarr; SCL &rarr; CJC (Calama)</div>
+        <div role="listitem" class="logistics-item">PIVOT: CJC &rarr; SCL &rarr; BBA (Balmaceda) &mdash; Day 5</div>
+        <div role="listitem" class="logistics-item">OUT: USH &rarr; AEP (Buenos Aires domestic) &rarr; taxi to EZE &rarr; ATL</div>
+        <div role="listitem" class="logistics-item">AEP and EZE are different airports &mdash; 1hr taxi. Allow 5&ndash;6 hours minimum. USH flights delay for weather.</div>
+        <div role="listitem" class="logistics-item">Delta&ndash;LATAM joint venture &mdash; earn and burn Delta miles on LATAM flights</div>
+        <div role="listitem" class="logistics-item">Book when schedules open: ~February 2027</div>
+        <div role="listitem" class="logistics-item">Budget $1,400&ndash;1,800/person including all internal legs</div>
       </div>
     </div>
     <div class="logistics-block reveal">
       <div class="logistics-title">Border Crossings</div>
-      <div class="logistics-items">
-        <div class="logistics-item">3 crossings: Chile&rarr;Argentina at Los Antiguos (D8), Argentina&rarr;Chile near Puerto Natales (D11), Chile&rarr;Argentina at Tierra del Fuego (D14 &mdash; by bus after car drop)</div>
-        <div class="logistics-item">Border hours: Paso Jeinemeni (D8) 8am&ndash;8pm &middot; Paso Don Guillermo (D11) 8am&ndash;10pm &middot; Paso San Sebasti&aacute;n, Tierra del Fuego open 6am&ndash;10pm</div>
-        <div class="logistics-item">No visa required for US citizens in Chile or Argentina</div>
-        <div class="logistics-item">No fresh fruit, meat, dairy, or honey &mdash; a single apple is a $300 fine and 2-hour delay</div>
-        <div class="logistics-item">Allow 60&ndash;90 min per crossing in drive estimates</div>
+      <div class="logistics-items" role="list">
+        <div role="listitem" class="logistics-item">3 crossings: Chile&rarr;Argentina at Los Antiguos (D8), Argentina&rarr;Chile near Puerto Natales (D11), Chile&rarr;Argentina at Tierra del Fuego (D14 &mdash; by bus after car drop)</div>
+        <div role="listitem" class="logistics-item">Border hours: Paso Jeinemeni (D8) 8am&ndash;8pm &middot; Paso Don Guillermo (D11) 8am&ndash;10pm &middot; Paso San Sebasti&aacute;n, Tierra del Fuego open 6am&ndash;10pm</div>
+        <div role="listitem" class="logistics-item">No visa required for US citizens in Chile or Argentina</div>
+        <div role="listitem" class="logistics-item">No fresh fruit, meat, dairy, or honey &mdash; a single apple is a $300 fine and 2-hour delay</div>
+        <div role="listitem" class="logistics-item">Allow 60&ndash;90 min per crossing in drive estimates</div>
       </div>
     </div>
     <div class="logistics-block reveal reveal-delay-1">
       <div class="logistics-title">Navigation &amp; Comms</div>
-      <div class="logistics-items">
-        <div class="logistics-item">Google Maps offline + Gaia GPS &mdash; download all regions before departure</div>
-        <div class="logistics-item">iOverlander &mdash; real-time road conditions and remote camps</div>
-        <div class="logistics-item">Garmin inReach satellite communicator &mdash; non-negotiable south of Coyhaique</div>
-        <div class="logistics-item">Entel SIM from Santiago &mdash; best rural Chile coverage (not WOM or Claro)</div>
-        <div class="logistics-item">$500 USD cash per person &mdash; ATMs unreliable south of Puerto R&iacute;o Tranquilo</div>
-        <div class="logistics-item">Carry Chilean pesos AND Argentine pesos &mdash; both needed for rural fuel</div>
+      <div class="logistics-items" role="list">
+        <div role="listitem" class="logistics-item">Google Maps offline + Gaia GPS &mdash; download all regions before departure</div>
+        <div role="listitem" class="logistics-item">iOverlander &mdash; real-time road conditions and remote camps</div>
+        <div role="listitem" class="logistics-item">Garmin inReach satellite communicator &mdash; non-negotiable south of Coyhaique</div>
+        <div role="listitem" class="logistics-item">Entel SIM from Santiago &mdash; best rural Chile coverage (not WOM or Claro)</div>
+        <div role="listitem" class="logistics-item">$500 USD cash per person &mdash; ATMs unreliable south of Puerto R&iacute;o Tranquilo</div>
+        <div role="listitem" class="logistics-item">Carry Chilean pesos AND Argentine pesos &mdash; both needed for rural fuel</div>
       </div>
     </div>
   </div>
@@ -850,45 +950,45 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
 
 <!-- TIMELINE -->
 <div class="hr"></div>
-<section class="timeline-section">
+<section class="timeline-section" id="timeline">
   <div class="section-label reveal">What Has To Happen</div>
   <h2 class="section-title reveal reveal-delay-1">The <em>planning timeline</em></h2>
 
   <div class="timeline">
     <div class="timeline-item critical reveal">
-      <div class="timeline-date">Now &middot; May 2026</div>
+      <div class="timeline-date">Now &middot; July 2026</div>
       <div class="timeline-action">Get four confirmed commitments</div>
-      <div class="timeline-note">Not "sounds great" &mdash; calendar blocks for January 10&ndash;26, 2028. Everything else follows from four people saying yes.</div>
+      <div class="timeline-note">Not "sounds great" &mdash; calendar blocks for January 7&ndash;23, 2028. Everything else follows from four people saying yes.</div>
     </div>
     <div class="timeline-item critical reveal">
-      <div class="timeline-date">Summer 2026 &middot; June&ndash;July</div>
+      <div class="timeline-date">Now &middot; July&ndash;August 2026</div>
       <div class="timeline-action">Contact LYS &amp; book the vehicle</div>
-      <div class="timeline-note">Andr&eacute;s Gabor, WhatsApp +56 977 062 967. Confirm BBA pickup and Punta Arenas drop for January 2028. 35% deposit via PayPal to secure. This is the highest-stakes logistical confirm on the trip.</div>
+      <div class="timeline-note">Andr&eacute;s Gabor, WhatsApp +56 977 062 967. Confirm BBA pickup and Punta Arenas drop for January 2028. 35% deposit via PayPal to secure. This is the highest-stakes logistical confirm on the trip &mdash; and the window is open now.</div>
     </div>
-    <div class="timeline-item reveal">
+    <div class="timeline-item critical reveal">
       <div class="timeline-date">Summer 2026</div>
       <div class="timeline-action">Book the Atacama guide</div>
-      <div class="timeline-note">San Pedro operators book out for January. Confirm a local guide for January 12&ndash;14 covering El Tatio, Valle de la Luna, and the night sky observatory.</div>
+      <div class="timeline-note">San Pedro operators book out for January. Confirm a local guide for January 10&ndash;11 (Days 3&ndash;4) covering El Tatio, Valle de la Luna, and the night sky observatory.</div>
     </div>
     <div class="timeline-item reveal">
-      <div class="timeline-date">March 2027</div>
+      <div class="timeline-date">February 2027</div>
       <div class="timeline-action">Book flights</div>
       <div class="timeline-note">ATL&rarr;SCL&rarr;CJC inbound. CJC&rarr;SCL&rarr;BBA pivot. USH&rarr;AEP&rarr;EZE&rarr;ATL outbound. ~11 months out is when international availability opens. Four guys on the same flights.</div>
     </div>
     <div class="timeline-item critical reveal">
       <div class="timeline-date">April&ndash;June 2027 &middot; Critical Window</div>
       <div class="timeline-action">Torres del Paine trail tickets &mdash; pasesparques.cl</div>
-      <div class="timeline-note">The booking window for the 2027&ndash;28 season opens here. January dates sell out within days. Someone needs to be at their computer the morning the window opens. Buy tickets for January 22 and 23, 2028.</div>
+      <div class="timeline-note">The booking window for the 2027&ndash;28 season opens here. January dates sell out within days. Someone needs to be at their computer the morning the window opens. Buy tickets for January 19 and 20, 2028.</div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-date">April&ndash;June 2027</div>
       <div class="timeline-action">Book Torres del Paine accommodation</div>
-      <div class="timeline-note">Lodges inside the park fill on the same timeline as trail tickets. Book nights of January 21&ndash;24 simultaneously. Sleep inside the park &mdash; not Puerto Natales.</div>
+      <div class="timeline-note">Lodges inside the park fill on the same timeline as trail tickets. Book the nights of January 19&ndash;20 simultaneously &mdash; sleep inside the park both hike nights. (The 18th is Puerto Natales; the 21st is R&iacute;o Grande.)</div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-date">October&ndash;November 2027</div>
       <div class="timeline-action">Book El Chalt&eacute;n accommodation &middot; Marble Caves boat tour</div>
-      <div class="timeline-note">January 19&ndash;21 in El Chalt&eacute;n. Morning boat tour with Pedro (ask for Johnny) for Marble Caves on January 17. Both fill in peak season.</div>
+      <div class="timeline-note">Nights of January 16&ndash;17 in El Chalt&eacute;n. Morning boat tour with Pedro (ask for Johnny) for the Marble Caves on January 14. Both fill in peak season.</div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-date">January 2028 &middot; Before departure</div>
@@ -900,78 +1000,109 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
 
 <!-- BUDGET -->
 <div class="hr"></div>
-<section class="budget-section">
+<section class="budget-section" id="budget">
   <div class="budget-inner">
     <div class="section-label reveal">Budget</div>
     <h2 class="section-title reveal reveal-delay-1">Per person, <em>all in</em></h2>
     <table class="budget-table reveal reveal-delay-2">
+      <thead><tr><th scope="col">Item</th><th scope="col">Per person</th></tr></thead>
       <tr><td>Flights (ATL&rarr;CJC&rarr;BBA + USH&rarr;ATL, all legs)</td><td>$1,400&ndash;1,800</td></tr>
-      <tr><td>Vehicle base rate &mdash; L200, 11 days (&divide;4)</td><td>$345</td></tr>
-      <tr><td>Premium insurance &mdash; $28/day &times; 11 (&divide;4)</td><td>$77</td></tr>
+      <tr><td>Vehicle base rate &mdash; L200, 10 days (&divide;4)</td><td>$314</td></tr>
+      <tr><td>Premium insurance &mdash; $28/day &times; 10 (&divide;4)</td><td>$70</td></tr>
       <tr><td>Border crossing permit (&divide;4)</td><td>$55</td></tr>
       <tr><td>One-way drop fee BBA&rarr;PUQ (&divide;4)</td><td>$220</td></tr>
       <tr><td>Fuel (&divide;4)</td><td>$200&ndash;300</td></tr>
       <tr><td>Atacama guide + tours (El Tatio, observatory)</td><td>$300&ndash;400</td></tr>
       <tr><td>Lodging (&divide;4)</td><td>$400&ndash;650</td></tr>
       <tr><td>Torres del Paine entry + trail tickets</td><td>$50&ndash;100</td></tr>
-      <tr><td>Marble Caves, Queulat, other tours</td><td>$150&ndash;250</td></tr>
+      <tr><td>Marble Caves &amp; other tours</td><td>$150&ndash;250</td></tr>
       <tr><td>Food and drink</td><td>$600&ndash;900</td></tr>
       <tr><td>Strait crossing + Tierra del Fuego transfer</td><td>$80&ndash;120</td></tr>
       <tr><td>Cash buffer, SIM card, satellite communicator</td><td>$150&ndash;200</td></tr>
-      <tr class="budget-total"><td>Total &nbsp;&middot;&nbsp; Realistic center: $4,500</td><td>$4,000&ndash;5,500</td></tr>
+      <tr class="budget-total"><td>Total &nbsp;&middot;&nbsp; Realistic center: ~$4,700</td><td>$4,000&ndash;5,400</td></tr>
     </table>
   </div>
 </section>
 
 <!-- CLOSE -->
 <div class="hr"></div>
-<section class="close-section">
+<section class="close-section" id="commit">
   <div class="close-inner">
     <p class="close-quote reveal">"Some guys turn 40 and buy a watch. We're driving a 4WD to the <strong>bottom of the world.</strong>"</p>
     <div class="close-ask reveal reveal-delay-2">You in?</div>
-    <a href="mailto:?subject=Patagonia%202028%20%E2%80%94%20I%27m%20In&body=January%2010%E2%80%9326%2C%202028.%20Count%20me%20in." class="close-btn reveal reveal-delay-3">I'm In.</a>
-    <div class="close-date reveal reveal-delay-4">January 10&ndash;26, 2028 &nbsp;&middot;&nbsp; The 40th &nbsp;&middot;&nbsp; Fin del Mundo</div>
+
+    <!-- On each yes: add class "yes" to a slot and replace the dash with the name; update the count -->
+    <div class="commit-count reveal">Committed &middot; 1 of 4</div>
+    <div class="commit-status reveal" aria-label="Commitments: 1 of 4">
+      <div class="commit-slot yes"><span class="dot"></span>Peyton</div>
+      <div class="commit-slot"><span class="dot"></span>&mdash;</div>
+      <div class="commit-slot"><span class="dot"></span>&mdash;</div>
+      <div class="commit-slot"><span class="dot"></span>&mdash;</div>
+    </div>
+    <button type="button" class="close-btn reveal reveal-delay-3" id="commitBtn">I'm In.</button>
+    <p class="close-alt reveal reveal-delay-3">Copies the line &mdash; paste it in the group thread. Or <a href="mailto:peytoned@gmail.com?subject=Patagonia%202028%20%E2%80%94%20I%27m%20In&amp;body=January%207%E2%80%9323%2C%202028.%20Count%20me%20in.">email it</a>.</p>
+    <div class="close-date reveal reveal-delay-4">January 7&ndash;23, 2028 &nbsp;&middot;&nbsp; The 40th &nbsp;&middot;&nbsp; Fin del Mundo</div>
   </div>
 </section>
 
+</main>
+
 <footer>
-  <div class="footer-left">Atacama &rarr; Ushuaia &middot; January 2028</div>
+  <div class="footer-left">Atacama &rarr; Ushuaia &middot; January 2028 &middot; Last updated July 2026</div>
   <div class="footer-right">Four men. One direction. No going back.</div>
 </footer>
 
 <script>
-  function updateCountdown() {
-    const target = new Date('2028-01-10T20:00:00-05:00');
-    const now = new Date();
-    const diff = target - now;
+  // Fixed UTC instant: 8:00pm Atlanta (EST, UTC-5) on Friday, January 7, 2028
+  const COUNTDOWN_TARGET = new Date('2028-01-07T20:00:00-05:00');
+  const cdUnits = document.querySelectorAll('.cd-unit');
 
+  function renderCountdown() {
+    const diff = COUNTDOWN_TARGET - new Date();
     const ids = ['cd-days', 'cd-hours', 'cd-min', 'cd-sec'];
 
     if (diff <= 0) {
+      cdUnits.forEach((u) => { u.style.display = ''; });
       ids.forEach((id) => {
         const el = document.getElementById(id);
         if (el) el.textContent = '00';
       });
-      return;
+      return diff;
     }
 
     const d = Math.floor(diff / 86400000);
+
+    if (d > 60) {
+      // Eighteen months out, seconds are noise: show days only until 60 days remain
+      const dayEl = document.getElementById('cd-days');
+      if (dayEl) dayEl.textContent = String(d);
+      cdUnits.forEach((u, i) => { u.style.display = i === 0 ? '' : 'none'; });
+      return diff;
+    }
+
+    cdUnits.forEach((u) => { u.style.display = ''; });
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
-
     const vals = [d, h, m, s].map((v) => String(v).padStart(2, '0'));
     ids.forEach((id, i) => {
       const el = document.getElementById(id);
       if (el) el.textContent = vals[i];
     });
+    return diff;
   }
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  function countdownTick() {
+    const diff = renderCountdown();
+    if (diff <= 0) return; // done: stop ticking
+    const days = Math.floor(diff / 86400000);
+    setTimeout(countdownTick, days > 60 ? 3600000 : 1000);
+  }
+  countdownTick();
 
   const progressEl = document.getElementById('progress');
   const backTopEl = document.getElementById('backTop');
+  const navEl = document.getElementById('siteNav');
   let scrollTicking = false;
 
   function updateScrollUI() {
@@ -981,6 +1112,7 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
 
     if (progressEl) progressEl.style.width = pct + '%';
     if (backTopEl) backTopEl.classList.toggle('visible', window.scrollY > 400);
+    if (navEl) navEl.classList.toggle('visible', window.scrollY > 400);
 
     scrollTicking = false;
   }
@@ -1007,10 +1139,28 @@ Here is the fully updated HTML with the hardening fixes plus the content-consist
   } else {
     revealTargets.forEach((el) => el.classList.add('visible'));
   }
+
+  // "I'm In" copies the commitment line so the yes lands in the group thread
+  const commitBtn = document.getElementById('commitBtn');
+  if (commitBtn) {
+    const originalLabel = commitBtn.textContent;
+    commitBtn.addEventListener('click', () => {
+      const line = "I'm in. January 7\u201323, 2028.";
+      const done = () => {
+        commitBtn.textContent = 'Copied \u2014 send it to the thread.';
+        setTimeout(() => { commitBtn.textContent = originalLabel; }, 3000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(line).then(done).catch(done);
+      } else { done(); }
+    });
+  }
+
+  // Gear accordions: collapsed by default on phones, open on wider screens
+  if (window.innerWidth <= 640) {
+    document.querySelectorAll('details.acc[open]').forEach((d) => d.removeAttribute('open'));
+  }
 </script>
 
 </body>
 </html>
-```
-
-If you want, next I can generate a second version where the stat stays 17 Days and the day cards become Day 00-16 so the calendar framing is mathematically explicit.
